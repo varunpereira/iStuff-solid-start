@@ -1,5 +1,5 @@
 {
-  "name": "flixter",
+  "name": "istuff",
   "scripts": {
     "dev": "solid-start dev --port 5000",
     "build": "solid-start build",
