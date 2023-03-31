@@ -1,0 +1,35 @@
+{
+  "name": "flixter",
+  "scripts": {
+    "dev": "solid-start dev --port 5000",
+    "build": "solid-start build",
+    "start": "solid-start start",
+    "cut":"rmdir /s /q dist .solid .vercel node_modules"
+  },
+  "type": "module",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "sass": "^1.58.3",
+    "solid-start-node": "^0.2.19",
+    "tailwindcss": "^3.2.4",
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.28.2",
+    "@solidjs/router": "^0.8.2",
+    "axios": "^1.3.4",
+    "bcryptjs": "^2.4.3",
+    "js-cookie": "^3.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "pusher": "^5.1.2",
+    "pusher-js": "^8.0.2",
+    "solid-js": "^1.6.11",
+    "solid-start": "^0.2.24",
+    "solid-start-vercel": "^0.2.24"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

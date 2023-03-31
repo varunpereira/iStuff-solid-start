@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+$white: white;
+$black: black;
+$orange: darkorange;
+$light_grey: grey;
+$dark_grey: rgb(39, 39, 39);
+$red: red;
+@layer utilities {
+	/* colours in tw config so can use vars */
+	/* text colour */
+	// use rem, based of root
+	:root {
+		font-size: 16px;
+	}
+	// fit
+	.f_1 {
+		@apply min-w-[20rem] max-w-[90rem] mx-[auto];
+	}
+	.tc_white {
+		color: $white;
+	}
+	.tc_orange {
+		color: $orange;
+	}
+	.tc_grey {
+		color: $light_grey;
+	}
+	.tc_black {
+		color: $black;
+	}
+	.tc_red {
+		color: $red;
+	}
+	/* text size */
+	.ts_1 {
+		font-size: 1rem;
+	}
+	.ts_2 {
+		font-size: 1.25rem;
+	}
+	.ts_3 {
+		font-size: 1.5rem;
+	}
+	/* text fam */
+	.tf_1 {
+		font-family: verdana;
+	}
+	// text inside 
+	.ti_orange {
+		fill: $orange;
+	}
+	/* text weight */
+	.tw_1 {
+		font-weight: 700;
+	}
+	.tw_2 {
+		font-weight: 700;
+	}
+	/* text case/shift */
+	.ts_upper {
+		text-transform: uppercase;
+	}
+	/* text align */
+	.ta_centre {
+		text-align: center;
+	}
+	.ta_left {
+		text-align: left;
+	}
+	/* expose  */
+	.e_fit {
+		object-fit: contain;
+	}
+	// background colour
+	.c_orange {
+		background-color: $orange;
+	}
+	.c_white {
+		background-color: $white;
+	}
+	.c_black {
+		background-color: $black;
+	}
+	.c_grey {
+		background-color: $dark_grey;
+	}
+	.c_none {
+		background-color: transparent;
+	}
+	/* border */
+	.bc_black {
+		border-color: $black;
+	}
+	.bc_white {
+		border-color: $white;
+	}
+	.bc_grey {
+		border-color: $dark_grey;
+	}
+	.bw_1 {
+		border-width: .1rem;
+	}
+	/* viewport - see config (v1 - v5) */
+	/* round */
+	.r_1 {
+		border-radius: 0.5rem;
+	}
+	.r_2 {
+		border-radius: 0.8rem;
+	}
+	// shadow
+	.s_1 {
+		box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	}
+	/* w-[100%], max_w-[10rem] */
+	/* align */
+	/* flex , default is a_row*/
+	.a_row {
+		display: flex;
+		flex-direction: row;
+	}
+	.a_col {
+		display: flex;
+		flex-direction: column;
+	}
+	.ax_start {
+		justify-content: flex-start;
+	}
+	.ax_end {
+		justify-content: flex-end;
+	}
+	.ax_centre {
+		justify-content: center;
+	}
+	.ax_between {
+		justify-content: space-between;
+	}
+	.ay_start {
+		align-content: flex-start;
+	}
+	.ay_centre {
+		align-content: center;
+	}
+	/* default: block, also: flex, grid */
+	.hide {
+		display: none;
+	}
+	.z_normal {
+		position: static;
+	}
+	.z_contain {
+		position: relative;
+	}
+	// sometimes add z-[n], n is int
+	.z_layer {
+		position: absolute;
+	}
+}
