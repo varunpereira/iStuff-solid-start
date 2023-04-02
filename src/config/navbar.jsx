@@ -39,7 +39,8 @@ export default () => {
 	})
 
 	var sign_out = async () => {
-		var res = await axios.post('/$/login/api/auth_cut',{email: cookie.get("email")})
+		var res = await axios.post('/$/login/api/auth_cut',{email: globe().email})
+		globe({email: null})
 		cookie.remove("email")
 		window.location.href = "/signin"
 	}
@@ -51,8 +52,8 @@ export default () => {
 			tv_icon("w-[1.8rem] h-[1.8rem] tc_orange mr-[.4rem]"),
 			t({}, () => "Flixter"),
 		),
-		cookie.get("email") != null
-			? b({click: () => nav("/signin"), style: () => "a_row ax_end"}, () => cookie.get("email"))
+		globe().email != null
+			? b({click: () => nav("/signin"), style: () => "a_row ax_end"}, () => globe().email)
 			: b({click: () => nav("/signin"), style: () => "a_row ax_end"}, () => "Sign in"),
 		b({click: sign_out, style: () => "a_row ax_end"}, () => "sign out"),
 	)

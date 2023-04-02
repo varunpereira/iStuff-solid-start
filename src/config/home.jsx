@@ -30,7 +30,7 @@ export default () => {
 	var mute = state(true)
 
 	mount(async () => {
-		await auth(cookie?.get('email'),'public')
+		await auth('pub')
 	})
 
 	clean(() => {

@@ -32,5 +32,6 @@ export var POST = async ({request}) => {
 	)
 	var data = {email, token}
 	var age = 30 * 24 * 1 * 60 * 60 // 30 days
-	return res({}, {cookie: {data, age}})
+	// return new Response(JSON.stringify({ok:true}))
+	return res({ok:true}, {cookie: {data, age}})
 }

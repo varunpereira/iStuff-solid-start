@@ -22,14 +22,17 @@ export var state = (init) => {
 // globe state
 export var globe = state({email: null})
 
-export var auth = async (email, link) => {
+export var auth = async (link) => {
 	var nav = useNavigate()
-	var auth = await axios.post("/$/login/api/auth_get", {email})
+	var auth = await axios.post("/$/login/api/auth_get", {email: cookie?.get("email")})
 	// auth.data.ok ?? nav("/signin")
-	if (auth.data.ok == null) {
-		cookie.remove("email")
-		link !== "public" && (window.location.href = "/signin")
+	if (auth.data.ok === true) {
+		globe({email: cookie?.get("email")})
+		return
 	}
+	globe({email: null})
+	cookie.remove("email")
+	link !== "pub" && (window.location.href = "/signin")
 }
 
 export var route2 = (route) => {
@@ -185,14 +188,14 @@ export var db = () => {
 export var res = (body = {}, head = null) => {
 	return new Response(
 		JSON.stringify(body),
-		head && {
+		head != null ? {
 			headers: {
 				"Set-Cookie": `cookie=${JSON.stringify(
-					head?.cookie?.data,
+					head?.cookie,
 				)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${head?.cookie?.age}; Domain=${
 					process.env.NODE_ENV === "production" ? env.domain : ""
 				}`,
 			},
-		},
+		} : '',
 	)
 }

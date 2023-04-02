@@ -5,7 +5,7 @@ import {parseCookie} from "solid-start"
 export var POST = async ({request}) => {
 	var {email} = await request.json()
 	var cookies = () => parseCookie(String(request?.headers?.get("cookie")))
-	var cookie = cookies()?.cookie ? JSON.parse(cookies().cookie) : ""
+	var cookie = cookies()?.cookie 
 	var token = cookie?.token ?? ""
 	db()
 	var get_user = await user_model.findOne({email, token})
