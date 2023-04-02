@@ -18,7 +18,7 @@ export var POST = async ({request}) => {
 			error: "Password incorrect.",
 		})
 	}
-	var token = jwt.sign({email}, env.sesh_key, {
+	var token = jwt.sign({email}, env.sesh, {
 		expiresIn: "1d",
 	})
 	// save token to db for the user
@@ -34,4 +34,13 @@ export var POST = async ({request}) => {
 	var age = 30 * 24 * 1 * 60 * 60 // 30 days
 	// return new Response(JSON.stringify({ok:true}))
 	return res({ok:true}, {cookie: {data, age}})
+	// return new Response(JSON.stringify({}), {
+	// 	headers: {
+	// 		"Set-Cookie": `cookie=${JSON.stringify(
+	// 			data,
+	// 		)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}; Domain=${
+	// 			process.env.NODE_ENV === "production" ? env.domain : ""
+	// 		}`,
+	// 	},
+	// })
 }

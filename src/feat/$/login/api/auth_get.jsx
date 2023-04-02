@@ -3,12 +3,11 @@ import user_model from "~/config/db/model/user"
 import {parseCookie} from "solid-start"
 
 export var POST = async ({request}) => {
-	var {email} = await request.json()
 	var cookies = () => parseCookie(String(request?.headers?.get("cookie")))
-	var cookie = cookies()?.cookie 
-	var token = cookie?.token ?? ""
+	// write("cookies!:\n" + JSON.stringify(cookies()))
+	var cookie = cookies()?.cookie ? JSON.parse(cookies()?.cookie) : null
 	db()
-	var get_user = await user_model.findOne({email, token})
+	var get_user = await user_model.findOne({email: cookie?.email, token: cookie?.token})
 	if (get_user == null) {
 		return res({
 			error: "Access denied.",

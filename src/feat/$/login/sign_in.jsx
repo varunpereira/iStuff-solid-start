@@ -27,19 +27,20 @@ export default () => {
 	var form_data = state({email: "", password: ""})
 
 	mount(async () => {
-		await auth("pub")
+		await auth('pub')
 	})
 
 	var form_submit = async () => {
 		// go('/haha')
 		var res = await axios.post("/$/login/api/auth_put", form_data())
-		if (res?.data.ok !== true) {
+		if (res?.data?.ok !== true) {
 			form_error(res.data.error)
 			return
 		}
 		// set globe (fe cookie)
 		globe({email:form_data().email})
-		cookie?.set("email", form_data().email)
+		write(form_data().email)
+		cookie.set("email", form_data().email)
 		nav("/")
 	}
 

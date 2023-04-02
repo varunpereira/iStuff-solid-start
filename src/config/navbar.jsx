@@ -52,6 +52,7 @@ export default () => {
 			tv_icon("w-[1.8rem] h-[1.8rem] tc_orange mr-[.4rem]"),
 			t({}, () => "Flixter"),
 		),
+	()=>JSON.stringify(globe() ) + JSON.stringify(cookie.get('email')),
 		globe().email != null
 			? b({click: () => nav("/signin"), style: () => "a_row ax_end"}, () => globe().email)
 			: b({click: () => nav("/signin"), style: () => "a_row ax_end"}, () => "Sign in"),

@@ -23,16 +23,14 @@ export var state = (init) => {
 export var globe = state({email: null})
 
 export var auth = async (link) => {
-	var nav = useNavigate()
-	var auth = await axios.post("/$/login/api/auth_get", {email: cookie?.get("email")})
-	// auth.data.ok ?? nav("/signin")
+	var auth = await axios.post("/$/login/api/auth_get")
 	if (auth.data.ok === true) {
-		globe({email: cookie?.get("email")})
+		globe({email})
 		return
 	}
 	globe({email: null})
 	cookie.remove("email")
-	link !== "pub" && (window.location.href = "/signin")
+	link !== "pub" ? (window.location.href = "/signin") : ''
 }
 
 export var route2 = (route) => {
@@ -167,7 +165,7 @@ export var title = ({value = () => ""}) => {
 export var env = {
 	db: import.meta.env.VITE_db,
 	domain: import.meta.env.VITE_domain,
-	sesh_key: import.meta.env.VITE_sesh_key,
+	sesh: import.meta.env.VITE_sesh,
 }
 
 // export var db = () =>
@@ -189,13 +187,14 @@ export var res = (body = {}, head = null) => {
 	return new Response(
 		JSON.stringify(body),
 		head != null ? {
-			headers: {
+			headers: 
+			{
 				"Set-Cookie": `cookie=${JSON.stringify(
-					head?.cookie,
-				)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${head?.cookie?.age}; Domain=${
+					head?.cookie?.data,
+				)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${JSON.stringify(head?.cookie?.age)}; Domain=${
 					process.env.NODE_ENV === "production" ? env.domain : ""
 				}`,
 			},
-		} : '',
+		} : {},
 	)
 }
