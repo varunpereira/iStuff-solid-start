@@ -18,7 +18,7 @@ export var POST = async ({request}) => {
 			error: "Password incorrect.",
 		})
 	}
-	var token = jwt.sign({email}, env.sesh, {
+	var token = jwt.sign({email}, env.VITE_sesh, {
 		expiresIn: "1d",
 	})
 	// save token to db for the user

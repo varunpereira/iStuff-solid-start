@@ -162,22 +162,18 @@ export var title = ({value = () => ""}) => {
 
 //  server
 
-export var env = {
-	db: import.meta.env.VITE_db,
-	domain: import.meta.env.VITE_domain,
-	sesh: import.meta.env.VITE_sesh,
-}
+export var env = import.meta.env
 
 // export var db = () =>
 // 	mongoose.connections[0].readyState
 // 		? () => write("mongodb already connected.")
-// 		: mongoose.connect(env.db).then(() => write("mongodb connected."))
+// 		: mongoose.connect(env.VITE_db).then(() => write("mongodb connected."))
 
 export var db = () => {
 	if (mongoose.connections && mongoose?.connections[0]?.readyState) {
 		write("mongodb already connected.")
 	} else {
-		mongoose?.connect(env.db).then(() => {
+		mongoose?.connect(env.VITE_db).then(() => {
 			write("mongodb connected.")
 		})
 	}

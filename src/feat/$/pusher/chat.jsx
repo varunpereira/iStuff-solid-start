@@ -1,4 +1,4 @@
-import {state, react, write, mount} from "~/config/store"
+import {state, react, write, mount, env} from "~/config/store"
 import Pusher from "pusher-js"
 import axios from "axios"
 
@@ -7,8 +7,8 @@ export default ({sender = "def"}) => {
 	var msg = state("")
 
 	react(() => {
-    var pusher = new Pusher(import.meta.env.VITE_key, {
-      cluster: import.meta.env.VITE_cluster,
+    var pusher = new Pusher(env.VITE_key, {
+      cluster: env.VITE_cluster,
     })
 		pusher.subscribe("chat").bind("chat-event", (data) => {
 			write("okie")

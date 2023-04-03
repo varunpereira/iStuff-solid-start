@@ -11,9 +11,9 @@ export var POST = async ({request}) => {
 }
 
 export var pusher = new Pusher({
-	appId: import.meta.env.VITE_app_id,
-	key: import.meta.env.VITE_key,
-	secret: import.meta.env.VITE_secret,
-	cluster: import.meta.env.VITE_cluster,
+	appId: env.VITE_app_id,
+	key: env.VITE_key,
+	secret: env.VITE_secret,
+	cluster: env.VITE_cluster,
 	useTLS: true,
 })
