@@ -45,7 +45,7 @@ export default () => {
 
 	return d(
 		{},
-		title({value: () => "Sign in"}),
+		// title({value: () => "Sign in"}),
 		d(
 			{style: () => "w-[20rem] mx-[auto] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_1 tw_1 mb-[1rem]"}, () => "Sign in"),

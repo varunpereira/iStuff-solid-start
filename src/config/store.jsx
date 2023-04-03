@@ -25,7 +25,7 @@ export var globe = state({email: null})
 export var auth = async (link) => {
 	var auth = await axios.post("/$/login/api/auth_get")
 	if (auth.data.ok === true) {
-		globe({email})
+		globe({email: cookie.get('email')})
 		return
 	}
 	globe({email: null})
@@ -157,7 +157,7 @@ export var v = ({
 }
 
 export var title = ({value = () => ""}) => {
-	return <Title>{value()} - Flixter</Title>
+	return <Title>{value()} - iStuff</Title>
 }
 
 //  server

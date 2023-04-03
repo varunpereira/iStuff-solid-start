@@ -17,7 +17,7 @@ import "~/config/style.scss"
 import def from "~/config/def"
 import Navbar from "~/config/navbar"
 import Footer from "~/config/footer"
-import home from "~/config/home"
+import home from "~/config/home/home"
 import sign_in from "~/feat/$/login/sign_in"
 import chat from "~/feat/$/pusher/chat"
 

@@ -44,7 +44,7 @@ export default () => {
 	var pause = (e) => {
 		e.target.pause()
 	}
-
+	
 	return d(
 		{},
 		title({value: () => "Home"}),

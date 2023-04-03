@@ -1,5 +1,5 @@
 import {state, mount, react, write, d, c, t, b, i, v, env, parse, route} from "~/config/store"
-import {tv_icon} from "~/config/icon/globe.jsx"
+import {tv_icon} from "~/config/asset/icon.jsx"
 
 export default () => {
 	var nav = route()

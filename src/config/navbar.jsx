@@ -15,7 +15,7 @@ import {
 	globe,
 	db,
 } from "~/config/store"
-import {tv_icon} from "~/config/icon/globe.jsx"
+import {tv_icon} from "~/config/asset/icon.jsx"
 import cookie from "js-cookie"
 import server$ from "solid-start/server"
 import user_model from "~/config/db/model/user"
@@ -50,7 +50,7 @@ export default () => {
 		b(
 			{click: () => nav("/"), style: () => "a_row ax_start tc_orange tw_1 ts_2 "},
 			tv_icon("w-[1.8rem] h-[1.8rem] tc_orange mr-[.4rem]"),
-			t({}, () => "Flixter"),
+			t({}, () => "iStuff"),
 		),
 	()=>JSON.stringify(globe() ) + JSON.stringify(cookie.get('email')),
 		globe().email != null
