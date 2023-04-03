@@ -41,30 +41,30 @@ export default () => {
 	var pause = (e) => {
 		e.target.pause()
 	}
-	return <><Title>hi - iStuff</Title></>
-	// return d(
-	// 	{},
-	// 	title({value: () => "Home"}),
-	// 	v({
-	// 		def: () => "/home/lotr_2.png",
-	// 		value: () => "/home/lotr_2.mp4",
-	// 		mute: () => mute(),
-	// 		hover_in: play,
-	// 		hover_out: pause,
-	// 		style: () => "w-[100%]",
-	// 		click: () => mute(false)
-	// 	}),
-	// 	t(
-	// 		{
-	// 			style: () =>
-	// 				"f_1 px-[1rem] py-[1rem] contain a_row ax_start ay_centre my-[3rem] tc_orange ts_2 tw_1",
-	// 		},
-	// 		() => "Trending",
-	// 	),
-	// 	p({
-	// 		def: () => "trending",
-	// 		value: () => car()[car_index()],
-	// 		style: () => "w-[100%]",
-	// 	}),
-	// )
+	
+	return d(
+		{},
+		title({value: () => "Home"}),
+		v({
+			def: () => "/home/lotr_2.png",
+			value: () => "/home/lotr_2.mp4",
+			mute: () => mute(),
+			hover_in: play,
+			hover_out: pause,
+			style: () => "w-[100%]",
+			click: () => mute(false)
+		}),
+		t(
+			{
+				style: () =>
+					"f_1 px-[1rem] py-[1rem] contain a_row ax_start ay_centre my-[3rem] tc_orange ts_2 tw_1",
+			},
+			() => "Trending",
+		),
+		p({
+			def: () => "trending",
+			value: () => car()[car_index()],
+			style: () => "w-[100%]",
+		}),
+	)
 }
