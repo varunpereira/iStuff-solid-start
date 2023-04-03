@@ -3,7 +3,7 @@
 @tailwind utilities;
 $white: white;
 $black: black;
-$orange: darkorange;
+$aqua: aqua;
 $light_grey: grey;
 $dark_grey: rgb(39, 39, 39);
 $red: red;
@@ -21,8 +21,8 @@ $red: red;
 	.tc_white {
 		color: $white;
 	}
-	.tc_orange {
-		color: $orange;
+	.tc_aqua {
+		color: $aqua;
 	}
 	.tc_grey {
 		color: $light_grey;
@@ -48,8 +48,8 @@ $red: red;
 		font-family: verdana;
 	}
 	// text inside 
-	.ti_orange {
-		fill: $orange;
+	.ti_aqua {
+		fill: $aqua;
 	}
 	/* text weight */
 	.tw_1 {
@@ -74,8 +74,8 @@ $red: red;
 		object-fit: contain;
 	}
 	// background colour
-	.c_orange {
-		background-color: $orange;
+	.c_aqua {
+		background-color: $aqua;
 	}
 	.c_white {
 		background-color: $white;

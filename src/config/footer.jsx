@@ -1,5 +1,5 @@
 import {state, mount, react, write, d, c, t, b, i, v, env, parse, route} from "~/config/store"
-import {tv_icon} from "~/config/asset/icon.jsx"
+import {shop_icon} from "~/config/asset/icon.jsx"
 
 export default () => {
 	var nav = route()
@@ -7,9 +7,9 @@ export default () => {
 	return d(
 		{style: () => "f_1 px-[1rem] py-[2rem]"},
 		b(
-			{click: () => nav("/"), style: () => "a_row ax_start tc_orange tw_1 ts_2 "},
-			tv_icon("w-[1.8rem] h-[1.8rem] tc_orange mr-[.4rem]"),
-			t({}, () => "Flixter"),
+			{click: () => nav("/"), style: () => "a_row ax_start tc_aqua tw_1 ts_2 "},
+			shop_icon("w-[1.4rem] h-[1.4rem] mt-[.1rem] mr-[.4rem] tc_aqua"),
+			t({}, () => "iStuff"),
 		),
 		t({style: () => "a_row ax_centre"}, () => "© 2023 Flixter - A Denify Company"),
 	)

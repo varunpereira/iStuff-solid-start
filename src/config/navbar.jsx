@@ -15,7 +15,7 @@ import {
 	globe,
 	db,
 } from "~/config/store"
-import {tv_icon} from "~/config/asset/icon.jsx"
+import {shop_icon} from "~/config/asset/icon.jsx"
 import cookie from "js-cookie"
 import server$ from "solid-start/server"
 import user_model from "~/config/db/model/user"
@@ -48,8 +48,8 @@ export default () => {
 	return d(
 		{style: () => "f_1 px-[1rem] py-[.5rem] a_row ax_between"},
 		b(
-			{click: () => nav("/"), style: () => "a_row ax_start tc_orange tw_1 ts_2 "},
-			tv_icon("w-[1.8rem] h-[1.8rem] tc_orange mr-[.4rem]"),
+			{click: () => nav("/"), style: () => "a_row ax_start tc_aqua tw_1 ts_2 "},
+			shop_icon("w-[1.4rem] h-[1.4rem] mt-[.1rem] mr-[.4rem] tc_aqua"),
 			t({}, () => "iStuff"),
 		),
 	()=>JSON.stringify(globe() ) + JSON.stringify(cookie.get('email')),

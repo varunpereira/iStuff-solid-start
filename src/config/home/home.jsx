@@ -57,7 +57,7 @@ export default () => {
 		t(
 			{
 				style: () =>
-					"f_1 px-[1rem] py-[1rem] contain a_row ax_start ay_centre my-[3rem] tc_orange ts_2 tw_1",
+					"f_1 px-[1rem] py-[1rem] contain a_row ax_start ay_centre my-[3rem] tc_aqua ts_2 tw_1",
 			},
 			() => "Trending",
 		),
