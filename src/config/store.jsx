@@ -157,7 +157,7 @@ export var v = ({
 }
 
 export var title = ({value = () => ""}) => {
-	return <Title>{value()} - iStuff</Title>
+	return <Title>{value() + ' - iStuff'}</Title>
 }
 
 //  server
