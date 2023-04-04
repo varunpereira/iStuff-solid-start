@@ -41,3 +41,4 @@ they also do file storage (16mb max file) with mongodb gridfs .
 if you change live() then close + open server again to see mods.
 npm vercel, us clie to build locally same but quicker than cloud!
 can also deploy (vercel build, vercel [for deploy])
+every piece thats a page, needs a title else error.

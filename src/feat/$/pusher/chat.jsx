@@ -1,20 +1,21 @@
-import {state, react, write, mount, env} from "~/config/store"
+import {state, react, write, mount, env, d, title} from "~/config/store"
 import Pusher from "pusher-js"
 import axios from "axios"
 
-export default ({sender = "def"}) => {
+export default () => {
 	var chats = state([])
 	var msg = state("")
+	var sender = "def"
 
 	react(() => {
-    var pusher = new Pusher(env.VITE_key, {
-      cluster: env.VITE_cluster,
-    })
+		var pusher = new Pusher(env.VITE_key, {
+			cluster: env.VITE_cluster,
+		})
 		pusher.subscribe("chat").bind("chat-event", (data) => {
 			write("okie")
 			chats((prevState) => [...prevState, {sender: data.sender, message: data.message}])
 		})
-    return () => pusher.unsubscribe("chat");
+		return () => pusher.unsubscribe("chat")
 	})
 
 	var handleSubmit = async (e) => {
@@ -26,6 +27,7 @@ export default ({sender = "def"}) => {
 
 	return (
 		<>
+			{title({value: () => "Chat"})}
 			<p>Hello, {sender}</p>
 			<div class="bg-red-800">
 				chats:
