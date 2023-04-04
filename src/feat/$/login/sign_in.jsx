@@ -28,15 +28,12 @@ export default () => {
 	})
 
 	var form_submit = async () => {
-		// go('/haha')
 		var res = await axios.post("/$/login/api/auth_put", form_data())
-		if (res?.data?.ok !== true) {
+		if (res?.data?.error != null) {
 			form_error(res.data.error)
 			return
 		}
-		write("done")
 		nav("/")
-		// window.open('/','_self')
 	}
 
 	return d(

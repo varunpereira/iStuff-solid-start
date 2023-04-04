@@ -33,14 +33,13 @@ export var POST = async ({request}) => {
 	var data = {email, token}
 	var age = 30 * 24 * 1 * 60 * 60 // 30 days
 	// return res({ok:true}, {cookie: {data, age}})
-	return new Response(JSON.stringify({}), {
+	return new Response(JSON.stringify({hi:'hi'}), {
 		headers: {
 			"Set-Cookie": `cookie=${JSON.stringify(
 				data,
 			)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}; Domain=${
 				process.env.NODE_ENV === "production" ? env.VITE_domain : ""
 			}`,
-			'Location': '/'
 		},
 	})
 }
