@@ -190,7 +190,7 @@ export var struct = ({title = () => "", style = () => "", header = () => "",foot
 						{header()}
 						<Routes>
 							{route().map((route)=>
-							<Route path={route.path} component={route.piece} />
+							<Route path={route[0]} component={route[1]} />
 							)}
 							<Route path="*" component={def} />
 							<FileRoutes />

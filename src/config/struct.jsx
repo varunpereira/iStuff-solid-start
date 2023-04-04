@@ -9,9 +9,9 @@ import chat from "~/feat/$/pusher/chat"
 
 export default () => {
 	var route = () => [
-		{path: "/", piece: home},
-		{path: "/signin", piece: sign_in},
-		{path: "/chat", piece: chat},
+		["/", home],
+		["/signin", sign_in],
+		["/chat", chat],
 	]
 	return struct({header, footer, def, route, style: () => "c_black tc_white ts_1 tf_1"})
 }
