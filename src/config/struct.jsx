@@ -14,6 +14,7 @@ import {
 	FileRoutes,useNavigate
 } from "solid-start"
 import "~/config/style.scss"
+import favicon from '~/config/asset/favicon.gif'
 import def from "~/config/def"
 import Navbar from "~/config/navbar"
 import Footer from "~/config/footer"
@@ -28,7 +29,7 @@ export default () => {
 				<Title>Flixter</Title>
 				<Meta charset="utf-8" />
 				<Meta name="viewport" content="width=device-width, initial-scale=1" />
-				<Link rel="icon" type="image/x-icon" href="/favicon.gif"></Link>
+				<Link rel="icon" type="image/x-icon" href={favicon}></Link>
 				{/* <script src="https://js.pusher.com/7.0/pusher.min.js"></script> */}
 			</Head>
 			<Body class="c_black tc_white ts_1 tf_1">
