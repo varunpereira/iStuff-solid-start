@@ -23,8 +23,8 @@ export var globe = state({email: null})
 
 export var auth = async (link) => {
 	var auth = await axios.post("/$/login/api/auth_get")
-	if (auth.data.ok === true) {
-		globe({email: auth.data?.user.email})
+	if (auth.data?.ok === true) {
+		globe({email: auth.data?.user?.email})
 		return
 	}
 	globe({email: null})
@@ -186,7 +186,7 @@ export var res = (body = {}, head = null) => {
 				"Set-Cookie": `cookie=${JSON.stringify(
 					head?.cookie?.data,
 				)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${JSON.stringify(head?.cookie?.age)}; Domain=${
-					process.env.NODE_ENV === "production" ? env.domain : ""
+					process.env.NODE_ENV === "production" ? env.VITE_domain : ""
 				}`,
 			},
 		} : {},
