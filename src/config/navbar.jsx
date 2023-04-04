@@ -38,14 +38,14 @@ export default () => {
 	var sign_out = async () => {
 		var res = await axios.post('/$/login/api/auth_cut',{email: globe().email})
 		globe({email: null})
-		window.location.href = "/signin"
+		nav("/signin")
 	}
 
 	return d(
 		{style: () => "f_1 px-[1rem] py-[.5rem] a_row ax_between"},
 		b(
 			{click: () => nav("/"), style: () => "a_row ax_start tc_aqua tw_1 ts_2 "},
-			shop_icon("w-[1.2rem] h-[1.2rem] mt-[.3rem] mr-[.4rem] tc_aqua"),
+			shop_icon("w-[1.1rem] h-[1.1rem] mt-[.4rem] mr-[.4rem] tc_aqua"),
 			t({}, () => "iStuff"),
 		),
 	()=>JSON.stringify(globe().email ),
