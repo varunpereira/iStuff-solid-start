@@ -26,7 +26,7 @@ export default () => {
 	var form_data = state({email: "", password: ""})
 
 	mount(async () => {
-		await auth('pub')
+		await auth("pub")
 	})
 
 	var form_submit = async () => {
@@ -36,11 +36,9 @@ export default () => {
 			form_error(res.data.error)
 			return
 		}
-		// set globe (fe cookie)
-		globe({email:form_data().email})
-		write(form_data().email)
-		cookie.set("email", form_data().email)
+		write("done")
 		nav("/")
+		// window.open('/','_self')
 	}
 
 	return d(

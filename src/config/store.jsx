@@ -25,12 +25,11 @@ export var globe = state({email: null})
 export var auth = async (link) => {
 	var auth = await axios.post("/$/login/api/auth_get")
 	if (auth.data.ok === true) {
-		globe({email: cookie.get('email')})
+		globe({email: auth.data?.user})
 		return
 	}
 	globe({email: null})
-	cookie.remove("email")
-	link !== "pub" ? (window.location.href = "/signin") : ''
+	link !== "pub" && window.location.pathname !== '/signin'? (window.location.href = "/signin") : ''
 }
 
 export var route2 = (route) => {

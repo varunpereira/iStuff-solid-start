@@ -41,7 +41,6 @@ export default () => {
 	var sign_out = async () => {
 		var res = await axios.post('/$/login/api/auth_cut',{email: globe().email})
 		globe({email: null})
-		cookie.remove("email")
 		window.location.href = "/signin"
 	}
 
@@ -52,7 +51,7 @@ export default () => {
 			shop_icon("w-[1.4rem] h-[1.4rem] mt-[.1rem] mr-[.4rem] tc_aqua"),
 			t({}, () => "iStuff"),
 		),
-	()=>JSON.stringify(globe() ) + JSON.stringify(cookie.get('email')),
+	()=>JSON.stringify(globe().email ),
 		globe().email != null
 			? b({click: () => nav("/signin"), style: () => "a_row ax_end"}, () => globe().email)
 			: b({click: () => nav("/signin"), style: () => "a_row ax_end"}, () => "Sign in"),

@@ -15,7 +15,7 @@ export default createHandler(
 				return redirect('/404')
 			}
 			var cookies = () => parseCookie(String(event.request?.headers?.get("cookie"))) 
-			// write("cookies:\n"+JSON.stringify(cookies().cookie))
+			write("cookies:\n"+JSON.stringify(cookies().cookie))
 			return forward(event)
 		}
 	},
