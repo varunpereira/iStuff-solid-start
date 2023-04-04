@@ -1,4 +1,4 @@
-var def_style = "w-[2rem] h-[2rem]"
+var def_style = ""
 
 export var shop_icon = (style = () => "") => (
 	<svg
