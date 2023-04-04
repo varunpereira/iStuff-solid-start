@@ -1,18 +1,20 @@
 var def_style = "w-[2rem] h-[2rem]"
 
-export var shop_icon = (style) => (
+export var shop_icon = (style = () => "") => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class={def_style + " " + style}>
+		class={def_style + " " + style()}>
 		<path
-			class="cls-1"
+			stroke-linecap="round"
+			stroke-linejoin="round"
 			d="M3.41,7.23H20.59a0,0,0,0,1,0,0v12a3.23,3.23,0,0,1-3.23,3.23H6.64a3.23,3.23,0,0,1-3.23-3.23v-12A0,0,0,0,1,3.41,7.23Z"
 		/>
 		<path
-			class="cls-1"
+			stroke-linecap="round"
+			stroke-linejoin="round"
 			d="M8.18,10.09V5.32A3.82,3.82,0,0,1,12,1.5h0a3.82,3.82,0,0,1,3.82,3.82v4.77"
 		/>
 	</svg>
@@ -30,13 +32,13 @@ export var shop_icon = (style) => (
 	// </svg>
 )
 
-export var menu = (style) => (
+export var menu = (style = () => "") => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class={def_style + " " + style}>
+		class={def_style + " " + style()}>
 		<path
 			stroke-linecap="round"
 			stroke-linejoin="round"
@@ -44,13 +46,13 @@ export var menu = (style) => (
 		/>
 	</svg>
 )
-export var fav = (style) => (
+export var fav = (style = () => "") => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class={def_style + " " + style}>
+		class={def_style + " " + style()}>
 		<path
 			stroke-linecap="round"
 			stroke-linejoin="round"
@@ -58,13 +60,13 @@ export var fav = (style) => (
 		/>
 	</svg>
 )
-export var user = (style) => (
+export var user = (style = () => "") => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class={def_style + " " + style}>
+		class={def_style + " " + style()}>
 		<path
 			stroke-linecap="round"
 			stroke-linejoin="round"
@@ -72,23 +74,23 @@ export var user = (style) => (
 		/>
 	</svg>
 )
-export var down = (style) => (
+export var down = (style = () => "") => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class={def_style + " " + style}>
+		class={def_style + " " + style()}>
 		<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
 	</svg>
 )
-export var sign_in = (style) => (
+export var sign_in = (style = () => "") => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class={def_style + " " + style}>
+		class={def_style + " " + style()}>
 		<path
 			stroke-linecap="round"
 			stroke-linejoin="round"
