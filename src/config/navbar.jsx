@@ -45,7 +45,7 @@ export default () => {
 		{style: () => "f_1 px-[1rem] py-[.5rem] a_row ax_between"},
 		b(
 			{click: () => nav("/"), style: () => "a_row ax_start tc_aqua tw_1 ts_2 "},
-			shop_icon("w-[1.3rem] h-[1.3rem] mt-[.2rem] mr-[.4rem] tc_aqua"),
+			shop_icon("w-[1.2rem] h-[1.2rem] mt-[.3rem] mr-[.4rem] tc_aqua"),
 			t({}, () => "iStuff"),
 		),
 	()=>JSON.stringify(globe().email ),
