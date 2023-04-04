@@ -186,7 +186,7 @@ export var res = (body = {}, head = null) => {
 				"Set-Cookie": `cookie=${JSON.stringify(
 					head?.cookie?.data,
 				)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${JSON.stringify(head?.cookie?.age)}; Domain=${
-					process.env.NODE_ENV === "production" ? env.VITE_domain : ""
+					process.env.NODE_ENV === "!production" ? env.VITE_domain : ""
 				}`,
 			},
 		} : {},
