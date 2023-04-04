@@ -6,7 +6,6 @@ import {useNavigate} from "solid-start"
 import mongoose from "mongoose"
 import {isServer} from "solid-js/web"
 import axios from "axios"
-import cookie from "js-cookie"
 import user_model from "~/config/db/model/user"
 
 // generic
@@ -25,7 +24,7 @@ export var globe = state({email: null})
 export var auth = async (link) => {
 	var auth = await axios.post("/$/login/api/auth_get")
 	if (auth.data.ok === true) {
-		globe({email: auth.data?.user})
+		globe({email: auth.data?.user.email})
 		return
 	}
 	globe({email: null})

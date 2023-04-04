@@ -8,7 +8,7 @@ export default () => {
 		{style: () => "f_1 px-[1rem] py-[2rem]"},
 		b(
 			{click: () => nav("/"), style: () => "a_row ax_start tc_aqua tw_1 ts_2 "},
-			shop_icon("w-[1.4rem] h-[1.4rem] mt-[.1rem] mr-[.4rem] tc_aqua"),
+			shop_icon("w-[1.3rem] h-[1.3rem] mt-[.2rem] mr-[.4rem] tc_aqua"),
 			t({}, () => "iStuff"),
 		),
 		t({style: () => "a_row ax_centre"}, () => "© 2023 Flixter - A Denify Company"),

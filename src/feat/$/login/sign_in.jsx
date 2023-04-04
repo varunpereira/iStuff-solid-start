@@ -15,9 +15,7 @@ import {
 	auth,
 	effect,
 } from "~/config/store"
-import cookie from "js-cookie"
 import axios from "axios"
-import user_model from "~/config/db/model/user"
 // import {go} from '~/config/struct'
 
 export default () => {
