@@ -25,7 +25,7 @@ export var POST = async ({request}) => {
 			"Set-Cookie": `cookie=${JSON.stringify(
 				cookie,
 			)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}; Domain=${
-				process.env.NODE_ENV === "production" ? env.VITE_domain : ""
+				process.env.NODE_ENV === "!production" ? env.VITE_domain : ""
 			}`,
 		},
 	})
