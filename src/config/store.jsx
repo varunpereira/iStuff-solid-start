@@ -1,12 +1,29 @@
 import {createSignal, createEffect, onMount, onCleanup, createResource} from "solid-js"
 import server$ from "solid-start/server"
-import {parseCookie, useServerContext, Title} from "solid-start"
+import {parseCookie, useServerContext, } from "solid-start"
 import {to} from "~/config/struct"
-import {useNavigate} from "solid-start"
 import mongoose from "mongoose"
 import {isServer} from "solid-js/web"
 import axios from "axios"
 import user_model from "~/config/db/model/user"
+import {Suspense} from "solid-js"
+import {
+	Body,
+	ErrorBoundary,
+	Head,
+	Html,
+	Meta,
+	Routes,
+	Route,
+	Scripts,
+	Title,
+	Link,
+	FileRoutes,
+	useNavigate,
+} from "solid-start"
+import "~/config/style.scss"
+import favicon from "~/config/asset/favicon.gif"
+import { lazy } from "solid-js";
 
 // generic
 
@@ -156,6 +173,35 @@ export var v = ({
 
 export var title = ({value = () => ""}) => {
 	return <Title>{value() + ' - iStuff'}</Title>
+}
+
+export var struct = ({title = () => "", style = () => "", header = () => "",footer = () => "", def=() =>"", route = () => ""}) => {
+	return (
+		<Html lang="en">
+			<Head>
+				<Title>{title()}</Title>
+				<Meta charset="utf-8" />
+				<Meta name="viewport" content="width=device-width, initial-scale=1" />
+				<Link rel="icon" type="image/x-icon" href={favicon}></Link>
+			</Head>
+			<Body class={style()}>
+				<Suspense>
+					<ErrorBoundary>
+						{header()}
+						<Routes>
+							{route().map((route)=>
+							<Route path={route.path} component={route.piece} />
+							)}
+							<Route path="*" component={def} />
+							<FileRoutes />
+						</Routes>
+						{footer()}
+					</ErrorBoundary>
+				</Suspense>
+				<Scripts />
+			</Body>
+		</Html>
+	)
 }
 
 //  server
