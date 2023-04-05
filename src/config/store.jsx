@@ -116,8 +116,8 @@ export var d = ({style = () => "", click = () => ""}, ...rest) => {
 	)
 }
 
-export var t = ({style = () => "", value = () => ""}, ...rest) => {
-	return <div class={style()}>{...rest}</div>
+export var t = ({style = () => "",}, ...rest) => {
+	return <p class={style()}>{...rest}</p>
 }
 
 export var b = ({style = () => "", click = () => ""}, ...rest) => {
@@ -171,8 +171,8 @@ export var v = ({
 	)
 }
 
-export var title = ({value = () => ""}) => {
-	return <Title>{value() + ' - iStuff'}</Title>
+export var title = ({}, ...rest) => {
+	return <Title>{...rest}</Title>
 }
 
 export var struct = ({title = () => "", style = () => "", header = () => "",footer = () => "", def=() =>"", route = () => ""}) => {

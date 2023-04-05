@@ -15,8 +15,11 @@ $red: red;
 		font-size: 16px;
 	}
 	// fit
-	.f_1 {
+	.fit_1 {
 		@apply min-w-[20rem] max-w-[90rem] mx-[auto];
+	}
+	.fit_2 {
+		@apply min-w-[20rem] max-w-[150rem] mx-[auto];
 	}
 	.tc_white {
 		color: $white;
@@ -44,7 +47,7 @@ $red: red;
 		font-size: 1.5rem;
 	}
 	/* text fam */
-	.tf_1 {
+	.tfit_1 {
 		font-family: verdana;
 	}
 	// text inside 
@@ -115,8 +118,7 @@ $red: red;
 		box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 	}
 	/* w-[100%], max_w-[10rem] */
-	/* align */
-	/* flex , default is a_row*/
+	/* align , flex has def dir of row*/
 	.a_row {
 		display: flex;
 		flex-direction: row;
@@ -125,36 +127,46 @@ $red: red;
 		display: flex;
 		flex-direction: column;
 	}
-	.ax_start {
+	.ax_left {
 		justify-content: flex-start;
 	}
-	.ax_end {
-		justify-content: flex-end;
-	}
-	.ax_centre {
+	.ax_mid {
 		justify-content: center;
 	}
-	.ax_between {
+	.ax_right {
+		justify-content: flex-end;
+	}
+	.ax_equal {
 		justify-content: space-between;
 	}
-	.ay_start {
+	.ay_top {
 		align-content: flex-start;
 	}
-	.ay_centre {
+	.ay_mid {
+		align-content: center;
+	}
+	.ay_bottom {
+		align-content: flex-end;
+	}
+	.ay_equal {
 		align-content: center;
 	}
 	/* default: block, also: flex, grid */
 	.hide {
 		display: none;
 	}
+	.see {
+		display: block;
+	}
 	.z_normal {
 		position: static;
 	}
-	.z_contain {
+	.z_fit {
 		position: relative;
 	}
 	// sometimes add z-[n], n is int
-	.z_layer {
+	.z_put {
 		position: absolute;
 	}
+	// states : hover:tc_red , focus:c_blue ,
 }

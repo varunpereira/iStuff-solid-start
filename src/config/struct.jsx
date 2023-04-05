@@ -13,5 +13,5 @@ export default () => {
 		["/signin", sign_in],
 		["/chat", chat],
 	]
-	return struct({header, footer, def, route, style: () => "c_black tc_white ts_1 tf_1"})
+	return struct({header, footer, def, route, style: () => "c_black tc_white ts_1 tfit_1"})
 }

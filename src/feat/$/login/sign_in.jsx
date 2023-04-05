@@ -38,7 +38,7 @@ export default () => {
 
 	return d(
 		{},
-		title({value: () => "Sign in"}),
+		title({}, () => "Sign in - iStuff"),
 		d(
 			{style: () => "w-[20rem] mx-[auto] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_1 tw_1 mb-[1rem]"}, () => "Sign in"),
@@ -69,7 +69,7 @@ export default () => {
 			t({style: () => "tc_red h-[2rem]"}, () => form_error()),
 		),
 		d(
-			{style: () => "w-[20rem] mx-[auto] a_row ax_start mt-[1rem]"},
+			{style: () => "w-[20rem] mx-[auto] a_row ax_left mt-[1rem]"},
 			t({style: () => "mr-[.3rem]"}, () => "Don't have an account?"),
 			b({click: () => nav("/signup"), style: () => "mb-[1rem] hover:underline"}, () => "Sign up"),
 		),
