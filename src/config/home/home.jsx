@@ -16,7 +16,6 @@ import {
 	globe,
 	auth,
 } from "~/config/store"
-import {Title} from "solid-start"
 
 export default () => {
 	var car = state(["/home/1.jpg", "/home/2.jpg", "/home/3.jpg", "/home/4.jpg"])
