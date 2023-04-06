@@ -13,8 +13,7 @@ import {
 	v,
 	p,
 	timer,
-	globe,
-	auth,
+	globe,auth
 } from "~/config/store"
 
 export default () => {
@@ -27,7 +26,7 @@ export default () => {
 	var mute = state(true)
 
 	mount(async () => {
-		await auth("pub")
+		await auth('pub')
 	})
 
 	clean(() => {
@@ -41,33 +40,30 @@ export default () => {
 	var pause = (e) => {
 		e.target.pause()
 	}
+	
 	return d(
 		{},
-		title({}, () => "Home - iStuff"),
+		title({value: () => "Home"}),
+		v({
+			def: () => "/home/lotr_2.png",
+			value: () => "/home/lotr_2.mp4",
+			mute: () => mute(),
+			hover_in: play,
+			hover_out: pause,
+			style: () => "w-[100%]",
+			click: () => mute(false)
+		}),
+		t(
+			{
+				style: () =>
+					"f_1 px-[1rem] py-[1rem] contain a_row ax_start ay_centre my-[3rem] tc_aqua ts_2 tw_1",
+			},
+			() => "Trending",
+		),
+		p({
+			def: () => "trending",
+			value: () => car()[car_index()],
+			style: () => "w-[100%]",
+		}),
 	)
-	// return d(
-	// 	{style:()=>'fit_2 c_white'},
-	// 	title({value: () => "Home"}),
-	// 	v({
-	// 		def: () => "/home/lotr_2.png",
-	// 		value: () => "/home/lotr_2.mp4",
-	// 		mute: () => mute(),
-	// 		hover_in: play,
-	// 		hover_out: pause,
-	// 		style: () => "w-[100%]",
-	// 		click: () => mute(false)
-	// 	}),
-	// 	t(
-	// 		{
-	// 			style: () =>
-	// 				"fit_1 px-[1rem] py-[1rem] contain a_row ax_left ay_mid my-[3rem] tc_aqua ts_2 tw_1",
-	// 		},
-	// 		() => "Trending",
-	// 	),
-	// 	p({
-	// 		def: () => "trending",
-	// 		value: () => car()[car_index()],
-	// 		style: () => "w-[100%]",
-	// 	}),
-	// )
 }

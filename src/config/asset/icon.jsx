@@ -18,7 +18,7 @@ export var shop_icon = ({style = () => ""}) => (
 	</svg>
 )
 
-export var menu_icon = ({style = () => ""}) => (
+export var menu = ({style = () => ""}) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
