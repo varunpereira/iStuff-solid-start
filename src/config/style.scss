@@ -107,10 +107,18 @@ $red: red;
 	}
 	/* viewport - see config (v1 - v5) */
 	/* round */
-	.r_1 {
+	.r1 {
 		border-radius: 0.5rem;
 	}
-	.r_2 {
+	.r1_bottom {
+		border-bottom-left-radius:  0.5rem;
+		border-bottom-right-radius:  0.5rem;
+	}
+	.r1_top {
+		border-top-left-radius:  0.5rem;
+		border-top-right-radius:  0.5rem;
+	}
+	.r2 {
 		border-radius: 0.8rem;
 	}
 	// shadow

@@ -154,7 +154,7 @@ export var v = ({
 	</video>
 )
 
-export var title = ({}, value = () => "") => <Title>{value() + " - iStuff"}</Title>
+export var title = ({}, value = () => "") => <Title>{value()}</Title>
 
 export var struct = ({
 	title = () => "",

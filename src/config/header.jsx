@@ -54,7 +54,7 @@ export default () => {
 		),
 		b(
 			{click: () => menu_click(!menu_click())},
-			menu_icon({style: () => "v1:see v2:hide w-[1.75rem] h-[1.75rem] hover:tc_grey"}),
+			menu_icon({style: () => "v1:see v2:hide w-[1.75rem] h-[1.75rem]"}),
 		),
 		() =>
 			width() >= 640 || menu_click() === true
@@ -77,7 +77,7 @@ export default () => {
 														{
 															click: sign_out,
 															style: () =>
-																"a_row z_put v1:c_black v1:px-[2rem] v2:px-[0rem] v1:right-[5rem] v1:top-[2rem] v1:w-[100%] v1:ax_left v2:ax_right v2:w-[10rem]",
+																"a_row z_put v1:c_black v1:px-[1rem] v1:left-[0rem] v1:top-[1.5rem] v1:w-[100%] v1:ax_left v2:right-[4rem] v2:left-[auto] v2:ax_right v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] r1_bottom",
 														},
 														() => "Sign out",
 													),
@@ -88,7 +88,7 @@ export default () => {
 									{
 										click: () => nav("/signin"),
 										style: () =>
-											"a_row v1:z_put v1:c_black v1:left-[0rem] v1:top-[2rem] v1:w-[100%] v1:ax_left v2:z_normal v2:ax_right",
+											"a_row v1:z_put v1:c_black v1:left-[0rem] v1:top-[2rem] v1:px-[1rem] v1:w-[100%] v1:ax_left v2:z_normal v2:ax_right",
 									},
 									() => "Sign in",
 							  )

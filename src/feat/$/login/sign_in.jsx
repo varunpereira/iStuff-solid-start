@@ -10,13 +10,11 @@ import {
 	i,
 	b,
 	route,
-	env,
 	globe,
 	auth,
 	effect,
 } from "~/config/store"
 import axios from "axios"
-// import {go} from '~/config/struct'
 
 export default () => {
 	var nav = route()
@@ -36,36 +34,30 @@ export default () => {
 		nav("/")
 	}
 
-	react(()=>write(form_data().email))
+	// react(() => write(form_data().email))
 
 	return d(
 		{},
-		title({}, () => "Sign in"),
+		title({}, () => "Sign in - iStuff"),
 		d(
-			{style: () => "w-[20rem] mx-[auto] p-[3rem] c_white tc_black r_1 a_col "},
+			{style: () => "w-[20rem] mx-[auto] p-[3rem] c_white tc_black r1 a_col "},
 			t({style: () => "ts_1 tw_1 mb-[1rem]"}, () => "Sign in"),
 			i({
 				type: () => "text",
 				value: () => form_data().email,
-				input: (e) => {
-					e.preventDefault()
-					return form_data({...form_data(), email: e.target.value})
-				},
+				input: (e) => form_data({...form_data(), email: e.target.value}),
 				holder: () => "Email",
-				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r_1",
+				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r1",
 			}),
 			i({
 				type: () => "password",
 				value: () => form_data().password,
-				input: (e) => {
-					e.preventDefault()
-					return form_data({...form_data(), password: e.target.value})
-				},
+				input: (e) => form_data({...form_data(), password: e.target.value}),
 				holder: () => "Password",
-				style: () => "mb-[2rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r_1",
+				style: () => "mb-[2rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r1",
 			}),
 			b(
-				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_aqua bw_1 bc_black r_1 "},
+				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_aqua bw_1 bc_black r1 "},
 				t({}, () => "Sign in"),
 			),
 			t({style: () => "tc_red h-[2rem]"}, () => form_error()),

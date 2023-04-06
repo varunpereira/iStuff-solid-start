@@ -1,5 +1,5 @@
 // @refresh reload
-import {struct} from "~/config/store"
+import {struct, } from "~/config/store"
 import header from "~/config/header"
 import footer from "~/config/footer"
 import def from "~/config/def"

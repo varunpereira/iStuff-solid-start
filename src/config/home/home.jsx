@@ -37,11 +37,6 @@ export default () => {
 
 	return d(
 		{style: () => "fit_2 c_white"},
-		title({}, () => "Home"),
-		p({
-			def: () => "trending",
-			value: () => car()[car_index()],
-			style: () => "w-[100%]",
-		}),
+		title({}, () => "Home - iStuff"),
 	)
 }
