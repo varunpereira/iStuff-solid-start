@@ -117,13 +117,26 @@ export var b = ({style = () => "", click = () => ""}, ...rest) => (
 	</button>
 )
 
-export var i = ({
+export var i2 = ({
 	style = () => "",
 	type = () => "text",
 	value = () => "",
 	input = () => "",
 	holder = () => "",
 }) => <input class={style()} type={type()} value={value()} onInput={input} placeholder={holder()} />
+
+export var i = (fn) => {
+	var {
+		style,
+		type = "text",
+		value,
+		input,
+		holder,
+	} = fn()[0]
+	return (
+		<input class={style} type={type} value={value} onInput={input} placeholder={holder} />
+	)
+}
 
 export var p = ({style = () => "", value = () => "", def = () => ""}) => (
 	<img class={style()} src={value()} alt={def()} />
