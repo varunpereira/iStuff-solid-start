@@ -11,6 +11,6 @@ export default () => {
 			shop_icon({style:() => "w-[1.2rem] h-[1.2rem] mt-[.3rem] mr-[.4rem] tc_aqua"}),
 			t({}, () => "iStuff"),
 		),
-		t({style: () => "a_row ax_mid"}, () => "© 2023 iStuff - App By Varun Pereira"),
+		t({style: () => "a_row ax_mid"}, () => "© 2023 iStuff - Varun Pereira"),
 	)
 }
