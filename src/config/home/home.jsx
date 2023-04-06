@@ -13,11 +13,13 @@ import {
 	v,
 	p,
 	timer,
-	globe,auth
+	globe,
+	auth,
 } from "~/config/store"
+import batman_pic from '~/config/asset/batman.jpg'
 
 export default () => {
-	var car = state(["/home/1.jpg", "/home/2.jpg", "/home/3.jpg", "/home/4.jpg"])
+	var car = state([batman_pic, "/home/2.jpg",])
 	var car_index = state(0)
 	var car_interv = timer().put(() => {
 		car_index((i) => (i + 1) % car().length)
@@ -26,40 +28,16 @@ export default () => {
 	var mute = state(true)
 
 	mount(async () => {
-		await auth('pub')
+		await auth("pub")
 	})
 
 	clean(() => {
 		timer().cut(car_interv)
 	})
 
-	var play = (e) => {
-		e.target.play()
-	}
-
-	var pause = (e) => {
-		e.target.pause()
-	}
-	
 	return d(
-		{},
-		title({value: () => "Home"}),
-		v({
-			def: () => "/home/lotr_2.png",
-			value: () => "/home/lotr_2.mp4",
-			mute: () => mute(),
-			hover_in: play,
-			hover_out: pause,
-			style: () => "w-[100%]",
-			click: () => mute(false)
-		}),
-		t(
-			{
-				style: () =>
-					"f_1 px-[1rem] py-[1rem] contain a_row ax_start ay_centre my-[3rem] tc_aqua ts_2 tw_1",
-			},
-			() => "Trending",
-		),
+		{style: () => "fit_2 c_white"},
+		title({}, () => "Home"),
 		p({
 			def: () => "trending",
 			value: () => car()[car_index()],

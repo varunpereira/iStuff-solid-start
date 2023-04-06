@@ -1,6 +1,6 @@
 import {createSignal, createEffect, onMount, onCleanup, createResource} from "solid-js"
 import server$ from "solid-start/server"
-import {parseCookie, useServerContext, } from "solid-start"
+import {parseCookie, useServerContext} from "solid-start"
 import {to} from "~/config/struct"
 import mongoose from "mongoose"
 import {isServer} from "solid-js/web"
@@ -22,8 +22,7 @@ import {
 	useNavigate,
 } from "solid-start"
 import "~/config/style.scss"
-import favicon from "~/config/asset/favicon.gif"
-import { lazy } from "solid-js";
+import {lazy} from "solid-js"
 
 // generic
 
@@ -45,7 +44,7 @@ export var auth = async (link) => {
 		return
 	}
 	globe({email: null})
-	link !== "pub" && window.location.pathname !== '/signin'? (window.location.href = "/signin") : ''
+	link !== "pub" && window.location.pathname !== "/signin" ? (window.location.href = "/signin") : ""
 }
 
 export var route2 = (route) => {
@@ -108,25 +107,15 @@ export var dict = Object
 // pieces
 
 // // var style = props?.style?.replace(/=/g, '-')
-export var d = ({style = () => "", click = () => ""}, ...rest) => {
-	return (
-		<div onClick={click()} class={style()}>
-			{...rest}
-		</div>
-	)
-}
+export var d = ({style = () => ""}, ...rest) => <div class={style()}>{...rest}</div>
 
-export var t = ({style = () => "", value = () => ""}, ...rest) => {
-	return <div class={style()}>{...rest}</div>
-}
+export var t = ({style = () => ""}, ...rest) => <p class={style()}>{...rest}</p>
 
-export var b = ({style = () => "", click = () => ""}, ...rest) => {
-	return (
-		<button onClick={click} class={style()} type="button">
-			{...rest}
-		</button>
-	)
-}
+export var b = ({style = () => "", click = () => ""}, ...rest) => (
+	<button onClick={click} class={style()} type="button">
+		{...rest}
+	</button>
+)
 
 export var i = ({
 	style = () => "",
@@ -134,15 +123,11 @@ export var i = ({
 	value = () => "",
 	input = () => "",
 	holder = () => "",
-}) => {
-	return (
-		<input class={style()} type={type()} value={value()} onInput={input} placeholder={holder()} />
-	)
-}
+}) => <input class={style()} type={type()} value={value()} onInput={input} placeholder={holder()} />
 
-export var p = ({style = () => "", value = () => "", def = () => ""}) => {
-	return <img class={style()} src={value()} alt={def()} />
-}
+export var p = ({style = () => "", value = () => "", def = () => ""}) => (
+	<img class={style()} src={value()} alt={def()} />
+)
 
 export var v = ({
 	style = () => "",
@@ -154,55 +139,55 @@ export var v = ({
 	hover_in = () => "",
 	hover_out = () => "",
 	click = () => "",
-}) => {
-	return (
-		<video
-			class={style()}
-			poster={def()}
-			controls={controls()}
-			muted={mute()}
-			playsinline
-			onMouseOver={hover_in}
-			onMouseLeave={hover_out}
-			onClick={click}>
-			<source src={value()} type={type()} />
-			Browser doesn't not support video tag.
-		</video>
-	)
-}
+}) => (
+	<video
+		class={style()}
+		poster={def()}
+		controls={controls()}
+		muted={mute()}
+		playsinline
+		onMouseOver={hover_in}
+		onMouseLeave={hover_out}
+		onClick={click}>
+		<source src={value()} type={type()} />
+		Browser doesn't not support video tag.
+	</video>
+)
 
-export var title = ({value = () => ""}) => {
-	return <Title>{value() + ' - iStuff'}</Title>
-}
+export var title = ({}, value = () => "") => <Title>{value() + " - iStuff"}</Title>
 
-export var struct = ({title = () => "", style = () => "", header = () => "",footer = () => "", def=() =>"", route = () => ""}) => {
-	return (
-		<Html lang="en">
-			<Head>
-				<Title>{title()}</Title>
-				<Meta charset="utf-8" />
-				<Meta name="viewport" content="width=device-width, initial-scale=1" />
-				<Link rel="icon" type="image/x-icon" href={favicon}></Link>
-			</Head>
-			<Body class={style()}>
-				<Suspense>
-					<ErrorBoundary>
-						{header()}
-						<Routes>
-							{route().map((route)=>
+export var struct = ({
+	title = () => "",
+	style = () => "",
+	header = () => "",
+	favicon = () => "",
+	footer = () => "",
+	route = () => "",
+}) => (
+	<Html lang="en">
+		<Head>
+			<Title>{title() + " "}</Title>
+			<Meta charset="utf-8" />
+			<Meta name="viewport" content="width=device-width, initial-scale=1" />
+			<Link rel="icon" type="image/x-icon" href={favicon}></Link>
+		</Head>
+		<Body class={style()}>
+			<Suspense>
+				<ErrorBoundary>
+					{header()}
+					<Routes>
+						{route().map((route) => (
 							<Route path={route[0]} component={route[1]} />
-							)}
-							<Route path="*" component={def} />
-							<FileRoutes />
-						</Routes>
-						{footer()}
-					</ErrorBoundary>
-				</Suspense>
-				<Scripts />
-			</Body>
-		</Html>
-	)
-}
+						))}
+						<FileRoutes />
+					</Routes>
+					{footer()}
+				</ErrorBoundary>
+			</Suspense>
+			<Scripts />
+		</Body>
+	</Html>
+)
 
 //  server
 
@@ -226,15 +211,16 @@ export var db = () => {
 export var res = (body = {}, head = null) => {
 	return new Response(
 		JSON.stringify(body),
-		head != null ? {
-			headers: 
-			{
-				"Set-Cookie": `cookie=${JSON.stringify(
-					head?.cookie?.data,
-				)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${JSON.stringify(head?.cookie?.age)}; Domain=${
-					process.env.NODE_ENV === "!production" ? env.VITE_domain : ""
-				}`,
-			},
-		} : {},
+		head != null
+			? {
+					headers: {
+						"Set-Cookie": `cookie=${JSON.stringify(
+							head?.cookie?.data,
+						)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${JSON.stringify(
+							head?.cookie?.age,
+						)}; Domain=${process.env.NODE_ENV === "!production" ? env.VITE_domain : ""}`,
+					},
+			  }
+			: {},
 	)
 }
