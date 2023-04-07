@@ -160,7 +160,7 @@ export var struct = ({
 	title = () => "",
 	style = () => "",
 	header = () => "",
-	favicon = () => "",
+	logo = () => "",
 	footer = () => "",
 	route = () => "",
 }) => (
@@ -169,7 +169,7 @@ export var struct = ({
 			<Title>{title() + " "}</Title>
 			<Meta charset="utf-8" />
 			<Meta name="viewport" content="width=device-width, initial-scale=1" />
-			<Link rel="icon" type="image/x-icon" href={favicon}></Link>
+			<Link rel="icon" type="image/x-icon" href={logo}></Link>
 		</Head>
 		<Body class={style()}>
 			<Suspense>

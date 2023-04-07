@@ -57,7 +57,7 @@ export default () => {
 				style: () => "mb-[2rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r1",
 			}),
 			b(
-				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_aqua bw_1 bc_black r1 "},
+				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_aqua_2 bw_1 bc_black r1 "},
 				t({}, () => "Sign in"),
 			),
 			t({style: () => "tc_red h-[2rem]"}, () => form_error()),

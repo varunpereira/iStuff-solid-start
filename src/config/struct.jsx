@@ -6,7 +6,7 @@ import def from "~/config/def"
 import home from "~/config/home/home"
 import sign_in from "~/feat/$/login/sign_in"
 import chat from "~/feat/$/pusher/chat"
-import favicon from "~/config/asset/favicon.gif"
+import logo from "~/config/asset/logo.jpg"
 
 export default () => {
 	var route = () => [
@@ -15,5 +15,5 @@ export default () => {
 		["/signin", sign_in],
 		["/chat", chat],
 	]
-	return struct({header, favicon, footer, route, style: () => "c_black tc_white ts_1 tf_1"})
+	return struct({header, logo, footer, route, style: () => "c_black tc_white ts_1 tf_1"})
 }
