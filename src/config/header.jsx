@@ -17,6 +17,7 @@ import {
 } from "~/config/store"
 import {shop_icon, menu_icon} from "~/config/asset/icon.jsx"
 import axios from "axios"
+import searcher from "~/feat/$/search/searcher"
 
 export default () => {
 	var width = state()
@@ -46,52 +47,46 @@ export default () => {
 	}
 
 	return d(
-		{style: () => "fit_1 z_fit v1:px-[1rem] v2:px-[5rem] py-[.5rem] a_row ax_equal"},
+		{style: () => "fit_1 z_fit v1:px-[1rem] v2:px-[5rem] py-[.5rem] a_row ax_equal "},
 		b(
-			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua_1 tw_1 ts_2 "},
+			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua_1 tw_1 ts_2 mr-[1rem]"},
 			shop_icon({style: () => "w-[1.3rem] h-[1.3rem] mt-[.3rem] mr-[.3rem] tc_aqua_1"}),
 			t({}, () => "iStuff"),
 		),
+		searcher(),
 		b(
 			{click: () => menu_click(!menu_click())},
 			menu_icon({style: () => "v1:see v2:hide w-[1.75rem] h-[1.75rem]"}),
 		),
-		() =>
-			width() >= 640 || menu_click() === true
-				? () =>
-						globe().email != null
-							? d(
-									{
-										style: () =>
-											"z_fit a_row v1:z_put v1:c_black v1:px-[1rem] v2:px-[0rem] v1:left-[0rem] v1:top-[2rem] v1:w-[100%] v1:ax_left v2:z_normal v2:ax_right v2:w-[10rem]",
-									},
-									b(
-										{click: () => acc_click(!acc_click()), style: () => "a_row ax_right"},
+		d(
+			{
+				style: () =>
+					"z_fit a_row v1:z_put v1:c_black v1:px-[1rem] v1:left-[0rem] v1:top-[2.5rem] v1:w_full v1:ax_left v2:z_normal v2:ax_right v2:px-[0rem] v2:w_fit",
+			},
+			() =>
+				width() >= 640 || menu_click() === true
+					? () =>
+							globe().email != null
+								? b(
+										{
+											click: () => acc_click(!acc_click()),
+											style: () => "v1:w_full v1:a_row v2:z_fit v2:w_fit v2:pt-[.2rem]",
+										},
 										() => globe().email,
-									),
-									() =>
-										acc_click() === true
-											? d(
-													{},
-													b(
+										() =>
+											acc_click() === true
+												? b(
 														{
 															click: sign_out,
 															style: () =>
-																"a_row z_put v1:c_black v1:px-[1rem] v1:left-[0rem] v1:top-[1.5rem] v1:w-[100%] v1:ax_left v2:right-[4rem] v2:left-[auto] v2:ax_right v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] r1_bottom",
+																"z_put c_black a_row v1:px-[1rem] v1:left-[0rem] v1:top-[1.5rem] v1:w_full v1:ax_left v2:right-[0rem] v2:left-[auto] v2:ax_right v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] r1_bottom",
 														},
 														() => "Sign out",
-													),
-											  )
-											: "",
-							  )
-							: b(
-									{
-										click: () => nav("/signin"),
-										style: () =>
-											"a_row v1:z_put v1:c_black v1:left-[0rem] v1:top-[2rem] v1:px-[1rem] v1:w-[100%] v1:ax_left v2:z_normal v2:ax_right",
-									},
-									() => "Sign in",
-							  )
-				: "",
+												  )
+												: "",
+								  )
+								: b({click: () => nav("/signin"), style: () => "a_none"}, () => "Sign in")
+					: "",
+		),
 	)
 }

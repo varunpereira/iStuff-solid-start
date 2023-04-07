@@ -109,28 +109,41 @@ $red: red;
 	.bw_1 {
 		border-width: .1rem;
 	}
+	// outline
+	.o_none {
+		outline: none;
+	}
 	/* viewport - see config (v1 - v5) */
 	/* round */
+	.r_none {
+		border-radius: 0rem;
+	}
+	.r_full {
+		border-radius: 50%;
+	}
 	.r1 {
-		border-radius: 0.5rem;
+		border-radius: .5rem;
 	}
 	.r1_bottom {
-		border-bottom-left-radius:  0.5rem;
-		border-bottom-right-radius:  0.5rem;
+		border-bottom-left-radius:  .5rem;
+		border-bottom-right-radius:  .5rem;
 	}
 	.r1_top {
-		border-top-left-radius:  0.5rem;
-		border-top-right-radius:  0.5rem;
+		border-top-left-radius:  .5rem;
+		border-top-right-radius:  .5rem;
 	}
 	.r2 {
-		border-radius: 0.8rem;
+		border-radius: .8rem;
 	}
 	// shadow
 	.s_1 {
 		box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 	}
-	/* w-[100%], max_w-[10rem] */
+	/* w_full, max_w-[10rem] */
 	/* align , flex has def dir of row*/
+	.a_none {
+		flex: none;
+	}
 	.a_row {
 		display: flex;
 		flex-direction: row;
@@ -181,4 +194,16 @@ $red: red;
 		position: absolute;
 	}
 	// states : hover:tc_red , focus:c_blue ,
+	.w_fit {
+		width: fit-content;
+	}
+	.w_full {
+		width: 100%;
+	}
+	.h_fit {
+		height: fit-content;
+	}
+	.h_full {
+		height: 100%;
+	}
 }

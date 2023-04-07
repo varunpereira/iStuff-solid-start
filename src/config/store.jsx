@@ -215,10 +215,10 @@ export var res = (body = {}, head = null) => {
 			? {
 					headers: {
 						"Set-Cookie": `cookie=${JSON.stringify(
-							head?.cookie?.data,
-						)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${JSON.stringify(
-							head?.cookie?.age,
-						)}; Domain=${process.env.NODE_ENV === "!production" ? env.VITE_domain : ""}`,
+							head?.cookie?.value,
+						)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${head?.cookie?.age}; Domain=${
+							process.env.NODE_ENV === "!production" ? env.VITE_domain : ""
+						}`,
 					},
 			  }
 			: {},

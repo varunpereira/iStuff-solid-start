@@ -30,16 +30,16 @@ export var POST = async ({request}) => {
 			},
 		},
 	)
-	var data = {email, token}
+	var value = {email, token}
 	var age =  10 * 60 // 10 min
-	// return res({ok:true}, {cookie: {data, age}})
-	return new Response(JSON.stringify({hi:'hi'}), {
-		headers: {
-			"Set-Cookie": `cookie=${JSON.stringify(
-				data,
-			)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}; Domain=${
-				process.env.NODE_ENV === "!production" ? env.VITE_domain : ""
-			}`,
-		},
-	})
+	return res({ok:true}, {cookie: {value, age}})
+	// return new Response(JSON.stringify({hi:'hi'}), {
+	// 	headers: {
+	// 		"Set-Cookie": `cookie=${JSON.stringify(
+	// 			data,
+	// 		)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}; Domain=${
+	// 			process.env.NODE_ENV === "!production" ? env.VITE_domain : ""
+	// 		}`,
+	// 	},
+	// })
 }
