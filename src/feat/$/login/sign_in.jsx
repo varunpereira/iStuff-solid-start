@@ -39,24 +39,24 @@ export default () => {
 		{},
 		title({}, () => "Sign in - iStuff"),
 		d(
-			{style: () => "w-[20rem] mx-[auto] p-[3rem] c_white tc_black r1 a_col "},
+			{style: () => "w-[20rem] mx-[auto] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_1 tw_1 mb-[1rem]"}, () => "Sign in"),
 			i({
 				type: () => "text",
 				value: () => form_data().email,
 				input: (e) => form_data({...form_data(), email: e.target.value}),
 				holder: () => "Email",
-				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r1",
+				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r_1",
 			}),
 			i({
 				type: () => "password",
 				value: () => form_data().password,
 				input: (e) => form_data({...form_data(), password: e.target.value}),
 				holder: () => "Password",
-				style: () => "mb-[2rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r1",
+				style: () => "mb-[2rem] h-[2rem] px-[.5rem] tc_black bw_1 bc_black r_1",
 			}),
 			b(
-				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_aqua_2 bw_1 bc_black r1 "},
+				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_aqua_2 bw_1 bc_black r_1 "},
 				t({}, () => "Sign in"),
 			),
 			t({style: () => "tc_red h-[2rem]"}, () => form_error()),

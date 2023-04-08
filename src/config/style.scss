@@ -3,14 +3,12 @@
 @tailwind utilities;
 $white: white;
 $black: black;
-$aqua1: aqua;
-$aqua2: rgb(0, 187, 187);
-$light_grey: grey;
-$dark_grey: rgb(39, 39, 39);
+$aqua_1: aqua;
+$aqua_2: rgb(0, 187, 187);
+$grey_1: grey;
+$grey_2: rgb(39, 39, 39);
 $red: red;
 @layer utilities {
-	/* colours in tw config so can use vars */
-	/* text colour */
 	// use rem, based of root
 	:root {
 		font-size: 16px;
@@ -22,14 +20,15 @@ $red: red;
 	.fit_2 {
 		@apply min-w-[20rem] max-w-[150rem] mx-[auto];
 	}
+	/* text colour */
 	.tc_white {
 		color: $white;
 	}
 	.tc_aqua_1 {
-		color: $aqua1;
+		color: $aqua_1;
 	}
 	.tc_grey {
-		color: $light_grey;
+		color: $grey_1;
 	}
 	.tc_black {
 		color: $black;
@@ -48,12 +47,12 @@ $red: red;
 		font-size: 1.5rem;
 	}
 	/* text fam */
-	.tfit_1 {
+	.tf_1 {
 		font-family: verdana;
 	}
 	// text inside 
-	.ti_aqua {
-		fill: $aqua1;
+	.ti_aqua_1 {
+		fill: $aqua_1;
 	}
 	/* text weight */
 	.tw_1 {
@@ -67,7 +66,7 @@ $red: red;
 		text-transform: uppercase;
 	}
 	/* text align */
-	.ta_centre {
+	.ta_mid {
 		text-align: center;
 	}
 	.ta_left {
@@ -79,10 +78,10 @@ $red: red;
 	}
 	// background colour
 	.c_aqua_1 {
-		background-color: $aqua1;
+		background-color: $aqua_1;
 	}
 	.c_aqua_2 {
-		background-color: $aqua2;
+		background-color: $aqua_2;
 	}
 	.c_white {
 		background-color: $white;
@@ -91,9 +90,9 @@ $red: red;
 		background-color: $black;
 	}
 	.c_grey {
-		background-color: $dark_grey;
+		background-color: $grey_2;
 	}
-	.c_none {
+	.c_null {
 		background-color: transparent;
 	}
 	/* border */
@@ -104,36 +103,41 @@ $red: red;
 		border-color: $white;
 	}
 	.bc_grey {
-		border-color: $dark_grey;
+		border-color: $grey_2;
 	}
 	.bw_1 {
 		border-width: .1rem;
 	}
 	// outline
-	.o_none {
+	.o_null {
 		outline: none;
 	}
 	/* viewport - see config (v1 - v5) */
 	/* round */
-	.r_none {
+	.r_null {
 		border-radius: 0rem;
 	}
 	.r_full {
-		border-radius: 50%;
+		border-radius: 100rem;
 	}
-	.r1 {
+	.rt_full {
+		border-top-left-radius: 100rem;
+		border-top-right-radius: 100rem;
+	}
+	.rb_full {
+		border-bottom-left-radius: 100rem;
+		border-bottom-right-radius: 100rem;
+	}
+	.r_1 {
 		border-radius: .5rem;
 	}
-	.r1_bottom {
+	.rb_1 {
 		border-bottom-left-radius:  .5rem;
 		border-bottom-right-radius:  .5rem;
 	}
-	.r1_top {
+	.rt_1 {
 		border-top-left-radius:  .5rem;
 		border-top-right-radius:  .5rem;
-	}
-	.r2 {
-		border-radius: .8rem;
 	}
 	// shadow
 	.s_1 {
@@ -141,7 +145,7 @@ $red: red;
 	}
 	/* w_full, max_w-[10rem] */
 	/* align , flex has def dir of row*/
-	.a_none {
+	.a_null {
 		flex: none;
 	}
 	.a_row {

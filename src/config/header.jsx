@@ -70,7 +70,9 @@ export default () => {
 								? b(
 										{
 											click: () => acc_click(!acc_click()),
-											style: () => "v1:w_full v1:a_row v2:z_fit v2:w_fit v2:pt-[.2rem]",
+											style: () =>
+												"v1:w_full v1:a_col v2:z_fit v2:w_fit v2:pt-[.2rem] v2:r_none" +
+												(!acc_click() ? "v1:rb_full" : ""),
 										},
 										() => globe().email,
 										() =>
@@ -79,13 +81,13 @@ export default () => {
 														{
 															click: sign_out,
 															style: () =>
-																"z_put c_black a_row v1:px-[1rem] v1:left-[0rem] v1:top-[1.5rem] v1:w_full v1:ax_left v2:right-[0rem] v2:left-[auto] v2:ax_right v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] r1_bottom",
+																"a_row c_black v2:z_put v2:right-[0rem] v2:left-[auto] v2:ax_right v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] rb_full",
 														},
 														() => "Sign out",
 												  )
 												: "",
 								  )
-								: b({click: () => nav("/signin"), style: () => "a_none"}, () => "Sign in")
+								: b({click: () => nav("/signin"), style: () => "a_null"}, () => "Sign in")
 					: "",
 		),
 	)
