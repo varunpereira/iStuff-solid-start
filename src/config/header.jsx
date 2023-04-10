@@ -61,7 +61,7 @@ export default () => {
 		d(
 			{
 				style: () =>
-					"z_fit a_row v1:z_put v1:c_black v1:px-[1rem] v1:left-[0rem] v1:top-[2.5rem] v1:w_full v1:ax_left v2:z_normal v2:ax_right v2:px-[0rem] v2:w_fit",
+					"z_fit v1:z_put v1:c_black v1:a_row v1:ax_left v1:px-[1rem] v1:left-[0rem] v1:top-[2.5rem] v1:w_full v2:z_normal v2:px-[0rem] v2:w_fit",
 			},
 			() =>
 				width() >= 640 || menu_click() === true

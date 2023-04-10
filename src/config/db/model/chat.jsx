@@ -2,17 +2,15 @@ import mongoose from 'mongoose'
 
 var schema = new mongoose.Schema(
 	{
-		title: {
+		email1: {
 			type: String,
+			required: true,
 		},
-		desc: {
+		email2: {
 			type: String,
+			required: true,
 		},
-		pics: {
-			type: Array,
-			default: [],
-		},
-		showIds: {
+		messages: {
 			type: Array,
 			default: [],
 		},
@@ -22,4 +20,4 @@ var schema = new mongoose.Schema(
 	},
 )
 
-export default mongoose.models.celeb || mongoose.model('celeb', schema, 'celeb')
+export default mongoose.models.chat || mongoose.model('chat', schema, 'chat')
