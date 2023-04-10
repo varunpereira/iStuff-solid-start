@@ -38,12 +38,15 @@ $red: red;
 	}
 	/* text size */
 	.ts_1 {
-		font-size: 1rem;
+		font-size: .75rem;
 	}
 	.ts_2 {
-		font-size: 1.25rem;
+		font-size: 1rem;
 	}
 	.ts_3 {
+		font-size: 1.25rem;
+	}
+	.ts_4 {
 		font-size: 1.5rem;
 	}
 	/* text fam */
@@ -105,6 +108,9 @@ $red: red;
 	.bc_grey {
 		border-color: $grey_2;
 	}
+	.bw_null {
+		border-width: 0rem;
+	}
 	.bw_1 {
 		border-width: .1rem;
 	}
@@ -129,15 +135,15 @@ $red: red;
 		border-bottom-right-radius: 100rem;
 	}
 	.r_1 {
-		border-radius: .5rem;
+		border-radius: .75rem;
 	}
 	.rb_1 {
-		border-bottom-left-radius:  .5rem;
-		border-bottom-right-radius:  .5rem;
+		border-bottom-left-radius:  .75rem;
+		border-bottom-right-radius:  .75rem;
 	}
 	.rt_1 {
-		border-top-left-radius:  .5rem;
-		border-top-right-radius:  .5rem;
+		border-top-left-radius:  .75rem;
+		border-top-right-radius:  .75rem;
 	}
 	// shadow
 	.s_1 {

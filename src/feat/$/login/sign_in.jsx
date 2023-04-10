@@ -39,8 +39,8 @@ export default () => {
 		{},
 		title({}, () => "Sign in - iStuff"),
 		d(
-			{style: () => "w-[20rem] mx-[auto] p-[3rem] c_white tc_black r_1 a_col "},
-			t({style: () => "ts_1 tw_1 mb-[1rem]"}, () => "Sign in"),
+			{style: () => "mx-[auto] w-[20rem] mt-[3rem] p-[3rem] c_white tc_black r_1 a_col "},
+			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign in"),
 			i({
 				type: () => "text",
 				value: () => form_data().email,
@@ -59,7 +59,7 @@ export default () => {
 				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_aqua_2 bw_1 bc_black r_1 "},
 				t({}, () => "Sign in"),
 			),
-			t({style: () => "tc_red h-[2rem]"}, () => form_error()),
+			t({style: () => "tc_red h-[2rem] ts_1"}, () => form_error()),
 		),
 		d(
 			{style: () => "w-[20rem] mx-[auto] a_row ax_start mt-[1rem]"},

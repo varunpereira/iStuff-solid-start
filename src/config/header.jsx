@@ -49,7 +49,7 @@ export default () => {
 	return d(
 		{style: () => "fit_1 z_fit v1:px-[1rem] v2:px-[5rem] py-[.5rem] a_row ax_equal "},
 		b(
-			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua_1 tw_1 ts_2 mr-[1rem]"},
+			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua_1 tw_1 ts_3 mr-[1rem]"},
 			shop_icon({style: () => "w-[1.3rem] h-[1.3rem] mt-[.3rem] mr-[.3rem] tc_aqua_1"}),
 			t({}, () => "iStuff"),
 		),

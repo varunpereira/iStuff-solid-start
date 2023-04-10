@@ -112,7 +112,7 @@ export var d = ({style = () => ""}, ...rest) => <div class={style()}>{...rest}</
 export var t = ({style = () => ""}, ...rest) => <p class={style()}>{...rest}</p>
 
 export var b = ({style = () => "", click = () => ""}, ...rest) => (
-	<button onClick={click} class={style()} type="button">
+	<button onClick={click} class={style() + ' o_null'} type="button">
 		{...rest}
 	</button>
 )
