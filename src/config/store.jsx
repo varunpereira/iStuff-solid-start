@@ -4,7 +4,6 @@ import {parseCookie, useServerContext} from "solid-start"
 import {to} from "~/config/struct"
 import mongoose from "mongoose"
 import {isServer} from "solid-js/web"
-import axios from "axios"
 import user_model from "~/config/db/model/user"
 import {Suspense} from "solid-js"
 import {
@@ -38,10 +37,9 @@ export var state = (init) => {
 export var globe = state({email: null})
 
 export var auth = async (link) => {
-	var auth = await axios.post("/$/login/api/auth_get")
-	if (auth.data?.ok === true) {
-		globe({email: auth.data?.user?.email})
-		return
+	var auth = await req("/$/login/api/auth_get")
+	if (auth?.ok === true) {
+		return globe({email: auth?.user?.email})
 	}
 	globe({email: null})
 	link !== "pub" && window.location.pathname !== "/signin" ? (window.location.href = "/signin") : ""
@@ -112,7 +110,7 @@ export var d = ({style = () => ""}, ...rest) => <div class={style()}>{...rest}</
 export var t = ({style = () => ""}, ...rest) => <p class={style()}>{...rest}</p>
 
 export var b = ({style = () => "", click = () => ""}, ...rest) => (
-	<button onClick={click} class={style() + ' o_null'} type="button">
+	<button onClick={click} class={style() + " o_null"} type="button">
 		{...rest}
 	</button>
 )
@@ -223,4 +221,12 @@ export var res = (body = {}, head = null) => {
 			  }
 			: {},
 	)
+}
+
+export var req = async (link = "", value = {}) => {
+	var response = await fetch(link, {
+		method: "POST",
+		body: JSON.stringify(value),
+	})
+	return response.json()
 }

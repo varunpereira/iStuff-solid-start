@@ -1,9 +1,10 @@
-import {write, db, env, res} from "~/config/store"
+import {write, db, env, res, num} from "~/config/store"
 import product_model from "~/config/db/model/product"
 
 export var POST = async ({request}) => {
 	var {search, categ, page} = await request.json()
-	page = Number(page)
+	search = search.trim()
+	page = num(page)
 	var products = []
 	db()
 	if (categ === "All") {

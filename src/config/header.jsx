@@ -13,10 +13,9 @@ import {
 	parse,
 	route,
 	globe,
-	db,
+	req,
 } from "~/config/store"
 import {shop_icon, menu_icon} from "~/config/asset/icon.jsx"
-import axios from "axios"
 import searcher from "~/feat/$/search/searcher"
 
 export default () => {
@@ -41,7 +40,7 @@ export default () => {
 	react(() => {})
 
 	var sign_out = async () => {
-		var res = await axios.post("/$/login/api/auth_cut", {email: globe().email})
+		var res = await req("/$/login/api/auth_cut", {email: globe().email})
 		globe({email: null})
 		nav("/signin")
 	}
@@ -50,7 +49,7 @@ export default () => {
 		{style: () => "fit_1 z_fit v1:px-[1rem] v2:px-[5rem] py-[.5rem] a_row ax_equal "},
 		b(
 			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua_1 tw_1 ts_3 mr-[1rem]"},
-			shop_icon({style: () => "w-[1.3rem] h-[1.3rem] mt-[.3rem] mr-[.3rem] tc_aqua_1"}),
+			shop_icon({style: () => "w-[2rem] h-[1.5rem] mt-[.2rem] tc_aqua_1"}),
 			t({}, () => "iStuff"),
 		),
 		searcher(),

@@ -3,8 +3,6 @@ import {json} from "solid-start/api"
 import {parseCookie} from "solid-start"
 import {db, write} from "~/config/store"
 import {redirect} from "solid-start/server"
-import user_model from "~/config/db/model/user"
-import axios from "axios"
 
 export default createHandler(
 	({forward}) => {

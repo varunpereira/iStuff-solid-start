@@ -1,6 +1,5 @@
-import {state, react, write, mount, env, d, title} from "~/config/store"
+import {state, react, write, mount, env, d, title, req} from "~/config/store"
 import Pusher from "pusher-js"
-import axios from "axios"
 
 export default () => {
 	var chats = state([])
@@ -20,14 +19,14 @@ export default () => {
 
 	var handleSubmit = async (e) => {
 		e.preventDefault()
-		var res = await axios.post("/$/pusher/api", {message: msg(), sender})
-		write(res.data)
+		var res = await req("/$/pusher/api", {message: msg(), sender})
+		write(res)
 		msg("")
 	}
 
 	return (
 		<>
-			{title({value: () => "Chat"})}
+			{title({}, () => "Chat - iStuff")}
 			<p>Hello, {sender}</p>
 			<div class="bg-red-800">
 				chats:

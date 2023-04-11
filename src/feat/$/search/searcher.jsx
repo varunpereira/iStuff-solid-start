@@ -13,10 +13,9 @@ import {
 	parse,
 	route,
 	globe,
-	db,
+	req,
 } from "~/config/store"
 import {search_icon, close_icon} from "~/config/asset/icon.jsx"
-import axios from "axios"
 
 export default () => {
 	var nav = route()
@@ -30,17 +29,17 @@ export default () => {
 	mount(async () => {})
 
 	var form_submit = async () => {
-		var res = await axios.post("/$/search/api/suggest", form_data())
-		if (res?.data?.error != null) {
-			return form_error(res.data.error)
+		var res = await req("/$/search/api/suggest", form_data())
+		if (res?.error != null) {
+			return form_error(res.error)
 		}
 		nav("/")
 	}
 
 	react(async () => {
 		suggest([])
-		var res = await axios.post("/$/search/api/suggest", {search: form_data().search, categ, page})
-		suggest(res.data.products)
+		var res = await req("/$/search/api/suggest", {search: form_data().search, categ, page})
+		suggest(res.products)
 	})
 
 	return d(
@@ -60,7 +59,7 @@ export default () => {
 							{click: () => form_data({...form_data(), search: ""})},
 							close_icon({
 								style: () =>
-									"z_put c_white right-[2.3rem] top-[.5rem] tc_black w-[.8rem] h-[.8rem]",
+									"z_put c_white right-[2.3rem] top-[.6rem] tc_black w-[.8rem] h-[.8rem]",
 							}),
 						),
 						d({style: () => "z_put c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"}, () =>

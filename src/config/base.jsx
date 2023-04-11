@@ -13,10 +13,9 @@ import {
 	parse,
 	route,
 	globe,
-	db,
+	req,
 } from "~/config/store"
 import {shop_icon, menu_icon} from "~/config/asset/icon.jsx"
-import axios from "axios"
 
 export default () => {
 	var nav = route()

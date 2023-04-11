@@ -13,8 +13,8 @@ import {
 	globe,
 	auth,
 	effect,
+	req
 } from "~/config/store"
-import axios from "axios"
 
 export default () => {
 	var nav = route()
@@ -26,9 +26,9 @@ export default () => {
 	})
 
 	var form_submit = async () => {
-		var res = await axios.post("/$/login/api/auth_put", form_data())
-		if (res?.data?.error != null) {
-			return form_error(res.data.error)
+		var res = await req('/$/login/api/auth_put', form_data())
+		if (res?.error != null) {
+			return form_error(res.error)
 		}
 		nav("/")
 	}
