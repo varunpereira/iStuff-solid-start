@@ -13,16 +13,21 @@ import {
 	globe,
 	auth,
 	effect,
-	req
+	req, path, 
 } from "~/config/store"
 
 export default () => {
 	var nav = route()
 	var form_error = state()
 	var form_data = state({email: "", password: ""})
+	var path_var = path().var()
+	var path_par = path().par()
+
 
 	mount(async () => {
 		await auth("pub")
+		write(path_var.id)
+		write(path_par.r)
 	})
 
 	var form_submit = async () => {

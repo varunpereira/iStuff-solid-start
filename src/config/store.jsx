@@ -22,6 +22,8 @@ import {
 } from "solid-start"
 import "~/config/style.scss"
 import {lazy} from "solid-js"
+import { useParams,useSearchParams } from "solid-start";
+
 
 // generic
 
@@ -93,6 +95,20 @@ export var parse = () => {
 		dict: (props) => JSON.parse(props),
 	}
 }
+
+export var path = ()=>{
+	return {
+		var: useParams,
+		par: () => useSearchParams()[0]
+	}
+}
+// export var path_prop = (init) => {
+// 	const [value, setValue] = createSignal(init)
+// 	return (newValue) => {
+// 		if (newValue != null) setValue(newValue)
+// 		else return value()
+// 	}
+// }
 
 export var math = Math
 export var date = Date

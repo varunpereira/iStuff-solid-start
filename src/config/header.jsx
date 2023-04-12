@@ -70,7 +70,7 @@ export default () => {
 										{
 											click: () => acc_click(!acc_click()),
 											style: () =>
-												"v1:w_full v1:a_col v2:z_fit v2:w_fit v2:pt-[.2rem] v2:r_none" +
+												"v1:w_full v1:a_col v2:z_fit v2:w_fit v2:pt-[.2rem] v2:r_null" +
 												(!acc_click() ? "v1:rb_full" : ""),
 										},
 										() => globe().email,

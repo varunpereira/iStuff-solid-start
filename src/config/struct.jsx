@@ -7,7 +7,8 @@ import def from "~/feat/$/generic/def"
 import home from "~/feat/$/generic/home"
 import sign_in from "~/feat/$/login/sign_in"
 import sign_up from "~/feat/$/login/sign_up"
-import chat from "~/feat/$/pusher/chat"
+import chat from "~/feat/$/chat/chat"
+import product from '~/feat/$/product/long'
 
 export default () => {
 	var route = () => [
@@ -16,6 +17,7 @@ export default () => {
 		["/signin", sign_in],
 		["/signup", sign_up],
 		["/chat", chat],
+		["/product/:id", product],
 	]
 	return struct({header, logo, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
 }

@@ -25,8 +25,8 @@ export default () => {
 	var categs = ["All", "Tech"]
 	var categ = categs[0]
 	var page = "1"
-
-	mount(async () => {})
+	
+	
 
 	var form_submit = async () => {
 		var res = await req("/$/search/api/suggest", form_data())
