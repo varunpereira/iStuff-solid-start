@@ -1,13 +1,13 @@
 // @refresh reload
 import {struct, } from "~/config/store"
+import logo from "~/config/asset/logo.jpg"
 import header from "~/config/header"
 import footer from "~/config/footer"
-import def from "~/config/def"
-import home from "~/config/home/home"
+import def from "~/feat/$/generic/def"
+import home from "~/feat/$/generic/home"
 import sign_in from "~/feat/$/login/sign_in"
 import sign_up from "~/feat/$/login/sign_up"
 import chat from "~/feat/$/pusher/chat"
-import logo from "~/config/asset/logo.jpg"
 
 export default () => {
 	var route = () => [
