@@ -25,15 +25,9 @@ export default () => {
 	var categs = ["All", "Tech"]
 	var categ = categs[0]
 	var page = "1"
-	
-	
 
 	var form_submit = async () => {
-		var res = await req("/$/search/api/suggest", form_data())
-		if (res?.error != null) {
-			return form_error(res.error)
-		}
-		nav("/")
+		nav("/search?term=" + form_data().search)
 	}
 
 	react(async () => {
@@ -63,7 +57,7 @@ export default () => {
 							}),
 						),
 						d({style: () => "z_put c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"}, () =>
-							suggest().map((v, k) => b({}, () => v.title)),
+							suggest().map((v, k) => b({click: () => nav("/search?term=" + v.title)}, () => v.title)),
 						),
 				  )
 				: "",

@@ -13,7 +13,7 @@ import {
 	parse,
 	route,
 	globe,
-	req,
+	req,title,
 } from "~/config/store"
 import {shop_icon, menu_icon} from "~/config/asset/icon.jsx"
 

@@ -1,5 +1,5 @@
 // @refresh reload
-import {struct, } from "~/config/store"
+import {struct} from "~/config/store"
 import logo from "~/config/asset/logo.jpg"
 import header from "~/config/header"
 import footer from "~/config/footer"
@@ -8,7 +8,8 @@ import home from "~/feat/$/generic/home"
 import sign_in from "~/feat/$/login/sign_in"
 import sign_up from "~/feat/$/login/sign_up"
 import chat from "~/feat/$/chat/chat"
-import product from '~/feat/$/product/long'
+import product from "~/feat/$/product/long"
+import search from "~/feat/$/search/result"
 
 export default () => {
 	var route = () => [
@@ -18,6 +19,7 @@ export default () => {
 		["/signup", sign_up],
 		["/chat", chat],
 		["/product/:id", product],
+		["/search", search],
 	]
-	return struct({header, logo, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
+	return struct({logo, header, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
 }
