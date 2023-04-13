@@ -7,15 +7,15 @@ export var POST = async ({request}) => {
 	page = num(page)
 	var products = []
 	db()
-	if (categ === "All") {
+	if (categ === "all") {
 		products = await product_model.find({
 			title: {$regex: search, $options: "i"},
 			approved: "true",
 		})
-	} else if (categ === "Tech") {
+	} else if (categ === "tech") {
 		products = await product_model.find({
 			title: {$regex: search, $options: "i"},
-			category: "Tech",
+			category: "tech",
 			approved: "true",
 		})
 	}

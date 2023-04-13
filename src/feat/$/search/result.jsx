@@ -13,18 +13,25 @@ import {
 	parse,
 	route,
 	globe,
-  title,
-	req,path
+	title,
+	req,
+	path,
 } from "~/config/store"
 import {shop_icon, menu_icon} from "~/config/asset/icon.jsx"
 
 export default () => {
 	var nav = route()
-  var path_var = path().var()
+	var path_var = path().var()
 	var path_par = path().par()
+	var prod = state([])
 
-	mount(async () => {
-		var res = await req("/$/search/api/result", {search: form_data().search, categ, page})
+	react(async () => {
+		var res = await req("/$/search/api/result", {
+			search: path_par.term,
+			categ: path_par.categ,
+			page: path_par.page,
+		})
+		prod(res.products)
 	})
 
 	react(() => {})
@@ -32,6 +39,6 @@ export default () => {
 	return d(
 		{style: () => "fit_2 "},
 		title({}, () => "Search Results - iStuff"),
-    ()=>path_par.term
+		() => prod().map((v, k) => t({}, () => v.title)),
 	)
 }
