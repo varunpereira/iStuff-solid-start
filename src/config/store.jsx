@@ -22,8 +22,7 @@ import {
 } from "solid-start"
 import "~/config/style.scss"
 import {lazy} from "solid-js"
-import { useParams,useSearchParams } from "solid-start";
-
+import {useParams, useSearchParams} from "solid-start"
 
 // generic
 
@@ -36,14 +35,14 @@ export var state = (init) => {
 }
 
 // globe state
-export var globe = state({email: null})
+export var globe = state({email: null, cart_qty: 0})
 
 export var auth = async (link) => {
-	var auth = await req("/$/login/api/auth_get")
-	if (auth?.ok === true) {
-		return globe({email: auth?.user?.email})
+	var res = await req("/$/login/api/auth_get")
+	if (res?.error == null) {
+		return globe({email: res?.user?.email, cart_qty: res?.cart_qty})
 	}
-	globe({email: null})
+	globe({email: null, cart_qty: 0})
 	link !== "pub" && window.location.pathname !== "/signin" ? (window.location.href = "/signin") : ""
 }
 
@@ -96,10 +95,10 @@ export var parse = () => {
 	}
 }
 
-export var path = ()=>{
+export var path = () => {
 	return {
 		var: useParams,
-		par: () => useSearchParams()[0]
+		par: () => useSearchParams()[0],
 	}
 }
 // export var path_prop = (init) => {

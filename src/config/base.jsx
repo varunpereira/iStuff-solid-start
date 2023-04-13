@@ -11,13 +11,14 @@ import {
 	globe,
 	req,
 	title,
+	auth
 } from "~/config/store"
-import {shop_icon,} from "~/config/asset/icon.jsx"
 
 export default () => {
 	var nav = route()
 
 	mount(async () => {
+		await auth("pub")
 	})
 
 	react(() => {})

@@ -8,8 +8,9 @@ import home from "~/feat/$/generic/home"
 import sign_in from "~/feat/$/login/sign_in"
 import sign_up from "~/feat/$/login/sign_up"
 import chat from "~/feat/$/chat/chat"
-import prod from "~/feat/$/prod/long"
 import search from "~/feat/$/search/result"
+import prod from "~/feat/$/prod/long"
+import cart from "~/feat/$/cart/cart"
 
 export default () => {
 	var route = () => [
@@ -18,8 +19,9 @@ export default () => {
 		["/signin", sign_in],
 		["/signup", sign_up],
 		["/chat", chat],
-		["/prod/:_id", prod],
 		["/search", search],
+		["/prod/:_id", prod],
+		["/cart", cart],
 	]
 	return struct({logo, header, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
 }

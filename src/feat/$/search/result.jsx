@@ -13,6 +13,7 @@ import {
 	title,
 	req,
 	path,
+	auth,
 } from "~/config/store"
 import prod_short from "~/feat/$/prod/short"
 
@@ -20,6 +21,10 @@ export default () => {
 	var nav = route()
 	var path_par = path().par()
 	var prod = state([])
+
+	mount(async () => {
+		await auth("pub")
+	})
 
 	react(async () => {
 		var res = await req("/$/search/api/result", {

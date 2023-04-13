@@ -79,6 +79,12 @@ $red: red;
 	.e_fit {
 		object-fit: contain;
 	}
+	.e_full {
+		object-fit: cover;
+	}
+	.e_fill {
+		object-fit: fill;
+	}
 	// background colour
 	.c_aqua_1 {
 		background-color: $aqua_1;
