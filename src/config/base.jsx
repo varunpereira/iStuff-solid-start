@@ -4,18 +4,15 @@ import {
 	react,
 	write,
 	d,
-	clean,
 	t,
 	b,
 	i,
-	v,
-	view,
-	parse,
 	route,
 	globe,
-	req,title,
+	req,
+	title,
 } from "~/config/store"
-import {shop_icon, menu_icon} from "~/config/asset/icon.jsx"
+import {shop_icon,} from "~/config/asset/icon.jsx"
 
 export default () => {
 	var nav = route()

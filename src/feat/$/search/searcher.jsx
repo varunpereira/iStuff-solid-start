@@ -37,9 +37,8 @@ export default () => {
 	}
 
 	var get_suggest = async () => {
+		suggest([]) // loading
 		var res = await req("/$/search/api/suggest", {search: form_data().search, categ, page})
-		write(form_data().search)
-		write(res.products)
 		suggest(res.products)
 		suggest_on() === "wait" ? "" : suggest_on(true)
 	}
@@ -68,19 +67,28 @@ export default () => {
 							}),
 						),
 						() =>
-							suggest_on() !== false
-								? d({style: () => "z_put c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"}, () =>
-										suggest().map((v, k) =>
-											b(
-												{
-													click: () => {
-														suggest_on("wait")
-														form_submit(v.title)
+							suggest_on() !== false && suggest().length >= 1
+								? d(
+										{style: () => "z_put a_col c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"},
+										() =>
+											suggest().map((v, k) =>
+												b(
+													{
+														click: () => {
+															suggest_on("wait")
+															form_data({...form_data(), search: v.title})
+															form_submit(v.title)
+														},
+														style: () => "a_row",
 													},
-												},
-												() => v.title,
+													() => v.title,
+												),
 											),
-										),
+								  )
+								: suggest_on() !== false && suggest().length === 0
+								? d(
+										{style: () => "z_put c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"},
+										() => "Loading...",
 								  )
 								: "",
 				  )

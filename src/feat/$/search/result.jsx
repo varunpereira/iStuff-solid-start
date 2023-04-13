@@ -4,24 +4,20 @@ import {
 	react,
 	write,
 	d,
-	clean,
 	t,
 	b,
 	i,
 	v,
-	view,
-	parse,
 	route,
 	globe,
 	title,
 	req,
 	path,
 } from "~/config/store"
-import {shop_icon, menu_icon} from "~/config/asset/icon.jsx"
+import prod_short from "~/feat/$/prod/short"
 
 export default () => {
 	var nav = route()
-	var path_var = path().var()
 	var path_par = path().par()
 	var prod = state([])
 
@@ -34,11 +30,16 @@ export default () => {
 		prod(res.products)
 	})
 
-	react(() => {})
-
 	return d(
 		{style: () => "fit_2 "},
 		title({}, () => "Search Results - iStuff"),
-		() => prod().map((v, k) => t({}, () => v.title)),
+		() =>
+			prod().length === 0
+				? t({}, () => "No results for " + path_par.term)
+				: () =>
+						d(
+							{style:()=>'a_row gap-[2rem]'},
+							prod().map((v, k) =>prod_short({prod:v}),),
+						),
 	)
 }

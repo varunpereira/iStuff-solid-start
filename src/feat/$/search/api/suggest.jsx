@@ -7,7 +7,6 @@ export var POST = async ({request}) => {
 	page = num(page)
 	var products = []
 	db()
-	write(search)
 	if (categ === "all") {
 		products = await product_model.find({
 			title: {$regex: search, $options: "i"},
