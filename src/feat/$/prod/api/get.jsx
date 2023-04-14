@@ -1,5 +1,5 @@
 import {write, db, env, res} from "~/config/store"
-import product_model from "~/config/db/model/product"
+import product_model from "~/config/db/model/prod"
 import review_model from "~/config/db/model/review"
 import {redirect} from "solid-start/server"
 

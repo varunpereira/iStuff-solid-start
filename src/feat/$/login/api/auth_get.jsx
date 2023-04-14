@@ -15,5 +15,5 @@ export var POST = async ({request}) => {
 			error: "Access denied.",
 		})
 	}
-	return res({user,cart_qty:cart.quantity})
+	return res({user,cart_size:cart.size})
 }

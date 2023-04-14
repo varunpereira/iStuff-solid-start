@@ -38,7 +38,7 @@ export default () => {
 		{style:()=>''},
 		title({}, () => "Sign up - iStuff"),
 		d(
-			{style: () => "mx-[auto] mt-[3rem] w-[20rem] p-[3rem] c_white tc_black r_1 a_col "},
+			{style: () => "mx_auto mt-[3rem] w-[20rem] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign up"),
 			i({
 				type: () => "text",
@@ -68,7 +68,7 @@ export default () => {
 			t({style: () => "ts_1 tc_red h-[2rem]"}, () => form_error()),
 		),
 		d(
-			{style: () => "mx-[auto] w-[20rem] a_row ax_start mt-[1rem]"},
+			{style: () => "mx_auto w-[20rem] a_row ax_start mt-[1rem]"},
 			t({style: () => "mr-[.3rem]"}, () => "Already have an account?"),
 			b({click: () => nav("/signin"), style: () => "mb-[1rem] hover:underline"}, () => "Sign in"),
 		),

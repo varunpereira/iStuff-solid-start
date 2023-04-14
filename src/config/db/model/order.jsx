@@ -7,8 +7,9 @@ var schema = new mongoose.Schema(
 		},
 		current: {
 			type: Boolean,
+			default: false,
 		},
-		products: {
+		prod: {
 			type: Array,
 			default: [],
 		},
@@ -16,15 +17,15 @@ var schema = new mongoose.Schema(
 			type: Number,
 			default: 0,
 		},
-		quantity: {
+		size: {
 			type: Number,
 			default: 0,
 		},
-		checkoutSessionId: {
+		stripe_sesh: {
 			type: String,
-			default: 'nothing',
+			default: null,
 		},
-		refunded: {
+		refund: {
 			type: Boolean,
 			default: false,
 		},

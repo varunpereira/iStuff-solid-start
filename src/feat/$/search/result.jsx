@@ -29,10 +29,10 @@ export default () => {
 	react(async () => {
 		var res = await req("/$/search/api/result", {
 			search: path_par.term,
-			categ: path_par.categ,
+			theme: path_par.theme,
 			page: path_par.page,
 		})
-		prod(res.products)
+		prod(res.prod)
 	})
 
 	return d(
@@ -43,7 +43,7 @@ export default () => {
 				? t({}, () => "No results for " + path_par.term)
 				: () =>
 						d(
-							{style:()=>'a_row gap-[2rem]'},
+							{style:()=>'a_row_auto gap-[1rem]'},
 							prod().map((v, k) =>prod_short({prod:v}),),
 						),
 	)

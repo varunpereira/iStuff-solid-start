@@ -26,7 +26,8 @@
     "pusher-js": "^8.0.2",
     "solid-js": "^1.6.11",
     "solid-start": "^0.2.24",
-    "solid-start-vercel": "^0.2.24"
+    "solid-start-vercel": "^0.2.24",
+    "stripe": "^12.1.1"
   },
   "engines": {
     "node": "18.15.0"

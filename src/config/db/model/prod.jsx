@@ -9,17 +9,17 @@ var schema = new mongoose.Schema(
 			type: String,
 			trim: true,
 		},
-		description: {
+		des: {
 			type: String,
 		},
 		price: {
 			type: Number,
 			default: 0,
 		},
-		images: {
+		pic: {
 			type: Array,
 		},
-		category: {
+		theme: {
 			type: String,
 		},
 		stock: {
@@ -30,7 +30,7 @@ var schema = new mongoose.Schema(
 			type: Number,
 			default: 0,
 		},
-		approved: {
+		approve: {
 			type: String,
 			default: 'false',
 		},
@@ -40,4 +40,4 @@ var schema = new mongoose.Schema(
 	},
 )
 
-export default mongoose.models.product || mongoose.model('product', schema, 'product')
+export default mongoose.models.prod || mongoose.model('prod', schema, 'prod')

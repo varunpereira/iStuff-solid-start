@@ -2,17 +2,16 @@ import mongoose from 'mongoose'
 
 var schema = new mongoose.Schema(
 	{
-		productId: {
+		prod_id: {
 			type: String,
 		},
 		email: {
 			type: String,
-			required: true,
 		},
-		rating: {
+		rate: {
 			type: Number,
 		},
-		description: {
+		des: {
 			type: String,
 		},
 	},

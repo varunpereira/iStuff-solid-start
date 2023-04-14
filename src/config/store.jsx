@@ -35,14 +35,14 @@ export var state = (init) => {
 }
 
 // globe state
-export var globe = state({email: null, cart_qty: 0})
+export var globe = state({email: null, cart_size: 0})
 
 export var auth = async (link) => {
 	var res = await req("/$/login/api/auth_get")
 	if (res?.error == null) {
-		return globe({email: res?.user?.email, cart_qty: res?.cart_qty})
+		return globe({email: res?.user?.email, cart_size: res?.cart_size})
 	}
-	globe({email: null, cart_qty: 0})
+	globe({email: null, cart_size: 0})
 	link !== "pub" && window.location.pathname !== "/signin" ? (window.location.href = "/signin") : ""
 }
 
@@ -85,37 +85,20 @@ export var view = () => {
 	}
 }
 
-export var parse = () => {
-	return {
-		event: (e) => {
-			return {value: e.target.value, key: e.key}
-		},
-		str: (props) => JSON.stringify(props),
-		dict: (props) => JSON.parse(props),
-	}
-}
-
 export var path = () => {
 	return {
 		var: useParams,
 		par: () => useSearchParams()[0],
 	}
 }
-// export var path_prop = (init) => {
-// 	const [value, setValue] = createSignal(init)
-// 	return (newValue) => {
-// 		if (newValue != null) setValue(newValue)
-// 		else return value()
-// 	}
-// }
 
+export var str = JSON.stringify
+export var num = Number
+export var any = JSON.parse // eg bool
 export var math = Math
 export var date = Date
-export var str = String
-export var num = Number
 export var list = Array
 export var dict = Object
-// export var json = JSON
 
 // pieces
 

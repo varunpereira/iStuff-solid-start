@@ -2,14 +2,23 @@ import {state, mount, react, write, d, t, b, i, p, route, globe, req} from "~/co
 
 export default ({prod}) => {
 	var nav = route()
+	var flaw = state()
 
 	var cart_put = () => {
-		globe({...globe(), cart_qty: globe().cart_qty += 1})
+		if (prod.stock === 0) {
+			return flaw('This product is out of stock.')
+		}
+		var res = req('/$/cart/api/put', {
+			email: globe().email,
+			prod,
+			prod_size: 1,
+		})
+		globe({...globe(), cart_size: globe().cart_size += 1})
 	}
 
 	return d(
 		{style: () => "c_white tc_black r_1 w-[12rem] h-[15rem] ts_1"},
-		p({value: () => prod.images[0].url, style: () => "h-[6rem] rt_1 w_full e_full"}),
+		p({value: () => prod.pic[0].url, style: () => "h-[6rem] rt_1 w_full e_full"}),
 		d(
 			{style: () => "p-[1rem]"},
 			b({click: () => nav("/prod/" + prod._id), style: () => "hover:underline ta_left"}, () => prod.title),

@@ -41,7 +41,7 @@ export default () => {
 
 	var sign_out = async () => {
 		var res = await req("/$/login/api/auth_cut", {email: globe().email})
-		globe({email: null,cart_qty:0})
+		globe({email: null,cart_size:0})
 		nav("/signin")
 	}
 
@@ -70,9 +70,9 @@ export default () => {
 										{
 											style: () =>
 												"v1:w_full v1:a_col v2:z_fit v2:a_row v2:ax_right v2:w_fit v2:pt-[.2rem] v2:r_null" +
-												(!acc_click() ? "v1:rb_full" : ""),
+												(!acc_click() ? "v1:rb_1" : ""),
 										},
-										b({click: () => nav('/cart'), style:()=>'a_row mr-[1rem]'}, cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}), t({style: () =>'ts_1 -mt-[.4rem]'},()=>globe().cart_qty)),
+										b({click: () => nav('/cart'), style:()=>'a_row mr-[1rem]'}, cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}), t({style: () =>'ts_1 -mt-[.4rem]'},()=>globe().cart_size)),
 										b({click: () => acc_click(!acc_click()), style:()=>'a_row'}, () => globe().email),
 										() =>
 											acc_click() === true
@@ -80,7 +80,7 @@ export default () => {
 														{
 															click: sign_out,
 															style: () =>
-																"a_row c_black v2:z_put v2:right-[0rem] v2:left-[auto] v2:ax_right v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] rb_full",
+																"a_row c_black v2:z_put v2:right-[0rem] v2:left_auto v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] rb_1",
 														},
 														() => "Sign out",
 												  )

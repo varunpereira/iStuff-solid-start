@@ -57,5 +57,5 @@ export var POST = async ({request}) => {
 		email,
 		current: true,
 	})
-	return res({ok: true, user, cart_qty: cart.quantity}, {cookie: {value, age}})
+	return res({ok: true, user, cart_size: cart.size}, {cookie: {value, age}})
 }

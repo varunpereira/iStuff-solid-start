@@ -23,8 +23,8 @@ export default () => {
 	var form_data = state({search: ""})
 	var suggest = state([])
 	var suggest_on = state(true)
-	var categs = ["all", "tech"]
-	var categ = categs[0]
+	var themes = ["all", "tech"]
+	var theme = themes[0]
 	var page = "1"
 
 	mount(async () => {
@@ -33,13 +33,13 @@ export default () => {
 
 	var form_submit = async (term) => {
 		suggest_on(false)
-		nav("/search?term=" + term + "&categ=all&page=1")
+		nav("/search?term=" + term + "&theme=all&page=1")
 	}
 
 	var get_suggest = async () => {
 		suggest([]) // loading
-		var res = await req("/$/search/api/suggest", {search: form_data().search, categ, page})
-		suggest(res.products)
+		var res = await req("/$/search/api/suggest", {search: form_data().search, theme, page})
+		suggest(res.prod)
 		suggest_on() === "wait" ? "" : suggest_on(true)
 	}
 

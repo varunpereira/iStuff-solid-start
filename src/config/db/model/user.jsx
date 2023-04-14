@@ -13,7 +13,7 @@ var schema = new mongoose.Schema(
 			type: String,
 			default: "customer",
 		},
-		contacts: {
+		contact: {
 			type: Array,
 			default: [],
 		},
