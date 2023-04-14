@@ -1,11 +1,10 @@
-import {createSignal, createEffect, onMount, onCleanup, createResource} from "solid-js"
+import {createSignal, createEffect, onMount, onCleanup, createResource, lazy, Suspense} from "solid-js"
 import server$ from "solid-start/server"
-import {parseCookie, useServerContext} from "solid-start"
+import {parseCookie, useServerContext, useParams, useSearchParams} from "solid-start"
 import {to} from "~/config/struct"
 import mongoose from "mongoose"
 import {isServer} from "solid-js/web"
 import user_model from "~/config/db/model/user"
-import {Suspense} from "solid-js"
 import {
 	Body,
 	ErrorBoundary,
@@ -21,8 +20,8 @@ import {
 	useNavigate,
 } from "solid-start"
 import "~/config/style.scss"
-import {lazy} from "solid-js"
-import {useParams, useSearchParams} from "solid-start"
+import {redirect} from "solid-start/server"
+
 
 // generic
 
@@ -97,6 +96,7 @@ export var num = Number
 export var any = JSON.parse // eg bool
 export var math = Math
 export var date = Date
+export var parse_cookie = parseCookie
 export var list = Array
 export var dict = Object
 
@@ -228,3 +228,11 @@ export var req = async (link = "", value = {}) => {
 	})
 	return response.json()
 }
+
+export var nav = redirect
+
+export var cookie = (req_cookie) => {
+	var cookies = () => parseCookie(req_cookie)
+	return cookies()?.cookie ? any(cookies()?.cookie) : null
+}
+
