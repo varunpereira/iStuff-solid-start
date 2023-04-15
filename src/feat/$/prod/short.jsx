@@ -4,12 +4,11 @@ export default ({prod}) => {
 	var nav = route()
 	var flaw = state()
 
-	var cart_put = () => {
+	var cart_put = async () => {
 		if (prod.stock === 0) {
 			return flaw('This product is out of stock.')
 		}
-		var res = req('/$/cart/api/put', {
-			email: globe().email,
+		var res = await req('/$/cart/api/put', {
 			prod,
 			prod_size: 1,
 		})

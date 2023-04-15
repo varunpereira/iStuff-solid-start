@@ -42,3 +42,4 @@ if you change live() then close + open server again to see mods.
 npm vercel, us clie to build locally same but quicker than cloud!
 can also deploy (vercel build, vercel [for deploy])
 every piece thats a page, needs a title else error.
+api can either be fine or fail/flaw

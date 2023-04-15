@@ -52,7 +52,7 @@ export default () => {
 				form_data({...form_data(), search: e.target.value})
 				await get_suggest()
 			},
-			holder: () => "search from millions of products...",
+			holder: () => "search millions of products...",
 			style: () => "tc_black r_full px-[.8rem] w_full h_full o_null",
 		}),
 		() =>
