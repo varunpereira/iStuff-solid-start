@@ -6,19 +6,19 @@ export var POST = async ({request}) => {
 		apiVersion: "2020-08-27",
 	})
 
-	var {_id, items} = await request.json()
+	var {_id, prod} = await request.json()
 
 	try {
-		var session = await stripe.checkout.sessions.create({
+		var sesh = await stripe.checkout.sessions.create({
 			mode: "payment",
 			payment_method_types: ["card"],
-			line_items: items ?? [],
+			line_items: prod ?? [],
 			success_url:
 				env.domain + "/cart/paid?_id=" + _id + "checkout_session_id={CHECKOUT_SESSION_ID}",
 			cancel_url: env.domain + "/cart",
 		})
 		return res({
-			session,
+			sesh,
 		})
 	} catch (error) {
 		return res({

@@ -54,6 +54,26 @@ export default () => {
 		globe({...globe(), cart_size: (globe().cart_size += prod.size)})
 	}
 
+	var pay = async () => {
+		if (cart().size <= 0) {
+			return flaw('Cart empty. Please add a product.')
+		}
+		var prod = cart().prod.map((v) =>{
+			return {
+				name: v.title,
+				description: v._id,
+				amount: v.price * 100,
+				quantity: v.size,
+				currency: 'aud',
+			}
+		})
+		var res = await req('/cart/api/stripe', {
+			_id: cart()._id,
+			prod,
+		})
+		goto(res.sesh.url)
+	}
+
 	return d(
 		{style: () => "fit_1 c_white tc_black p-[2rem]"},
 		title({}, () => "Cart - iStuff"),
@@ -69,5 +89,7 @@ export default () => {
 				),
 			),
 		t({style: () => "ts_4 tw_2"}, () => "Total: $" + cart()?.price),
+		b({click:pay,style: () => "r_1 p-[.5rem] c_black tc_white"}, () => "Pay"),
+		t({style: () => "tc_red h-[2rem]"}, () => flaw()),
 	)
 }
