@@ -71,7 +71,8 @@ export default () => {
 			_id: cart()._id,
 			prod,
 		})
-		goto(res.sesh.url)
+		write(res)
+		nav(res.sesh.url)
 	}
 
 	return d(
