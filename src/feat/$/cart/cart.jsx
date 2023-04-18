@@ -20,7 +20,6 @@ export default () => {
 	var nav = route()
 	var cart = state({})
 	var flaw = state()
-	var test = state()
 
 	mount(async () => {
 		await auth("pub")
@@ -67,8 +66,7 @@ export default () => {
 				currency: 'aud',
 			}
 		})
-		var res = await req('/cart/api/stripe', {
-			_id: cart()._id,
+		var res = await req('/$/cart/api/stripe', {
 			prod,
 		})
 		write(res)

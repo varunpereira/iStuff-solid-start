@@ -1,12 +1,23 @@
 import Stripe from "stripe"
-import {write, db, env, res} from "~/config/store"
+import {write, db, env, res, cookie} from "~/config/store"
+import order_model from "~/config/db/model/order"
 
 export var POST = async ({request}) => {
+	var {email} = cookie(request?.headers?.get("cookie"))
+  db()
+	var prod = await request.json()
+
+	var cart = await order_model.findOne({
+		email,
+		current: true,
+	})
+
+	write(prod)
+	return res({hi:'hi'})
+
 	var stripe = new Stripe(env.VITE_stripe, {
 		apiVersion: "2020-08-27",
 	})
-
-	var {_id, prod} = await request.json()
 
 	try {
 		var sesh = await stripe.checkout.sessions.create({
@@ -14,7 +25,7 @@ export var POST = async ({request}) => {
 			payment_method_types: ["card"],
 			line_items: prod ?? [],
 			success_url:
-				env.VITE_domain + "/cart/paid?_id=" + _id + "checkout_session_id={CHECKOUT_SESSION_ID}",
+				env.VITE_domain + "/cart/paid?_id=" + cart._id + "stripe_sesh={CHECKOUT_SESSION_ID}",
 			cancel_url: env.VITE_domain + "/cart",
 		})
 		return res({
