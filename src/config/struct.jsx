@@ -11,6 +11,7 @@ import chat from "~/feat/$/chat/chat"
 import search from "~/feat/$/search/result"
 import prod from "~/feat/$/prod/long"
 import cart from "~/feat/$/cart/cart"
+import paid from "~/feat/$/cart/paid"
 
 export default () => {
 	var route = () => [
@@ -22,6 +23,7 @@ export default () => {
 		["/search", search],
 		["/prod/:_id", prod],
 		["/cart", cart],
+		["/cart/paid", paid],
 	]
 	return struct({logo, header, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
 }
