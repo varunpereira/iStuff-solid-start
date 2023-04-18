@@ -19,7 +19,7 @@ import prod_short from "~/feat/$/prod/short"
 
 export default () => {
 	var nav = route()
-	var path_par = path().par()
+	var path_par = path.par()
 	var prod = state([])
 
 	mount(async () => {

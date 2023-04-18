@@ -1,4 +1,12 @@
-import {createSignal, createEffect, onMount, onCleanup, createResource, lazy, Suspense} from "solid-js"
+import {
+	createSignal,
+	createEffect,
+	onMount,
+	onCleanup,
+	createResource,
+	lazy,
+	Suspense,
+} from "solid-js"
 import server$ from "solid-start/server"
 import {parseCookie, useServerContext, useParams, useSearchParams} from "solid-start"
 import {to} from "~/config/struct"
@@ -22,11 +30,10 @@ import {
 import "~/config/style.scss"
 import {redirect} from "solid-start/server"
 
-
 // generic
 
 export var state = (init) => {
-	const [value, setValue] = createSignal(init)
+	var [value, setValue] = createSignal(init)
 	return (newValue) => {
 		if (newValue != null) setValue(newValue)
 		else return value()
@@ -45,50 +52,38 @@ export var auth = async (link) => {
 	link !== "pub" && window.location.pathname !== "/signin" ? (window.location.href = "/signin") : ""
 }
 
+export var route = useNavigate
+
 export var route2 = (route) => {
 	var nav = useNavigate
 	return nav(route)
 }
 
-export var route = useNavigate
+export var react = createEffect
 
-export var react = (init) => {
-	return createEffect(init)
-}
+export var effect = createResource
 
-export var effect = (state, fn) => {
-	return createResource(state, fn)
-}
-
-export var write = (props) => {
-	console.log(props)
-}
+export var write = console.log
 
 export var mount = onMount
 
 export var clean = onCleanup
 
-export var timer = () => {
-	return {
-		put: (fn, time) => setInterval(fn, time),
-		cut: (vari) => clearInterval(vari),
-	}
+export var timer = {
+	put: setInterval,
+	cut: clearInterval,
 }
 
-export var view = () => {
-	return {
-		width: () => window.innerWidth,
-		height: () => window.innerHeight,
-		put_listen: (id, fn) => window.addEventListener(id, fn),
-		cut_listen: (id, fn) => () => window.removeEventListener(id, fn),
-	}
+export var view = {
+	width: () => window.innerWidth,
+	height: () => window.innerHeight,
+	put_listen: (id, fn) => window.addEventListener(id, fn),
+	cut_listen: (id, fn) => () => window.removeEventListener(id, fn),
 }
 
-export var path = () => {
-	return {
-		var: useParams,
-		par: () => useSearchParams()[0],
-	}
+export var path = {
+	var: useParams,
+	par: () => useSearchParams()[0],
 }
 
 export var str = JSON.stringify
@@ -189,23 +184,23 @@ export var struct = ({
 
 export var env = import.meta.env
 
-// export var db = () =>
-// 	mongoose.connections[0].readyState
-// 		? () => write("mongodb already connected.")
-// 		: mongoose.connect(env.VITE_db).then(() => write("mongodb connected."))
+export var db = () =>
+	mongoose.connections[0].readyState
+		? () => console.log("mongodb already connected.")
+		: mongoose.connect(env.VITE_db).then(() => console.log("mongodb connected."))
 
-export var db = () => {
-	if (mongoose.connections && mongoose?.connections[0]?.readyState) {
-		write("mongodb already connected.")
-	} else {
-		mongoose?.connect(env.VITE_db).then(() => {
-			write("mongodb connected.")
-		})
-	}
-}
+// export var db = () => {
+// 	if (mongoose.connections && mongoose?.connections[0]?.readyState) {
+// 		write("mongodb already connected.")
+// 	} else {
+// 		mongoose?.connect(env.VITE_db).then(() => {
+// 			write("mongodb connected.")
+// 		})
+// 	}
+// }
 
-export var res = (body = {}, head = null) => {
-	return new Response(
+export var res = (body = {}, head = null) =>
+	new Response(
 		JSON.stringify(body),
 		head != null
 			? {
@@ -219,7 +214,6 @@ export var res = (body = {}, head = null) => {
 			  }
 			: {},
 	)
-}
 
 export var req = async (link = "", value = {}) => {
 	var response = await fetch(link, {
@@ -235,4 +229,3 @@ export var cookie = (req_cookie) => {
 	var cookies = () => parseCookie(req_cookie)
 	return cookies()?.cookie ? any(cookies()?.cookie) : null
 }
-

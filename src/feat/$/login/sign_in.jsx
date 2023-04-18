@@ -25,6 +25,9 @@ export default () => {
 	})
 
 	var form_submit = async () => {
+		var t = (e) => write(e)
+		t('hi')
+		return
 		var res = await req('/$/login/api/auth_put', form_data())
 		if (res?.error != null) {
 			return form_error(res.error)

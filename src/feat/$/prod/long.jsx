@@ -17,7 +17,7 @@ import {
 
 export default () => {
 	var nav = route()
-	var path_var = path().var()
+	var path_var = path.var()
 	var prod = state(null)
 	var review = state([])
 	var error = state(null)

@@ -17,7 +17,7 @@ import {
 
 export default () => {
 	var nav = route()
-	var path_par = path().par()
+	var path_par = path.par()
 
 	mount(async () => {
 		await auth("pub")

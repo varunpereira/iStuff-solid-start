@@ -25,16 +25,16 @@ export default () => {
 	var menu_click = state(false)
 
 	mount(async () => {
-		width(view().width())
-		view().put_listen("resize", handler)
+		width(view.width())
+		view.put_listen("resize", handler)
 	})
 
 	var handler = () => {
-		width(view().width())
+		width(view.width())
 	}
 
 	clean(() => {
-		view().cut_listen("resize", handler)
+		view.cut_listen("resize", handler)
 	})
 
 	react(() => {})
