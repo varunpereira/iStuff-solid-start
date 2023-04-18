@@ -1,4 +1,4 @@
-import {write, db, env, res, cookie} from "~/config/store"
+import {write, db, env, res, cookie, nav} from "~/config/store"
 import order_model from "~/config/db/model/order"
 
 export var POST = async ({request}) => {
@@ -29,7 +29,5 @@ export var POST = async ({request}) => {
 			paid: false,
 		})
 	}
-	return res({
-		paid: true,
-	})
+	return nav('/404')
 }
