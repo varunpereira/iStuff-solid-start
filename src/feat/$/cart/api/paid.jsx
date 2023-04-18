@@ -25,7 +25,7 @@ export var POST = async ({request}) => {
 			email,
 			current: true,
 		}).save()
-		return json({
+		return res({
 			paid: false,
 		})
 	}
