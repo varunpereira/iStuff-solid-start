@@ -15,7 +15,6 @@ export var POST = async ({request}) => {
 	var stripe = new Stripe(env.VITE_stripe, {
 		apiVersion: "2020-08-27",
 	})
-	prod = []
 	try {
 		var sesh = await stripe.checkout.sessions.create({
 			mode: "payment",
