@@ -70,7 +70,7 @@ export default () => {
 			prod,
 		})
 		write(res)
-		nav(res?.sesh?.url)
+		window.location.href = res?.sesh?.url
 	}
 
 	return d(
