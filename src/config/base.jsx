@@ -24,7 +24,7 @@ export default () => {
 	react(() => {})
 
 	return d(
-		{style: () => "fit_2 c_white"},
+		{style: () => "fit_2 c_white tc_black"},
 		title({}, () => "Home - iStuff"),
 	)
 }
