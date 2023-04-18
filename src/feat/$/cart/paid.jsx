@@ -23,8 +23,9 @@ export default () => {
 		await auth("pub")
 		var res = await req("/$/cart/api/paid", {stripe_sesh: path_par.stripe_sesh})
 		if (res.paid === true) {
-			nav("/404")
+			return nav("/404")
 		}
+		globe({...globe(), cart_size: 0})
 	})
 
 	react(() => {})
