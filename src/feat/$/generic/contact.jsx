@@ -21,7 +21,7 @@ import batman_pic from '~/config/asset/batman.jpg'
 export default () => {
 	var car = state([batman_pic, "/home/2.jpg",])
 	var car_index = state(0)
-	var car_interv = timer().put(() => {
+	var car_interv = timer.put(() => {
 		car_index((i) => (i + 1) % car().length)
 	}, 3000)
 	var nav = route()
@@ -32,7 +32,7 @@ export default () => {
 	})
 
 	clean(() => {
-		timer().cut(car_interv)
+		timer.cut(car_interv)
 	})
 
 	return d(

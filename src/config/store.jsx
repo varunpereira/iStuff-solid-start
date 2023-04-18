@@ -69,10 +69,10 @@ export var mount = onMount
 
 export var clean = onCleanup
 
-export var timer = {
-	put: setInterval,
-	cut: clearInterval,
-}
+export var timer = ({
+		put: (fn, time) => setInterval(fn, time),
+		cut: (vari) => clearInterval(vari),
+})
 
 export var view = {
 	width: () => window.innerWidth,
