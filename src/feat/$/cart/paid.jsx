@@ -12,16 +12,19 @@ import {
 	req,
 	title,
 	auth,
-  path
+	path,
 } from "~/config/store"
 
 export default () => {
 	var nav = route()
-  var path_par = path().par()
+	var path_par = path().par()
 
 	mount(async () => {
 		await auth("pub")
-    var res = await req('/$/cart/api/paid',{stripe_sesh:path_par.stripe_sesh})
+		var res = await req("/$/cart/api/paid", {stripe_sesh: path_par.stripe_sesh})
+		if (res.paid === true) {
+			nav("/404")
+		}
 	})
 
 	react(() => {})
@@ -29,6 +32,6 @@ export default () => {
 	return d(
 		{style: () => "fit_2 c_white tc_black"},
 		title({}, () => "Payment Success - iStuff"),
-    d({},()=>'Payment Success!')
+		d({}, () => "Payment Success!"),
 	)
 }

@@ -3,7 +3,7 @@ import order_model from "~/config/db/model/order"
 
 export var POST = async ({request}) => {
 	var {email} = cookie(request?.headers?.get("cookie"))
-  var { stripe_sesh } = await request.json()
+	var {stripe_sesh} = await request.json()
 	db()
 
 	var cart = await order_model.findOne({
@@ -14,7 +14,7 @@ export var POST = async ({request}) => {
 	if (cart == null) {
 		// update cart to paid + add csId
 		var pay_cart = await order_model.updateOne(
-			{ email, current: true },
+			{email, current: true},
 			{
 				current: false,
 				stripe_sesh,
@@ -29,5 +29,7 @@ export var POST = async ({request}) => {
 			paid: false,
 		})
 	}
-	return nav('/404')
+	return res({
+		paid: false,
+	})
 }
