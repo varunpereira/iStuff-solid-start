@@ -20,7 +20,7 @@ export var POST = async ({request}) => {
 		var sesh = await stripe.checkout.sessions.create({
 			mode: "payment",
 			payment_method_types: ["card"],
-			line_items: prod ?? [],
+			line_items: [],
 			success_url:
 				"https://" +
 				env.VITE_domain +
