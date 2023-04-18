@@ -22,6 +22,7 @@ export default () => {
 	mount(async () => {
 		await auth("pub")
     var res = await req('/$/cart/api/paid',{stripe_sesh:path_par.stripe_sesh})
+    write(res)
 	})
 
 	react(() => {})
