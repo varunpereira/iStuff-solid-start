@@ -30,6 +30,6 @@ export var POST = async ({request}) => {
 		})
 	}
 	return res({
-		paid: false,
+		paid: true,
 	})
 }
