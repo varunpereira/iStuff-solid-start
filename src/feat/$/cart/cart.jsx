@@ -70,7 +70,7 @@ export default () => {
 			prod,
 		})
 		write(res)
-		nav(res.sesh.url)
+		nav(res?.sesh?.url)
 	}
 
 	return d(
