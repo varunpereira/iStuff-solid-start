@@ -32,7 +32,7 @@ export var POST = async ({request}) => {
 	)
 	var value = {email, token}
 	var age =  10 * 60 // 10 min
-	return res({ok:true}, {cookie: {value, age}})
+	return res({},{cookie: {value, age}})
 	// return new Response(JSON.stringify({hi:'hi'}), {
 	// 	headers: {
 	// 		"Set-Cookie": `cookie=${JSON.stringify(

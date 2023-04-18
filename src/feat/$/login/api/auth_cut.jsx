@@ -16,7 +16,7 @@ export var POST = async ({request}) => {
 	// write(set_user.modifiedCount)
 	var value = {email: null, token: null}
 	var age = 0
-	return res({ok: true,}, {cookie: {value,age}})
+	return res({},{cookie: {value,age}})
 	// return new Response(JSON.stringify({}), {
 	// 	headers: {
 	// 		"Set-Cookie": `cookie=${JSON.stringify(

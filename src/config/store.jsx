@@ -69,10 +69,10 @@ export var mount = onMount
 
 export var clean = onCleanup
 
-export var timer = ({
-		put: (fn, time) => setInterval(fn, time),
-		cut: (vari) => clearInterval(vari),
-})
+export var timer = {
+	put: (fn, time) => setInterval(fn, time),
+	cut: (vari) => clearInterval(vari),
+}
 
 export var view = {
 	width: () => window.innerWidth,
@@ -226,6 +226,9 @@ export var req = async (link = "", value = {}) => {
 export var nav = redirect
 
 export var cookie = (req_cookie) => {
-	var cookies = () => parseCookie(req_cookie)
-	return cookies()?.cookie ? any(cookies()?.cookie) : null
+	if (req_cookie != null) {
+		var cookies = () => parseCookie(req_cookie)
+		if (cookies()?.cookie != null) return any(cookies()?.cookie)
+	}
+	return {email: null, token: null}
 }
