@@ -25,7 +25,7 @@ export var POST = async ({request}) => {
 				env.VITE_domain +
 				"/cart/paid?_id=" +
 				cart._id +
-				"stripe_sesh={CHECKOUT_SESSION_ID}",
+				"&stripe_sesh={CHECKOUT_SESSION_ID}",
 			cancel_url: "https://" + env.VITE_domain + "/cart",
 		})
 		return res({
