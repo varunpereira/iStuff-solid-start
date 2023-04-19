@@ -23,8 +23,11 @@ export default () => {
 
 	mount(async () => {
 		await auth("pub")
-		var res = await req("/$/cart/api/get")
-		cart(res.cart)
+		if (globe().email != null) {
+			var res = await req("/$/cart/api/get")
+			return cart(res.cart)
+		}
+		cart(globe().sign_down_cart)
 	})
 
 	var cut = async (prod) => {

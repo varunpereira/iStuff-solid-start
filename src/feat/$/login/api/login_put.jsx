@@ -8,7 +8,22 @@ export var POST = async ({request}) => {
 	var {email, password, confirm_password} = await request.json()
 	db()
 
-	var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d\s:])([^\s]){8,}$/gm
+	var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+	if (!regex.test(email)) {
+		return res({
+			error:
+				"Invalid email.",
+		})
+	}
+
+	var get_user = await user_model.findOne({email})
+	if (get_user != null) {
+		return res({
+			error: "This email already exists.",
+		})
+	}
+
+	regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d\s:])([^\s]){8,}$/gm
 	if (!regex.test(password)) {
 		return res({
 			error:
@@ -18,13 +33,6 @@ export var POST = async ({request}) => {
 
 	if (password !== confirm_password) {
 		return res({error: "Passwords must match."})
-	}
-
-	var get_user = await user_model.findOne({email})
-	if (get_user != null) {
-		return res({
-			error: "This email already exists.",
-		})
 	}
 
 	var password_hash = crypt.hashSync(password, 12)

@@ -6,13 +6,15 @@ export default ({prod}) => {
 
 	var cart_put = async () => {
 		if (prod.stock === 0) {
-			return flaw('This product is out of stock.')
+			return flaw("This product is out of stock.")
 		}
-		var res = await req('/$/cart/api/put', {
-			prod,
-			prod_size: 1,
-		})
-		globe({...globe(), cart_size: globe().cart_size += 1})
+		if (globe().email != null) {
+			var res = await req("/$/cart/api/put", {
+				prod,
+				prod_size: 1,
+			})
+			return globe({...globe(), cart_size: globe().cart_size += 1})
+		}
 	}
 
 	return d(
@@ -20,7 +22,10 @@ export default ({prod}) => {
 		p({value: () => prod.pic[0].url, style: () => "h-[6rem] rt_1 w_full e_full"}),
 		d(
 			{style: () => "p-[1rem]"},
-			b({click: () => nav("/prod/" + prod._id), style: () => "hover:underline ta_left"}, () => prod.title),
+			b(
+				{click: () => nav("/prod/" + prod._id), style: () => "hover:underline ta_left"},
+				() => prod.title,
+			),
 			t({}, "$" + prod.price),
 			b({click: cart_put, style: () => "c_black tc_white r_1 p-[.5rem]"}, () => "Add"),
 		),

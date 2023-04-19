@@ -41,7 +41,7 @@ export default () => {
 
 	var sign_out = async () => {
 		var res = await req("/$/login/api/auth_cut", {email: globe().email})
-		globe({email: null,cart_size:0})
+		globe({email: null, cart_size: 0})
 		nav("/signin")
 	}
 
@@ -72,8 +72,15 @@ export default () => {
 												"v1:w_full v1:a_col v2:z_fit v2:a_row v2:ax_right v2:w_fit v2:pt-[.2rem] v2:r_null" +
 												(!acc_click() ? "v1:rb_1" : ""),
 										},
-										b({click: () => nav('/cart'), style:()=>'a_row mr-[1rem]'}, cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}), t({style: () =>'ts_1 -mt-[.4rem]'},()=>globe().cart_size)),
-										b({click: () => acc_click(!acc_click()), style:()=>'a_row'}, () => globe().email),
+										b(
+											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
+											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
+											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe().cart_size),
+										),
+										b(
+											{click: () => acc_click(!acc_click()), style: () => "a_row"},
+											() => globe().email,
+										),
 										() =>
 											acc_click() === true
 												? b(
@@ -86,7 +93,15 @@ export default () => {
 												  )
 												: "",
 								  )
-								: b({click: () => nav("/signin"), style: () => "a_null"}, () => "Sign in" + globe()?.sign_down_cart?.size)
+								: d(
+										{style:()=> 'v1:w_full v1:a_col v2:a_row'},
+										b(
+											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
+											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
+											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.sign_down_cart?.size),
+										),
+										b({click: () => nav("/signin"), style: () => "v1:a_row v2:a_null"}, () => "Sign in"),
+								  )
 					: "",
 		),
 	)
