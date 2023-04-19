@@ -86,7 +86,7 @@ export default () => {
 												  )
 												: "",
 								  )
-								: b({click: () => nav("/signin"), style: () => "a_null"}, () => "Sign in")
+								: b({click: () => nav("/signin"), style: () => "a_null"}, () => "Sign in" + globe()?.sign_down_cart?.size)
 					: "",
 		),
 	)

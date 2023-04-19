@@ -45,10 +45,10 @@ export var globe = state({email: null, cart_size: 0})
 
 export var auth = async (link) => {
 	var res = await req("/$/login/api/auth_get")
-	if (res?.error == null) {
+	if (res?.user != null) {
 		return globe({email: res?.user?.email, cart_size: res?.cart_size})
 	}
-	globe({email: null, cart_size: 0})
+	globe({sign_down_cart:res?.sign_down_cart})
 	link !== "pub" && window.location.pathname !== "/signin" ? (window.location.href = "/signin") : ""
 }
 
@@ -226,9 +226,7 @@ export var req = async (link = "", value = {}) => {
 export var nav = redirect
 
 export var cookie = (req_cookie) => {
-	if (req_cookie != null) {
-		var cookies = () => parseCookie(req_cookie)
-		if (cookies()?.cookie != null) return any(cookies()?.cookie)
-	}
-	return {email: null, token: null}
+	if( req_cookie == null) return {}
+	var cookies = () => parseCookie(req_cookie)
+	if (cookies()?.cookie != null) return any(cookies()?.cookie)
 }
