@@ -48,8 +48,8 @@ export default () => {
 	return d(
 		{style: () => "fit_1 z_fit v1:px-[1rem] v2:px-[5rem] py-[.5rem] a_row ax_equal "},
 		b(
-			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua_1 tw_1 ts_3 mr-[1rem]"},
-			shop_icon({style: () => "w-[2rem] h-[1.5rem] mt-[.2rem] tc_aqua_1"}),
+			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua tw_1 ts_3 mr-[1rem]"},
+			shop_icon({style: () => "w-[2rem] h-[1.5rem] mt-[.2rem] tc_aqua"}),
 			t({}, () => "iStuff"),
 		),
 		searcher(),

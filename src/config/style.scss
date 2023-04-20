@@ -4,7 +4,6 @@
 $white: white;
 $black: black;
 $aqua_1: aqua;
-$aqua_2: rgb(0, 187, 187);
 $grey_1: grey;
 $grey_2: rgb(39, 39, 39);
 $red: red;
@@ -24,7 +23,7 @@ $red: red;
 	.tc_white {
 		color: $white;
 	}
-	.tc_aqua_1 {
+	.tc_aqua {
 		color: $aqua_1;
 	}
 	.tc_grey {
@@ -91,9 +90,6 @@ $red: red;
 	// background colour
 	.c_aqua_1 {
 		background-color: $aqua_1;
-	}
-	.c_aqua_2 {
-		background-color: $aqua_2;
 	}
 	.c_white {
 		background-color: $white;

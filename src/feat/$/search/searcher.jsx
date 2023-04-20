@@ -31,6 +31,12 @@ export default () => {
 		await get_suggest()
 	})
 
+	var click_outside = (el, accessor) => {
+		var on_click = (e) => !el.contains(e.target) && accessor()?.()
+		view.put_listen("click", on_click)
+		clean(() => view.cut_listen("click", on_click))
+	}
+
 	var form_submit = async (term) => {
 		suggest_on(false)
 		nav("/search?term=" + term + "&theme=all&page=1")
@@ -46,6 +52,7 @@ export default () => {
 	return d(
 		{style: () => "c_white w_full h-[2rem] r_full z_fit mr-[1rem]"},
 		i({
+			click: async () => await get_suggest(),
 			type: () => "text",
 			value: () => form_data().search,
 			input: async (e) => {
@@ -67,9 +74,12 @@ export default () => {
 							}),
 						),
 						() =>
-							suggest_on() !== false && suggest().length >= 1
+							suggest_on() === true && suggest().length >= 1
 								? d(
-										{style: () => "z_put a_col c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"},
+										{
+											custom: (e) => click_outside(e, () => suggest_on(false)),
+											style: () => "z_put a_col c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]",
+										},
 										() =>
 											suggest().map((v, k) =>
 												b(
@@ -85,7 +95,7 @@ export default () => {
 												),
 											),
 								  )
-								: suggest_on() !== false && suggest().length === 0
+								: suggest_on() === true && suggest().length === 0
 								? d(
 										{style: () => "z_put c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"},
 										() => "Loading...",

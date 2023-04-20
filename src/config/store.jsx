@@ -78,7 +78,7 @@ export var view = {
 	width: () => window.innerWidth,
 	height: () => window.innerHeight,
 	put_listen: (id, fn) => window.addEventListener(id, fn),
-	cut_listen: (id, fn) => () => window.removeEventListener(id, fn),
+	cut_listen: (id, fn) => ()=> window.removeEventListener(id, fn),
 }
 
 export var path = {
@@ -95,10 +95,10 @@ export var parse_cookie = parseCookie
 export var list = Array
 export var dict = Object
 
-// pieces
+// pieces'ok
 
 // // var style = props?.style?.replace(/=/g, '-')
-export var d = ({style = () => ""}, ...rest) => <div class={style()}>{...rest}</div>
+export var d = ({style = () => "", custom = () => ""}, ...rest) => <div use:custom class={style()}>{...rest}</div>
 
 export var t = ({style = () => ""}, ...rest) => <p class={style()}>{...rest}</p>
 
@@ -113,8 +113,9 @@ export var i = ({
 	type = () => "text",
 	value = () => "",
 	input = () => "",
+	click = () => "",
 	holder = () => "",
-}) => <input class={style()} type={type()} value={value()} onInput={input} placeholder={holder()} />
+}) => <input class={style()} type={type()} value={value()} onInput={input} onClick={click} placeholder={holder()} />
 
 export var p = ({style = () => "", value = () => "", def = () => ""}) => (
 	<img class={style()} src={value()} alt={def()} />
