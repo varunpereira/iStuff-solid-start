@@ -17,6 +17,8 @@ import {
 	auth,
 } from "~/config/shop"
 import batman_pic from '~/config/asset/batman.jpg'
+import {lazy} from 'solid-js'
+import logo from "~/config/asset/batman.jpg"
 
 export default () => {
 	var car = state([batman_pic, "/home/2.jpg",])
@@ -29,6 +31,8 @@ export default () => {
 
 	mount(async () => {
 		await auth("pub")
+		var image = await import("~/config/asset/batman.jpg")
+		logo(image.default)
 	})
 
 	clean(() => {
@@ -40,6 +44,7 @@ export default () => {
 	return d(
 		{style: () => "fit_2 c_white tc_black"},
 		title({}, () => "Home - iStuff"),
+		p({value: ()=>logo, style:()=>'w_full'})
 		// ()=>car_index()
 	)
 }
