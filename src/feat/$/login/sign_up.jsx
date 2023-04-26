@@ -13,7 +13,7 @@ import {
 	globe,
 	auth,
 	effect,req
-} from "~/config/store"
+} from "~/config/shop"
 
 export default () => {
 	var nav = route()

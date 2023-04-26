@@ -1,4 +1,4 @@
-import {state, mount, react, write, d, c, t, b, i, v, env, parse, route} from "~/config/store"
+import {state, mount, react, write, d, c, t, b, i, v, env, parse, route} from "~/config/shop"
 import {shop_icon} from "~/config/asset/icon.jsx"
 
 export default () => {

@@ -1,4 +1,4 @@
-import {write, db, env, res, cookie} from "~/config/store"
+import {write, db, env, res, cookie} from "~/config/shop"
 import user_model from "~/config/db/model/user"
 import order_model from "~/config/db/model/order"
 

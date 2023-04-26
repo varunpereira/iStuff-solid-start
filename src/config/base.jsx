@@ -12,7 +12,7 @@ import {
 	req,
 	title,
 	auth
-} from "~/config/store"
+} from "~/config/shop"
 
 export default () => {
 	var nav = route()

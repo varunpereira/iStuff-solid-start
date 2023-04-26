@@ -1,4 +1,4 @@
-import {state, mount, react, write, d, t, b, i, p, route, globe, req} from "~/config/store"
+import {state, mount, react, write, d, t, b, i, p, route, globe, req} from "~/config/shop"
 
 export default ({prod}) => {
 	var nav = route()

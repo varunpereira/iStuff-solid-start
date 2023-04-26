@@ -1,5 +1,5 @@
 // @refresh reload
-import {struct} from "~/config/store"
+import {struct} from "~/config/shop"
 import logo from "~/config/asset/logo.jpg"
 import header from "~/config/header"
 import footer from "~/config/footer"
@@ -25,5 +25,5 @@ export default () => {
 		["/cart", cart],
 		["/cart/paid", paid],
 	]
-	return struct({logo, header, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
+	return struct({logo: import("~/config/asset/batman.jpg"), header, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
 }

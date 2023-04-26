@@ -1,4 +1,4 @@
-import {write, db, env, res} from "~/config/store"
+import {write, db, env, res} from "~/config/shop"
 import crypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import user_model from "~/config/db/model/user"

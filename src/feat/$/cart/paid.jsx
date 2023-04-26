@@ -13,7 +13,7 @@ import {
 	title,
 	auth,
 	path,
-} from "~/config/store"
+} from "~/config/shop"
 
 export default () => {
 	var nav = route()

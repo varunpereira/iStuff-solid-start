@@ -14,7 +14,7 @@ import {
 	req,
 	path,
 	auth,
-} from "~/config/store"
+} from "~/config/shop"
 import prod_short from "~/feat/$/prod/short"
 
 export default () => {

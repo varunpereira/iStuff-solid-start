@@ -1,4 +1,4 @@
-import {state, react, write, mount, env, d, title, req} from "~/config/store"
+import {state, react, write, mount, env, d, title, req} from "~/config/shop"
 import Pusher from "pusher-js"
 
 export default () => {

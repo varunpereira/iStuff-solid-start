@@ -14,7 +14,7 @@ import {
 	route,
 	globe,
 	req,
-} from "~/config/store"
+} from "~/config/shop"
 import {search_icon, close_icon} from "~/config/asset/icon.jsx"
 
 export default () => {

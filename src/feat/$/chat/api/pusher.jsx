@@ -1,5 +1,5 @@
 import Pusher from "pusher"
-import {write, db, env, res,} from "~/config/store"
+import {write, db, env, res,} from "~/config/shop"
 
 export var POST = async ({request}) => {
 	var {message, sender} = await request.json()

@@ -13,7 +13,7 @@ import {
 	title,
 	auth,
 	str,
-} from "~/config/store"
+} from "~/config/shop"
 import {cut_icon} from "~/config/asset/icon"
 
 export default () => {

@@ -15,7 +15,7 @@ import {
 	timer,
 	globe,
 	auth,
-} from "~/config/store"
+} from "~/config/shop"
 import batman_pic from '~/config/asset/batman.jpg'
 
 export default () => {

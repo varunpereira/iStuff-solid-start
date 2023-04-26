@@ -1,4 +1,4 @@
-import {write, db, env, res, num, math} from "~/config/store"
+import {write, db, env, res, num, math} from "~/config/shop"
 import prod_model from "~/config/db/model/prod"
 
 export var POST = async ({request}) => {
