@@ -14,7 +14,7 @@ import {
 	req,
 	path,
 } from "~/config/shop"
-import prod_short from "~/feat/$/prod/short"
+import prod_short from "~/feat/priv/prod/short"
 import {auth} from "~/config/auth"
 
 export default () => {
@@ -27,7 +27,7 @@ export default () => {
 	})
 
 	react(async () => {
-		var res = await req("/$/search/api/result", {
+		var res = await req("/priv/search/api/result", {
 			search: path_par.term,
 			theme: path_par.theme,
 			page: path_par.page,

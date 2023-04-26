@@ -19,7 +19,7 @@ export default () => {
 
 	var handleSubmit = async (e) => {
 		e.preventDefault()
-		var res = await req("/$/pusher/api", {message: msg(), sender})
+		var res = await req("/priv/pusher/api", {message: msg(), sender})
 		write(res)
 		msg("")
 	}

@@ -28,8 +28,8 @@ import {redirect} from "solid-start/server"
 // generic
 
 export var state = (def) => {
-	var [value, setValue] = createSignal(def)
-	return (putValue) => (putValue != null ? setValue(putValue) : value())
+	var [get, set] = createSignal(def)
+	return (put) => (put != null ? set(put) : get())
 }
 
 export var globe = state()
@@ -53,7 +53,7 @@ export var clean = onCleanup
 
 export var timer = {
 	put: (fn, time) => setInterval(fn, time),
-	cut: (vari) => clearInterval(vari),
+	cut: (fn) => clearInterval(fn),
 }
 
 export var view = {
@@ -183,6 +183,14 @@ export var struct = ({
 	</Html>
 )
 
+export var req = async (link = "", value = {}) => {
+	var response = await fetch(link, {
+		method: "POST",
+		body: JSON.stringify(value),
+	})
+	return response.json()
+}
+
 //  server
 
 export var env = import.meta.env
@@ -202,13 +210,5 @@ export var res = (body = {}, head = null) =>
 			  }
 			: {},
 	)
-
-export var req = async (link = "", value = {}) => {
-	var response = await fetch(link, {
-		method: "POST",
-		body: JSON.stringify(value),
-	})
-	return response.json()
-}
 
 export var nav = redirect

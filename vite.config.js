@@ -7,9 +7,9 @@ export default defineConfig({
 		solid({
 			adapter: vercel(),
 			// appRoot: "./app/",
-			// clientEntry: './client.jsx' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
-			// serverEntry: './src/config/mw' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
-			rootEntry: "./src/config/struct" + (process.env.NODE_ENV === "production" ? ".jsx" : ""),
+			// clientEntry: './src/client' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
+			serverEntry: './src/config/server' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
+			// rootEntry: "./src/root" + (process.env.NODE_ENV === "production" ? ".jsx" : ""),
 			routesDir: './feat',
 		}),
 	],

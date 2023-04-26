@@ -9,7 +9,7 @@ export default ({prod}) => {
 			return flaw("This product is out of stock.")
 		}
 		if (globe().email != null) {
-			var res = await req("/$/cart/api/put", {
+			var res = await req("/priv/cart/api/put", {
 				prod,
 				prod_size: 1,
 			})

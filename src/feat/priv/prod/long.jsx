@@ -23,7 +23,7 @@ export default () => {
 	var error = state(null)
 
 	mount(async () => {
-		var res = await req("/$/prod/api/get", {
+		var res = await req("/priv/prod/api/get", {
 			_id: path_var._id,
 		})
 		prod(res.prod)

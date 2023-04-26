@@ -16,7 +16,7 @@ import {
 	globe
 } from "~/config/shop"
 import {shop_icon, menu_icon, cart_icon} from "~/config/asset/icon.jsx"
-import searcher from "~/feat/$/search/searcher"
+import searcher from "~/feat/priv/search/searcher"
 
 export default () => {
 	var width = state()
@@ -40,7 +40,7 @@ export default () => {
 	react(() => {})
 
 	var sign_out = async () => {
-		var res = await req("/$/login/api/auth_cut", {email: globe()?.email})
+		var res = await req("/priv/login/api/auth_cut", {email: globe()?.email})
 		globe({email: null, cart_size: 0})
 		nav("/signin")
 	}

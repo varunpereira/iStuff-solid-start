@@ -20,7 +20,7 @@ export default () => {
 
 	mount(async () => {
 		await auth("pub")
-		var res = await req("/$/cart/api/paid", {stripe_sesh: path_par.stripe_sesh})
+		var res = await req("/priv/cart/api/paid", {stripe_sesh: path_par.stripe_sesh})
 		if (res.paid === true) {
 			return nav("/404")
 		}

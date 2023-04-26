@@ -44,7 +44,7 @@ export default () => {
 
 	var get_suggest = async () => {
 		suggest([]) // loading
-		var res = await req("/$/search/api/suggest", {search: form_data().search, theme, page})
+		var res = await req("/priv/search/api/suggest", {search: form_data().search, theme, page})
 		suggest(res.prod)
 		suggest_on() === "wait" ? "" : suggest_on(true)
 	}

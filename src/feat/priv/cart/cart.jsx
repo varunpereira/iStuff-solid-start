@@ -24,14 +24,14 @@ export default () => {
 	mount(async () => {
 		await auth("pub")
 		if (globe().email != null) {
-			var res = await req("/$/cart/api/get")
+			var res = await req("/priv/cart/api/get")
 			return cart(res.cart)
 		}
 		cart(globe().sign_down_cart)
 	})
 
 	var cut = async (prod) => {
-		var res = await req("/$/cart/api/cut", {
+		var res = await req("/priv/cart/api/cut", {
 			prod,
 		})
 		if (res?.error != null) {
@@ -45,7 +45,7 @@ export default () => {
 		if (prod.stock === 0) {
 			return flaw("This product is out of stock.")
 		}
-		var res = await req("/$/cart/api/put", {
+		var res = await req("/priv/cart/api/put", {
 			prod,
 			prod_size: prod.size,
 		})
@@ -69,7 +69,7 @@ export default () => {
 				currency: 'aud',
 			}
 		})
-		var res = await req('/$/cart/api/stripe', {
+		var res = await req('/priv/cart/api/stripe', {
 			prod,
 		})
 		write(res)
