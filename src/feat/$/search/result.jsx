@@ -13,9 +13,9 @@ import {
 	title,
 	req,
 	path,
-	auth,
 } from "~/config/shop"
 import prod_short from "~/feat/$/prod/short"
+import {auth} from "~/config/auth"
 
 export default () => {
 	var nav = route()
@@ -43,8 +43,8 @@ export default () => {
 				? t({}, () => "No results for " + path_par.term)
 				: () =>
 						d(
-							{style:()=>'a_row_auto gap-[1rem]'},
-							prod().map((v, k) =>prod_short({prod:v}),),
+							{style: () => "a_row_auto gap-[1rem]"},
+							prod().map((v, k) => prod_short({prod: v})),
 						),
 	)
 }

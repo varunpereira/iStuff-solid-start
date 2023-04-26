@@ -1,6 +1,7 @@
-import {write, db, env, res, cookie} from "~/config/shop"
+import {write, env, res, cookie} from "~/config/shop"
 import order_model from "~/config/db/model/order"
 import prod_model from "~/config/db/model/prod"
+import {db} from '~/config/db/join'
 
 export var POST = async ({request}) => {
 	var {prod, prod_size} = await request.json()

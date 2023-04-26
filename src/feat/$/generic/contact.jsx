@@ -9,14 +9,13 @@ import {
 	t,
 	b,
 	route,
-	db,
 	v,
 	p,
 	timer,
-	globe,
-	auth,
+	globe
 } from "~/config/shop"
 import batman_pic from '~/config/asset/batman.jpg'
+import {auth} from "~/config/auth"
 
 export default () => {
 	var car = state([batman_pic, "/home/2.jpg",])

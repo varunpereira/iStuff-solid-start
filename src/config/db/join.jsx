@@ -1,13 +1,7 @@
-import {MongoClient} from "mongodb"
-const client = new MongoClient(import.meta.env.VITE_db)
+import {write, env, } from "~/config/shop"
+import mongoose from "mongoose"
 
-export var join = async () => {
-	await client.connect()
-  return await client.db("showify")
-}
-
-export var close = async () => {
-	await client.close()
-  console.log('closed')
-}
-
+export var db = () =>
+	mongoose.connections[0].readyState
+		? () => write("mongodb already connected.")
+		: mongoose.connect(env.VITE_db).then(() => write("mongodb connected."))

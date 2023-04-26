@@ -1,5 +1,6 @@
-import {write, db, env, res, num, math} from "~/config/shop"
+import {write, env, res, num, math} from "~/config/shop"
 import prod_model from "~/config/db/model/prod"
+import {db} from '~/config/db/join'
 
 export var POST = async ({request}) => {
 	var {search, theme, page} = await request.json()

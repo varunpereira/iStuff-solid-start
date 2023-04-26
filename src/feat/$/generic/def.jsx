@@ -13,7 +13,6 @@ import {
 	parse,
 	route,
 	globe,
-	db,
 	title,
 } from "~/config/shop"
 

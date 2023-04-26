@@ -11,10 +11,10 @@ import {
 	globe,
 	req,
 	title,
-	auth,
-	str,
+	str, 
 } from "~/config/shop"
 import {cut_icon} from "~/config/asset/icon"
+import {auth} from "~/config/auth"
 
 export default () => {
 	var nav = route()

@@ -12,8 +12,8 @@ import {
 	view,
 	parse,
 	route,
-	globe,
 	req,
+	globe
 } from "~/config/shop"
 import {shop_icon, menu_icon, cart_icon} from "~/config/asset/icon.jsx"
 import searcher from "~/feat/$/search/searcher"

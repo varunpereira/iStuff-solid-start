@@ -1,5 +1,5 @@
 import {StartServer, createHandler, renderAsync} from "solid-start/entry-server"
-import {db, write, nav, parse_cookie, res} from "~/config/shop"
+import {write, nav, cookie, res} from "~/config/shop"
 
 export default createHandler(
 	({forward}) => {

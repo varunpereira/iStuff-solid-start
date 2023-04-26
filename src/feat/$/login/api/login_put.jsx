@@ -1,8 +1,9 @@
-import {write, db, env, res} from "~/config/shop"
+import {write, env, res} from "~/config/shop"
 import crypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import user_model from "~/config/db/model/user"
 import order_model from "~/config/db/model/order"
+import {db} from '~/config/db/join'
 
 export var POST = async ({request}) => {
 	var {email, password, confirm_password} = await request.json()

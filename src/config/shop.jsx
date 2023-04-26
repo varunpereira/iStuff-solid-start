@@ -7,12 +7,7 @@ import {
 	lazy,
 	Suspense,
 } from "solid-js"
-import server$ from "solid-start/server"
 import {parseCookie, useServerContext, useParams, useSearchParams} from "solid-start"
-import {to} from "~/config/struct"
-import mongoose from "mongoose"
-import {isServer} from "solid-js/web"
-import user_model from "~/config/db/model/user"
 import {
 	Body,
 	ErrorBoundary,
@@ -32,25 +27,12 @@ import {redirect} from "solid-start/server"
 
 // generic
 
-export var state = (init) => {
-	var [value, setValue] = createSignal(init)
-	return (newValue) => {
-		if (newValue != null) setValue(newValue)
-		else return value()
-	}
+export var state = (def) => {
+	var [value, setValue] = createSignal(def)
+	return (putValue) => (putValue != null ? setValue(putValue) : value())
 }
 
-// globe state
-export var globe = state({email: null, cart_size: 0})
-
-export var auth = async (link) => {
-	var res = await req("/$/login/api/auth_get")
-	if (res?.user != null) {
-		return globe({email: res?.user?.email, cart_size: res?.cart_size})
-	}
-	globe({sign_down_cart:res?.sign_down_cart})
-	link !== "pub" && window.location.pathname !== "/signin" ? (window.location.href = "/signin") : ""
-}
+export var globe = state()
 
 export var route = useNavigate
 
@@ -78,7 +60,7 @@ export var view = {
 	width: () => window.innerWidth,
 	height: () => window.innerHeight,
 	put_listen: (id, fn) => window.addEventListener(id, fn),
-	cut_listen: (id, fn) => ()=> window.removeEventListener(id, fn),
+	cut_listen: (id, fn) => () => window.removeEventListener(id, fn),
 }
 
 export var path = {
@@ -86,19 +68,30 @@ export var path = {
 	par: () => useSearchParams()[0],
 }
 
+// parse
 export var str = JSON.stringify
 export var num = Number
+export var cookie = (req_cookie) => {
+	if (req_cookie == null) return {}
+	var cookies = () => parseCookie(req_cookie)
+	if (cookies()?.cookie != null) return any(cookies()?.cookie)
+}
 export var any = JSON.parse // eg bool
+
+// more innate globe
 export var math = Math
 export var date = Date
-export var parse_cookie = parseCookie
 export var list = Array
 export var dict = Object
 
-// pieces'ok
+// piece
 
-// // var style = props?.style?.replace(/=/g, '-')
-export var d = ({style = () => "", custom = () => ""}, ...rest) => <div use:custom class={style()}>{...rest}</div>
+// var style = props?.style?.replace(/=/g, '-')
+export var d = ({style = () => "", custom = () => ""}, ...rest) => (
+	<div use:custom class={style()}>
+		{...rest}
+	</div>
+)
 
 export var t = ({style = () => ""}, ...rest) => <p class={style()}>{...rest}</p>
 
@@ -115,7 +108,16 @@ export var i = ({
 	input = () => "",
 	click = () => "",
 	holder = () => "",
-}) => <input class={style()} type={type()} value={value()} onInput={input} onClick={click} placeholder={holder()} />
+}) => (
+	<input
+		class={style()}
+		type={type()}
+		value={value()}
+		onInput={input}
+		onClick={click}
+		placeholder={holder()}
+	/>
+)
 
 export var p = ({style = () => "", value = () => "", def = () => ""}) => (
 	<img class={style()} src={value()} alt={def()} />
@@ -154,7 +156,7 @@ export var struct = ({
 	header = () => "",
 	logo = () => "",
 	footer = () => "",
-	route = () => "",
+	page = () => "",
 }) => (
 	<Html lang="en">
 		<Head>
@@ -168,7 +170,7 @@ export var struct = ({
 				<ErrorBoundary>
 					{header()}
 					<Routes>
-						{route().map((route) => (
+						{page().map((route) => (
 							<Route path={route[0]} component={route[1]} />
 						))}
 						<FileRoutes />
@@ -184,21 +186,6 @@ export var struct = ({
 //  server
 
 export var env = import.meta.env
-
-export var db = () =>
-	mongoose.connections[0].readyState
-		? () => console.log("mongodb already connected.")
-		: mongoose.connect(env.VITE_db).then(() => console.log("mongodb connected."))
-
-// export var db = () => {
-// 	if (mongoose.connections && mongoose?.connections[0]?.readyState) {
-// 		write("mongodb already connected.")
-// 	} else {
-// 		mongoose?.connect(env.VITE_db).then(() => {
-// 			write("mongodb connected.")
-// 		})
-// 	}
-// }
 
 export var res = (body = {}, head = null) =>
 	new Response(
@@ -225,9 +212,3 @@ export var req = async (link = "", value = {}) => {
 }
 
 export var nav = redirect
-
-export var cookie = (req_cookie) => {
-	if( req_cookie == null) return {}
-	var cookies = () => parseCookie(req_cookie)
-	if (cookies()?.cookie != null) return any(cookies()?.cookie)
-}

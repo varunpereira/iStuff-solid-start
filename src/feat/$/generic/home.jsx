@@ -9,16 +9,14 @@ import {
 	t,
 	b,
 	route,
-	db,
 	v,
 	p,
-	timer,
-	globe,
-	auth,
+	timer,globe
 } from "~/config/shop"
 import batman_pic from '~/config/asset/batman.jpg'
 import {lazy} from 'solid-js'
 import logo from "~/config/asset/batman.jpg"
+import {auth} from "~/config/auth"
 
 export default () => {
 	var car = state([batman_pic, "/home/2.jpg",])
@@ -31,8 +29,6 @@ export default () => {
 
 	mount(async () => {
 		await auth("pub")
-		var image = await import("~/config/asset/batman.jpg")
-		logo(image.default)
 	})
 
 	clean(() => {

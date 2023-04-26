@@ -1,5 +1,6 @@
-import {write, db, env, res} from "~/config/shop"
+import {write, env, res} from "~/config/shop"
 import user_model from "~/config/db/model/user"
+import {db} from '~/config/db/join'
 
 export var POST = async ({request}) => {
 	var {email} = await request.json()

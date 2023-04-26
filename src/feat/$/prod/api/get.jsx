@@ -1,6 +1,7 @@
-import {write, db, env, res, nav} from "~/config/shop"
+import {write, env, res, nav} from "~/config/shop"
 import product_model from "~/config/db/model/prod"
 import review_model from "~/config/db/model/review"
+import {db} from '~/config/db/join'
 
 export var POST = async ({request}) => {
 	var {_id} = await request.json()

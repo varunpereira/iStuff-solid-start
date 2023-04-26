@@ -11,9 +11,9 @@ import {
 	b,
 	route,
 	globe,
-	auth,
 	req, path, 
 } from "~/config/shop"
+import {auth} from "~/config/auth"
 
 export default () => {
 	var nav = route()

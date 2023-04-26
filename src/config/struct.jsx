@@ -1,5 +1,5 @@
 // @refresh reload
-import {struct} from "~/config/shop"
+import {struct, globe} from "~/config/shop"
 import logo from "~/config/asset/logo.jpg"
 import header from "~/config/header"
 import footer from "~/config/footer"
@@ -14,7 +14,8 @@ import cart from "~/feat/$/cart/cart"
 import paid from "~/feat/$/cart/paid"
 
 export default () => {
-	var route = () => [
+	globe({email: null, cart_size: 0})
+	var page = () => [
 		["*", def],
 		["/", home],
 		["/signin", sign_in],
@@ -25,5 +26,5 @@ export default () => {
 		["/cart", cart],
 		["/cart/paid", paid],
 	]
-	return struct({logo, header, footer, route, style: () => "c_black tc_white ts_2 tf_1"})
+	return struct({logo, header, footer, page, style: () => "c_black tc_white ts_2 tf_1"})
 }

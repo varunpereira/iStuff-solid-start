@@ -12,8 +12,8 @@ import {
 	view,
 	parse,
 	route,
-	globe,
 	req,
+	globe
 } from "~/config/shop"
 import {search_icon, close_icon} from "~/config/asset/icon.jsx"
 
@@ -31,8 +31,8 @@ export default () => {
 		await get_suggest()
 	})
 
-	var click_outside = (el, accessor) => {
-		var on_click = (e) => !el.contains(e.target) && accessor()?.()
+	var click_outside = (el, accessor = () => "") => {
+		var on_click = (e) => !el.contains(e.target) && accessor()
 		view.put_listen("click", on_click)
 		clean(() => view.cut_listen("click", on_click))
 	}
