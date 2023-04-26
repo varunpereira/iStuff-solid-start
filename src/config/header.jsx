@@ -40,7 +40,7 @@ export default () => {
 	react(() => {})
 
 	var sign_out = async () => {
-		var res = await req("/$/login/api/auth_cut", {email: globe().email})
+		var res = await req("/$/login/api/auth_cut", {email: globe()?.email})
 		globe({email: null, cart_size: 0})
 		nav("/signin")
 	}
@@ -65,7 +65,7 @@ export default () => {
 			() =>
 				width() >= 640 || menu_click() === true
 					? () =>
-							globe().email != null
+							globe()?.email != null
 								? d(
 										{
 											style: () =>
@@ -98,7 +98,7 @@ export default () => {
 										b(
 											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
 											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
-											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.sign_down_cart?.size),
+											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.cart_size),
 										),
 										b({click: () => nav("/signin"), style: () => "v1:a_row v2:a_null"}, () => "Sign in"),
 								  )

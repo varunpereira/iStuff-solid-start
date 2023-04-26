@@ -14,7 +14,7 @@ import cart from "~/feat/$/cart/cart"
 import paid from "~/feat/$/cart/paid"
 
 export default () => {
-	globe({email: null, cart_size: 0})
+	// can set globe here
 	var page = () => [
 		["*", def],
 		["/", home],
