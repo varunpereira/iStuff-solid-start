@@ -1,5 +1,5 @@
 clean() : infinite resources like timer, listener .
-everything in feat/ must have a child file starting with $ .
+everything in  must have a child file starting with $ .
 mount is after mounted, before render.
 for eg ages()[0], fine in script, but not show, fine since use inside map()
 spacing : mx-[0.5rem] , pt-[2rem] , rem is responsive not px
@@ -43,3 +43,6 @@ npm vercel, us clie to build locally same but quicker than cloud!
 can also deploy (vercel build, vercel [for deploy])
 every piece thats a page, needs a title else error.
 api can either be fine or fail/flaw
+hosting: fe any provider is fine incl free ones.
+however backend is pricy, firebase 3mil/month vs vercel .5mil/month, 
+vercel has 4 sec cold start plus 1 sec delay, firebase is always instant. hence separate backend from frontend.

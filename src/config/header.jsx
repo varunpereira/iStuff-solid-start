@@ -16,7 +16,7 @@ import {
 	globe
 } from "~/config/shop"
 import {shop_icon, menu_icon, cart_icon} from "~/config/asset/icon.jsx"
-import searcher from "~/feat/priv/search/searcher"
+import searcher from "~/search/searcher"
 
 export default () => {
 	var width = state()

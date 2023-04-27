@@ -173,7 +173,7 @@ export var struct = ({
 						{page().map((route) => (
 							<Route path={route[0]} component={route[1]} />
 						))}
-						<FileRoutes />
+						{/* <FileRoutes /> */}
 					</Routes>
 					{footer()}
 				</ErrorBoundary>
