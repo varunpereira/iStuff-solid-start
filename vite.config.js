@@ -5,7 +5,7 @@ import vercel from "solid-start-vercel"
 export default defineConfig({
 	plugins: [
 		solid({
-			adapter: vercel(),
+			adapter: vercel({edge: true}),
 			// appRoot: "./app/",
 			// serverEntry: './src/config/server' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
 			// clientEntry: './src/client' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
