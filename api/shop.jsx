@@ -21,6 +21,7 @@ import {
 	useNavigate,
 } from "solid-start"
 import "~/config/style.scss"
+import {redirect} from "solid-start/server"
 
 // generic
 
@@ -190,3 +191,21 @@ export var req = async (link = "", value = {}) => {
 //  server
 
 export var env = import.meta.env
+
+export var res = (body = {}, head = null) =>
+	new Response(
+		JSON.stringify(body),
+		head != null
+			? {
+					headers: {
+						"Set-Cookie": `cookie=${JSON.stringify(
+							head?.cookie?.value,
+						)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${head?.cookie?.age}; Domain=${
+							process.env.NODE_ENV === "production2" ? env.VITE_domain : ""
+						}`,
+					},
+			  }
+			: {},
+	)
+
+export var nav = redirect
