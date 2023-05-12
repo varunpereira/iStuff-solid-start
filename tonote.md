@@ -97,6 +97,7 @@ vercel has 4 sec cold start plus 1 sec delay, firebase is always instant. hence 
 cloudflare is garabage, backend funcs are fast but it cant conenct to any db 
 unless http which is slower, so it totals to a worse outcome. vercel better.
 solid dk why path var dont work in struct for page load.
+
 cross site tracking - in mobile browser secuirty settings, turn it off
 then cookie can be set. if they have same domain then issue solved, so buy
-one or use solid start. then change cookie same site from none to strict.
+one or use solid start. then change header set cookie of same site from none to strict. for fetch api add credentials to true.

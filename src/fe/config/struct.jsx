@@ -1,4 +1,3 @@
-import '~/fe/config/style.scss'
 import logo from "~/fe/config/asset/logo.jpg"
 import header from "~/fe/config/header"
 import footer from "~/fe/config/footer"
