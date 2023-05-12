@@ -15,7 +15,7 @@ import {
 	globe,
 } from "~/fe/config/shop"
 import batman_pic from "~/fe/config/asset/batman.jpg"
-// import {auth} from "~/fe/config/auth"
+import {auth} from "~/fe/config/auth"
 
 export default () => {
 	var car = state([batman_pic, "/home/2.jpg"])
@@ -27,7 +27,7 @@ export default () => {
 	var mute = state(true)
 
 	mount(async () => {
-		// await auth("pub")
+		await auth("pub")
 	})
 
 	clean(() => {
