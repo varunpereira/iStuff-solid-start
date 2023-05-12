@@ -1,3 +1,3 @@
-var tw = require("./src/config/tw.cjs")
+var tw = require("./src/fe/config/tw.cjs")
 
 module.exports = tw

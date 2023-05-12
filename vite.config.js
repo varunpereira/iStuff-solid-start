@@ -10,7 +10,7 @@ export default defineConfig({
 			// serverEntry: './src/config/server' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
 			// clientEntry: './src/client' + (process.env.NODE_ENV === 'production' ? '.jsx' : ''),
 			// rootEntry: "./root" + (process.env.NODE_ENV === "production" ? ".jsx" : ""),
-			// routesDir: './feat',
+			routesDir: './be/api',
 		}),
 	],
 })
