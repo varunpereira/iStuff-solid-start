@@ -20,7 +20,7 @@ import {auth} from "~/fe/config/auth"
 
 export default () => {
 	var nav = route()
-	var path_var = path.par()
+	var path_var = path.var()
 	var prod = state(null)
 	var review = state([])
 	var error = state(null)
@@ -33,11 +33,11 @@ export default () => {
 		})
 		prod(res.prod)
 		review(res.review)
-		title(prod()?.title + " - iStuff")
 	})
 
 	return d(
 		{style: () => "fit_2 c_white tc_black"},
+		title(prod()?.title + " - iStuff"),
 		d(
 			{style: () => "a_row_auto"},
 			d({}, () =>

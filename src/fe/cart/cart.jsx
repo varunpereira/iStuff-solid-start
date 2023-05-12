@@ -18,7 +18,6 @@ import {cut_icon} from "~/fe/config/asset/icon"
 import {auth} from "~/fe/config/auth"
 
 export default () => {
-	title("Cart - iStuff")
 	var nav = route()
 	var cart = state({})
 	var flaw = state()
@@ -79,6 +78,7 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1 c_white tc_black p-[2rem]"},
+	title({},()=>"Cart - iStuff"),
 		t({style: () => "ts_4 tw_2"}, () => "Cart: " + cart()?.size + " products"),
 		() =>
 			cart()?.prod?.map((v, k) =>

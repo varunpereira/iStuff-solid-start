@@ -16,10 +16,10 @@ import {
 } from "~/fe/config/shop"
 
 export default () => {
-	title("404 Error - iStuff")
 	var nav = route()
 	return d(
 		{style: () => "px-[1rem]"},
+	title({},()=>"404 Error - iStuff"),
 		t({}, () => "404 Error - Page not found"),
 		b({click: () => nav("/"), style: () => "hover:tc_grey"}, () => "Go Home"),
 	)

@@ -23,7 +23,7 @@ export default ({prod}) => {
 		d(
 			{style: () => "p-[1rem]"},
 			b(
-				{click: () => nav("/prod?_id=" + prod._id), style: () => "hover:underline ta_left"},
+				{click: () => nav("/prod/" + prod._id), style: () => "hover:underline ta_left"},
 				() => prod.title,
 			),
 			t({}, "$" + prod.price),

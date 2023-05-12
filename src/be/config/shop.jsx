@@ -41,14 +41,14 @@ export var res = (body = {}, head) =>
 		headers: {
 			[head?.cookie != null ? "Set-Cookie" : "test"]: `cookie=${JSON.stringify(
 				head?.cookie?.value,
-			)}; Secure; HttpOnly; SameSite=None; Path=/; Max-Age=${head?.cookie?.age}; ${
+			)}; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=${head?.cookie?.age}; ${
 				process.env.NODE_ENV === "production2" && "Domain=" + import.meta.env.VITE_domain + ";"
 			}`,
 			"Content-Type": "application/json",
 			"Access-Control-Allow-Origin":
 				process.env.NODE_ENV === "production"
 					? "https://" + import.meta.env.VITE_domain
-					: import.meta.env.VITE_domain_dev,
+					: "http://" + import.meta.env.VITE_domain_dev,
 			"Access-Control-Allow-Credentials": "true",
 			"Access-Control-Allow-Headers": "Content-Type, Authorization",
 			"Access-Control-Allow-Methods": "POST",

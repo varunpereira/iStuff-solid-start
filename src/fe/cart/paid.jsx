@@ -15,7 +15,6 @@ import {
 import {auth} from "~/fe/config/auth"
 
 export default () => {
-	title("Payment Success - iStuff")
 	var nav = route()
 	var path_par = path.par()
 
@@ -32,6 +31,7 @@ export default () => {
 
 	return d(
 		{style: () => "fit_2 c_white tc_black"},
+	title({},()=>"Payment Success - iStuff"),
 		d({}, () => "Payment Success!"),
 	)
 }

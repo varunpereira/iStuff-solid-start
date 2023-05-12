@@ -14,7 +14,6 @@ import {
 import {auth} from "~/fe/config/auth"
 
 export default () => {
-	title("Home - iStuff")
 	var nav = route()
 
 	mount(async () => {
@@ -25,5 +24,6 @@ export default () => {
 
 	return d(
 		{style: () => "fit_2 c_white tc_black"},
+	title({},()=>"Home - iStuff"),
 	)
 }

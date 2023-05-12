@@ -18,7 +18,6 @@ import batman_pic from '~/fe/config/asset/batman.jpg'
 import {auth} from "~/fe/config/auth"
 
 export default () => {
-	title("Contact - iStuff")
 	var car = state([batman_pic, "/home/2.jpg",])
 	var car_index = state(0)
 	var car_interv = timer.put(() => {
@@ -37,5 +36,6 @@ export default () => {
 
 	return d(
 		{style: () => "fit_2 c_white"},
+	title({},()=>"Contact - iStuff")
 	)
 }

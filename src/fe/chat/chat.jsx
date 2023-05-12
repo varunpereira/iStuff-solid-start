@@ -2,7 +2,6 @@ import {state, react, write, mount, env, d, title, req} from "~/fe/config/shop"
 import Pusher from "pusher-js"
 
 export default () => {
-	title("Chat - iStuff")
 	var chats = state([])
 	var msg = state("")
 	var sender = "def"
@@ -27,6 +26,7 @@ export default () => {
 
 	return (
 		<>
+			{title({}, () => "Chat - iStuff")}
 			<p>Hello, {sender}</p>
 			<div class="bg-red-800">
 				chats:

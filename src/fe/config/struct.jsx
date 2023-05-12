@@ -19,7 +19,7 @@ var page = () => [
 	["/signup", sign_up],
 	["/chat", chat],
 	["/search", search],
-	["/prod", prod],
+	["/prod/:_id", prod],
 	["/cart", cart],
 	["/cart/paid", paid],
 ]

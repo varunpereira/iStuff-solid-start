@@ -18,7 +18,6 @@ import prod_short from "~/fe/prod/short"
 import {auth} from "~/fe/config/auth"
 
 export default () => {
-	title("Search Results - iStuff")
 	var nav = route()
 	var path_par = path.par()
 	var prod = state([])
@@ -38,6 +37,7 @@ export default () => {
 
 	return d(
 		{style: () => "fit_2 "},
+	title({},()=>"Search Results - iStuff"),
 		() =>
 			prod().length === 0
 				? t({}, () => "No results for " + path_par.term)
