@@ -74,7 +74,7 @@ export default () => {
 			{style: () => "a_row_auto mb-[2rem]"},
 			d(
 				{style: () => "a_row"},
-				d({style: () => "mr-[1rem] a_col ay_equal gap-[.5rem]"}, () =>
+				d({style: () => "mr-[.5rem] a_col ay_equal gap-[.5rem]"}, () =>
 					prod()?.pic.map((v, k) =>
 						b(
 							{click: () => pic_pick(k), style: () => ""},
@@ -99,11 +99,11 @@ export default () => {
 				t({style: () => "mb-[1rem]"}, () => "Seller: " + prod()?.email),
 				d(
 					{style: () => "a_row mb-[1rem]"},
-					b({click: dec}, () => "-"),
+					b({click: dec, style:()=>'mr-[.25rem]'}, () => "-"),
 					i({
 						value: () => size(),
 						input: size_input,
-						style: () => "w-[3rem] bw_1 bc_black r_1 px-[.25rem]",
+						style: () => "w-[3rem] bw_1 bc_black r_1 px-[.25rem] mr-[.25rem]",
 					}),
 					b({click: inc}, () => "+"),
 				),
