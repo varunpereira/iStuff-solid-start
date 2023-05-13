@@ -17,6 +17,7 @@ import {
 	str,
 } from "~/fe/config/shop"
 import {auth} from "~/fe/config/auth"
+import review_short from '~/fe/prod/review/short'
 
 export default () => {
 	var nav = route()
@@ -36,27 +37,30 @@ export default () => {
 	})
 
 	return d(
-		{style: () => "fit_2 c_white tc_black"},
+		{style: () => "fit_1 c_white tc_black"},
 		title({}, () => prod()?.title + " - iStuff"),
 		d(
-			{style: () => "a_row_auto"},
-			d({}, () =>
-				prod()?.pic.map((v, k) =>
-					b(
-						{click: () => pic_pick(k), style: () => "a_col ay_equal gap-[1rem]"},
-						p({value: () => v.url, style: () => "w-[4rem] h-[4rem] e_fit bw_1 bc_black r_1"}),
+			{style: () => "a_row_auto mb-[2rem]"},
+			d(
+				{style: () => "a_row"},
+				d({style:()=>'mr-[1rem] a_col ay_equal gap-[.5rem]'}, () =>
+					prod()?.pic.map((v, k) =>
+						b(
+							{click: () => pic_pick(k), style: () => ""},
+							p({value: () => v.url, style: () => "w-[3rem] h-[3rem] e_fit bw_1 bc_black r_1"}),
+						),
 					),
 				),
+				p({
+					value: () => prod()?.pic[pic_pick()]?.url,
+					style: () => "w-[30rem] h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
+				}),
 			),
-			p({
-				value: () => prod()?.pic[pic_pick()]?.url,
-				style: () => "w-[30rem] h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
-			}),
 			d(
-				{style: () => ""},
-				t({}, () => prod()?.title),
+				{style: () => "w-[20rem]"},
+				t({style:()=>'tw_1 ts_3'}, () => prod()?.title),
 				t({}, () => "View Reviews"),
-				t({}, () => "$" + prod()?.price),
+				t({style:()=>'tw_1 ts_3'}, () => "$" + prod()?.price),
 				t({style: () => ""}, () => "Description:"),
 				t({style: () => ""}, () => prod()?.des),
 				t({style: () => ""}, () => "Sold: " + prod()?.sold),
@@ -66,9 +70,13 @@ export default () => {
 		),
 		d(
 			{style: () => ""},
-			t({}, () => "Reviews"),
+			t({style:()=>'tw_1 ts_3'}, () => "Reviews"),
 			t({}, () => "Add Review"),
-			t({}, () => review().length + " reviews."),
+			t({style:() => "mb-[1rem]"}, () => review().length + " reviews."),
+			d(
+				{style: () => "a_row_auto gap-[1rem]"},
+				()=>review().map((v, k) => review_short({review: v})),
+			),
 		),
 	)
 }

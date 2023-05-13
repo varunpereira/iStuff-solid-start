@@ -142,7 +142,7 @@ export default () => {
 		b(
 			{click: put_mic},
 			mic_icon({
-				style: () => "z_put c_white right-[2rem] top-[.3rem] tc_black w-[1.3rem] h-[1.3rem]",
+				style: () => "z_put c_white right-[2rem] top-[.5rem] tc_black w-[1rem] h-[1rem]",
 			}),
 		),
 		b(

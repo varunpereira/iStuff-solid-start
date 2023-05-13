@@ -30,7 +30,7 @@ export default () => {
 	react(() => {})
 
 	return d(
-		{style: () => "fit_2 c_white tc_black"},
+		{style: () => "fit_1 c_white tc_black"},
 	title({},()=>"Payment Success - iStuff"),
 		d({}, () => "Payment Success!"),
 	)

@@ -37,7 +37,7 @@ export default () => {
 	// react(() => write(car_index()))
 
 	return d(
-		{style: () => "fit_2 c_white tc_black"},
+		{style: () => "fit_3 c_white tc_black"},
 		title({},() =>"Home - iStuff"),
 		p({value: () => batman_pic, style: () => "w_full"}),
 		// ()=>car_index()

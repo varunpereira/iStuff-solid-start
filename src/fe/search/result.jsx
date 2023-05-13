@@ -36,7 +36,7 @@ export default () => {
 	})
 
 	return d(
-		{style: () => "fit_2 "},
+		{style: () => "fit_1 "},
 	title({},()=>"Search Results - iStuff"),
 		() =>
 			prod().length === 0

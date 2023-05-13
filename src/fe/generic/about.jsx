@@ -35,7 +35,7 @@ export default () => {
 	// })
 
 	return d(
-		{style: () => "fit_2 c_white"},
+		{style: () => "fit_1 c_white"},
 	title({},()=>"About - iStuff")
 	)
 }
