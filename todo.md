@@ -1,3 +1,4 @@
+put pager for search results page.
 fix tailwind.
 add oauth
 not auth user still saved to db.

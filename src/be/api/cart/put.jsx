@@ -7,7 +7,6 @@ export var POST = async ({request}) => {
 	var {prod, prod_size} = await request.json()
 	var {email, token} = cookie(request?.headers?.get("cookie"))
 	db()
-
 	// after validation
 	var set_prod = await prod_model.updateOne(
 		{_id: prod._id},

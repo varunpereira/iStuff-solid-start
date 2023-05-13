@@ -98,7 +98,7 @@ export var i = ({
 	key = () => "",
 }) => (
 	<input
-		class={style()}
+		class={style() + " o_null"}
 		type={type()}
 		value={value()}
 		onInput={input}

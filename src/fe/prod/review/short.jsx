@@ -11,12 +11,12 @@ export default ({review}) => {
 		d(
 			{style: () => "a_row"},
 			() =>
-				list
-					.from({length: review?.rating}, (v, k) => k + 1)
+				list(review?.rating)
+					.fill()
 					.map((v, k) => star_icon({style: () => "w-[1rem] h-[1rem] ic_black"})),
 			() =>
-				list
-					.from({length: 5 - review?.rating}, (v, k) => k + 1)
+				list(review?.rating)
+					.fill()
 					.map((v, k) => star_icon({style: () => "w-[1rem] h-[1rem] ic_null ibc_black"})),
 		),
 		t({}, () => review?.description),
