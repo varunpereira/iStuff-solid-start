@@ -17,7 +17,7 @@ export var POST = async ({request}) => {
 	}
 	var user_exist = await user_model.findOne({email})
 	// check if user exists but signed out
-	if (user_exist != null) {
+	if (user_exist != null && email != null) {
 		return res({
 			user,
 			cart_size: cart.size,
