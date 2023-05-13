@@ -37,18 +37,21 @@ export default () => {
 
 	return d(
 		{style: () => "fit_2 c_white tc_black"},
-		title(prod()?.title + " - iStuff"),
+		title({}, () => prod()?.title + " - iStuff"),
 		d(
 			{style: () => "a_row_auto"},
 			d({}, () =>
 				prod()?.pic.map((v, k) =>
 					b(
-						{click: () => pic_pick(k), style:()=>'a_col ay_equal gap-[1rem]'},
+						{click: () => pic_pick(k), style: () => "a_col ay_equal gap-[1rem]"},
 						p({value: () => v.url, style: () => "w-[4rem] h-[4rem] e_fit bw_1 bc_black r_1"}),
 					),
 				),
 			),
-			p({value: () => prod()?.pic[pic_pick()]?.url, style: () => "w-[30rem] h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1"}),
+			p({
+				value: () => prod()?.pic[pic_pick()]?.url,
+				style: () => "w-[30rem] h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
+			}),
 			d(
 				{style: () => ""},
 				t({}, () => prod()?.title),
