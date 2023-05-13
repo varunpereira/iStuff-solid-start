@@ -8,13 +8,11 @@ export default ({prod}) => {
 		if (prod.stock === 0) {
 			return flaw("This product is out of stock.")
 		}
-		if (globe().email != null) {
-			var res = await req("/cart/put", {
-				prod,
-				prod_size: 1,
-			})
-			return globe({...globe(), cart_size: globe().cart_size += 1})
-		}
+		var res = await req("/cart/put", {
+			prod,
+			prod_size: 1,
+		})
+		return globe({...globe(), cart_size: (globe().cart_size += 1)})
 	}
 
 	return d(

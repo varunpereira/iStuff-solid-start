@@ -1,11 +1,11 @@
 import {write, env, res, cookie} from "~/be/config/shop"
 import order_model from "~/be/config/db/model/order"
 import prod_model from "~/be/config/db/model/prod"
-import {db} from '~/be/config/db/join'
+import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
 	var {prod, prod_size} = await request.json()
-	var {email} = cookie(request?.headers?.get("cookie"))
+	var {email, token} = cookie(request?.headers?.get("cookie"))
 	db()
 
 	// after validation
@@ -15,10 +15,11 @@ export var POST = async ({request}) => {
 			$inc: {sold: prod_size, stock: -prod_size},
 		},
 	)
-	// cart = current_order
+	// cart is current order
 	var cart = await order_model.updateOne(
 		{
 			email,
+			token,
 			current: true,
 			prod: {$elemMatch: {_id: prod._id}},
 		},

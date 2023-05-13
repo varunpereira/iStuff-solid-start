@@ -24,10 +24,8 @@ export default () => {
 
 	mount(async () => {
 		await auth("pub")
-		if (globe().email != null) {
-			var res = await req("/cart/get")
-			return cart(res.cart)
-		}
+		var res = await req("/cart/get")
+		return cart(res.cart)
 	})
 
 	var cut = async (prod) => {
@@ -78,7 +76,7 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1 c_white tc_black p-[2rem]"},
-	title({},()=>"Cart - iStuff"),
+		title({}, () => "Cart - iStuff"),
 		t({style: () => "ts_4 tw_2"}, () => "Cart: " + cart()?.size + " products"),
 		() =>
 			cart()?.prod?.map((v, k) =>
