@@ -41,7 +41,7 @@ export var POST = async ({request}) => {
 		token: put_user._id,
 		current: true,
 	}).save()
-	var value = {email: null, token: put_user._id}
+	var value = {email: null, token: put_user._id, cart_size:0}
 	var age = 30 * 24 * 60 * 60 // 30 days
 	// user needs to refresh page for cookie to load
 	return res(value, {cookie: {value, age}})
