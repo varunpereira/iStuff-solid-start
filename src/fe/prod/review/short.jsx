@@ -15,7 +15,7 @@ export default ({review}) => {
 					.fill()
 					.map((v, k) => star_icon({style: () => "w-[1rem] h-[1rem] ic_black"})),
 			() =>
-				list(review?.rating)
+				list(5 - review?.rating)
 					.fill()
 					.map((v, k) => star_icon({style: () => "w-[1rem] h-[1rem] ic_null ibc_black"})),
 		),
