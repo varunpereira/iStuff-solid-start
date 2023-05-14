@@ -84,7 +84,7 @@ export default () => {
 				),
 				p({
 					value: () => prod()?.pic[pic_pick()]?.url,
-					style: () => "w-[30rem] h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
+					style: () => "w-[20rem] h-[20rem] v2:w-[30rem] v2:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
 				}),
 			),
 			d(
