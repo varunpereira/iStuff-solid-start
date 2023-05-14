@@ -71,7 +71,7 @@ export default () => {
 		{style: () => "fit_1 c_white tc_black"},
 		title({}, () => prod()?.title + " - iStuff"),
 		d(
-			{style: () => "a_row_auto mb-[2rem]"},
+			{style: () => "a_row_auto v1:mb-[1rem] v2:mb-[2rem]"},
 			d(
 				{style: () => "a_row"},
 				d({style: () => "mr-[.5rem] a_col ay_equal gap-[.5rem]"}, () =>
@@ -84,7 +84,7 @@ export default () => {
 				),
 				p({
 					value: () => prod()?.pic[pic_pick()]?.url,
-					style: () => "v1:w-[20rem] v1:h-[20rem] v2:w-[30rem] v2:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
+					style: () => "v1:w-[20.5rem] v1:h-[20.5rem] v2:w-[30rem] v2:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
 				}),
 			),
 			d(
@@ -99,15 +99,15 @@ export default () => {
 				t({style: () => "mb-[1rem]"}, () => "Seller: " + prod()?.email),
 				d(
 					{style: () => "a_row mb-[1rem]"},
-					b({click: dec, style:()=>'mr-[.25rem]'}, () => "-"),
+					b({click: dec, style:()=>'mr-[.4rem] tw_1 ts_3'}, () => "-"),
 					i({
 						value: () => size(),
 						input: size_input,
-						style: () => "w-[3rem] bw_1 bc_black r_1 px-[.25rem] mr-[.25rem]",
+						style: () => "w-[3.5rem] bw_1 bc_black r_1 pl-[.5rem] mr-[.25rem]",
 					}),
-					b({click: inc}, () => "+"),
+					b({click: inc,style:()=>'tw_1 ts_3'}, () => "+"),
 				),
-				b({click: cart_put, style: () => "c_black tc_white r_1 p-[.5rem]"}, () => "Add"),
+				b({click: cart_put, style: () => "c_black tc_white r_1 p-[.5rem] mb-[1rem]"}, () => "Add"),
 				t({style: () => "h-[1rem] tc_red"}, () => flaw()),
 			),
 		),
