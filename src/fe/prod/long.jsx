@@ -84,11 +84,11 @@ export default () => {
 				),
 				p({
 					value: () => prod()?.pic[pic_pick()]?.url,
-					style: () => "w-[20rem] h-[20rem] v2:w-[30rem] v2:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
+					style: () => "v1:w-[20rem] v1:h-[20rem] v2:w-[30rem] v2:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
 				}),
 			),
 			d(
-				{style: () => "w-[20rem]"},
+				{style: () => "w-[20rem] v1:mt-[1rem]"},
 				t({style: () => "tw_1 ts_3"}, () => prod()?.title),
 				t({}, () => "View Reviews"),
 				t({style: () => "tw_1 ts_3 mb-[1rem]"}, () => "$" + prod()?.price),
