@@ -3,10 +3,11 @@ module.exports = {
 	theme: {
 		screens: {
 			v1: "0px",
-			v2: "640px",
-			v3: "768px",
-			v4: "1024px",
-			v5: "1280px",
+			v2: "320px",
+			v3: "640px",
+			v4: "768px",
+			v5: "1024px",
+			v6: "1280px",
 		},
 	},
 }

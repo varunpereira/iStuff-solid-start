@@ -101,3 +101,9 @@ solid dk why path var dont work in struct for page load.
 cross site tracking - in mobile browser secuirty settings, turn it off
 then cookie can be set. if they have same domain then issue solved, so buy
 one or use solid start. then change header set cookie of same site from none to strict. for fetch api add credentials to true.
+
+ideal world:
+inet - one place for all your shopping, socialising, streaming and gaming.
+your physical manifestation in the digital world.
+like combo of amazon, facebook, netflix, steam.
+regardless of device - web, mobile, desktop, version, os, time, place

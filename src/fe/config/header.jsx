@@ -55,12 +55,12 @@ export default () => {
 		searcher(),
 		b(
 			{click: () => menu_click(!menu_click())},
-			menu_icon({style: () => "v1:see v2:hide w-[1.75rem] h-[1.75rem]"}),
+			menu_icon({style: () => "v2:see v3:hide w-[1.75rem] h-[1.75rem]"}),
 		),
 		d(
 			{
 				style: () =>
-					"z_fit v1:z_put v1:c_black v1:a_row v1:ax_left v1:px-[1rem] v1:left-[0rem] v1:top-[2.5rem] v1:w_full v2:z_normal v2:px-[0rem] v2:w_fit",
+					"z_fit v2:z_put v2:c_black v2:a_row v2:ax_left v2:px-[1rem] v2:left-[0rem] v2:top-[2.5rem] v2:w_full v3:z_normal v3:px-[0rem] v3:w_fit",
 			},
 			() =>
 				width() >= 640 || menu_click() === true
@@ -69,8 +69,8 @@ export default () => {
 								? d(
 										{
 											style: () =>
-												"v1:w_full v1:a_col v2:z_fit v2:a_row v2:ax_right v2:w_fit v2:pt-[.2rem] v2:r_null" +
-												(!acc_click() ? "v1:rb_1" : ""),
+												"v2:w_full v2:a_col v3:z_fit v3:a_row v3:ax_right v3:w_fit v3:pt-[.2rem] v3:r_null" +
+												(!acc_click() ? "v2:rb_1" : ""),
 										},
 										b(
 											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
@@ -87,20 +87,20 @@ export default () => {
 														{
 															click: sign_out,
 															style: () =>
-																"a_row c_black v2:z_put v2:right-[0rem] v2:left_auto v2:px-[1rem] v2:w-[10rem] v2:top-[2.5rem] rb_1",
+																"a_row c_black v3:z_put v3:right-[0rem] v3:left_auto v3:px-[1rem] v3:w-[10rem] v3:top-[2.5rem] rb_1",
 														},
 														() => "Sign out",
 												  )
 												: "",
 								  )
 								: d(
-										{style:()=> 'v1:w_full v1:a_col v2:a_row'},
+										{style:()=> 'v2:w_full v2:a_col v3:a_row'},
 										b(
 											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
 											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
 											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.cart_size),
 										),
-										b({click: () => nav("/signin"), style: () => "v1:a_row v2:a_null"}, () => "Sign in"),
+										b({click: () => nav("/signin"), style: () => "v2:a_row v3:a_null"}, () => "Sign in"),
 								  )
 					: "",
 		),

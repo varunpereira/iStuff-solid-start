@@ -71,7 +71,7 @@ export default () => {
 		{style: () => "fit_1 c_white tc_black"},
 		title({}, () => prod()?.title + " - iStuff"),
 		d(
-			{style: () => "a_row_auto v1:mb-[1rem] v2:mb-[2rem]"},
+			{style: () => "a_row_auto v2:mb-[1rem] v3:mb-[2rem]"},
 			d(
 				{style: () => "a_row"},
 				d({style: () => "mr-[.5rem] a_col ay_equal gap-[.5rem]"}, () =>
@@ -84,11 +84,11 @@ export default () => {
 				),
 				p({
 					value: () => prod()?.pic[pic_pick()]?.url,
-					style: () => "v1:w-[20.5rem] v1:h-[20.5rem] v2:w-[30rem] v2:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
+					style: () => "v2:w-[20.5rem] v2:h-[20.5rem] v3:w-[30rem] v3:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
 				}),
 			),
 			d(
-				{style: () => "w-[20rem] v1:mt-[1rem]"},
+				{style: () => "w-[20rem] v2:mt-[1rem]"},
 				t({style: () => "tw_1 ts_3"}, () => prod()?.title),
 				t({}, () => "View Reviews"),
 				t({style: () => "tw_1 ts_3 mb-[1rem]"}, () => "$" + prod()?.price),
@@ -103,7 +103,7 @@ export default () => {
 					i({
 						value: () => size(),
 						input: size_input,
-						style: () => "w-[3.5rem] bw_1 bc_black r_1 pl-[.5rem] mr-[.25rem]",
+						style: () => "w-[3.5rem] bw_1 bc_black r_1 mr-[.25rem] ta_mid",
 					}),
 					b({click: inc,style:()=>'tw_1 ts_3'}, () => "+"),
 				),

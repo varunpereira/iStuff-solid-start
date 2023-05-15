@@ -1,31 +1,54 @@
-import {state, mount, react, write, d, t, b, i, p, route, req, globe} from "~/fe/config/shop"
+import {
+	state,
+	mount,
+	react,
+	write,
+	d,
+	t,
+	b,
+	i,
+	p,
+	route,
+	req,
+	globe,
+	list,
+	num,
+} from "~/fe/config/shop"
+import {right_icon, left_icon} from "~/fe/config/asset/icon"
 
-export default ({cur,size}) => {
+export default ({cur, size, link}) => {
 	var nav = route()
 	var flaw = state()
 
-	var cart_put = async () => {
-		if (prod.stock === 0) {
-			return flaw("This product is out of stock.")
-		}
-		var res = await req("/cart/put", {
-			prod,
-			prod_size: 1,
-		})
-		return globe({...globe(), cart_size: (globe().cart_size += 1)})
-	}
-
 	return d(
-		{style: () => "c_white tc_black r_1 w-[12rem] h-[15rem] ts_1"},
-		p({value: () => prod.pic[0].url, style: () => "h-[6rem] rt_1 w_full e_full"}),
-		d(
-			{style: () => "p-[1rem]"},
-			b(
-				{click: () => nav("/prod/" + prod._id), style: () => "hover:underline ta_left"},
-				() => prod.title,
-			),
-			t({}, "$" + prod.price),
-			b({click: cart_put, style: () => "c_black tc_white r_1 p-[.5rem]"}, () => "Add"),
+		{style: () => "c_white tc_black r_1 ts_1 h_fit w_fit a_row ay_mid"},
+		b(
+			{
+				style: () => "px-[.2rem]",
+				click: () => (cur() >= 2 ? nav(link() + "&page=" + (num(cur()) - 1)) : ""),
+			},
+			left_icon({style: () => "w-[1.2rem] h-[1.2rem]"}),
+		),
+		() =>
+			list(size())
+				.fill()
+				.map((v, k) =>
+					b(
+						{
+							click: () => nav(link() + "&page=" + (k + 1)),
+							style: () =>
+								"w-[2rem] h-[2rem] hover:c_grey ta_mid bw_1 bc_grey pt-[0rem] " +
+								(k + 1 === num(cur()) ? "c_grey" : ""),
+						},
+						() => k + 1,
+					),
+				),
+		b(
+			{
+				style: () => " px-[.2rem]",
+				click: () => (cur() < size() ? nav(link() + "&page=" + (num(cur()) + 1)) : ""),
+			},
+			right_icon({style: () => "w-[1.2rem] h-[1.2rem]"}),
 		),
 	)
 }
