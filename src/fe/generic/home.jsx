@@ -5,24 +5,29 @@ import {
 	mount,
 	clean,
 	write,
+	route,
 	d,
 	t,
 	b,
-	route,
 	v,
 	p,
 	timer,
 	globe,
 } from "~/fe/config/shop"
-import batman_pic from "~/fe/config/asset/batman.jpg"
 import {auth} from "~/fe/config/auth"
+import car1 from "~/fe/generic/asset/1.jpg"
+import car2 from "~/fe/generic/asset/2.jpg"
+import car3 from "~/fe/generic/asset/3.jpg"
+import car4 from "~/fe/generic/asset/4.jpg"
+import lotr_vid from "~/fe/generic/asset/lotr_2.mp4"
+import lotr from "~/fe/generic/asset/lotr_2.png"
 
 export default () => {
-	var car = state([batman_pic, "/home/2.jpg"])
+	var car = state([car1, car2, car3, car4])
 	var car_index = state(0)
-	// var car_interv = timer.put(() => {
-	// 	car_index(car_index()+1)
-	// }, 3000)
+	var car_interv = timer.put(() => {
+		car_index((i) => (i + 1) % car().length)
+	}, 3000)
 	var nav = route()
 	var mute = state(true)
 
@@ -31,15 +36,32 @@ export default () => {
 	})
 
 	clean(() => {
-		// timer.cut(car_interv)
+		timer.cut(car_interv)
 	})
 
-	// react(() => write(car_index()))
-
 	return d(
-		{style: () => "fit_3 c_white tc_black"},
-		title({},() =>"Home - iStuff"),
-		p({value: () => batman_pic, style: () => "w_full"}),
-		// ()=>car_index()
+		{},
+		title({}, () => "Home"),
+		v({
+			def: () => lotr,
+			value: () => lotr_vid,
+			mute: () => mute(),
+			hover_in: (e) => e.target.play(),
+			hover_out: (e) => e.target.pause(),
+			style: () => "w-[100%]",
+			click: () => mute(false),
+		}),
+		t(
+			{
+				style: () =>
+					"fit_1 px-[1rem] py-[1rem] a_row ay_mid my-[3rem] tc_aqua ts_3 tw_2",
+			},
+			() => "Trending",
+		),
+		p({
+			def: () => "trending",
+			value: () => car()[car_index()],
+			style: () => "w-[100%]",
+		}),
 	)
 }

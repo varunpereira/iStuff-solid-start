@@ -77,8 +77,14 @@ $red: red;
 	.ta_mid {
 		text-align: center;
 	}
+	.ta_equal {
+		text-align: justify;
+	}
 	.ta_left {
 		text-align: left;
+	}
+	.ta_right {
+		text-align: l;
 	}
 	/* expose  */
 	.e_fit {
@@ -222,7 +228,7 @@ $red: red;
 		align-content: flex-end;
 	}
 	.ay_equal {
-		align-content: center;
+		align-content: space-between;
 	}
 	/* default: block, also: flex, grid */
 	.hide {

@@ -88,7 +88,7 @@ export default () => {
 				}),
 			),
 			d(
-				{style: () => "w-[20rem] v2:mt-[1rem]"},
+				{style: () => "w-[20rem] v2:mt-[1rem] v3:mt-[0rem]"},
 				t({style: () => "tw_1 ts_3"}, () => prod()?.title),
 				t({}, () => "View Reviews"),
 				t({style: () => "tw_1 ts_3 mb-[1rem]"}, () => "$" + prod()?.price),
