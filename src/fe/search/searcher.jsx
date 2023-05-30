@@ -48,6 +48,7 @@ export default () => {
 		var res = await req("/search/suggest", {search: form_data().search, theme, page})
 		suggest(res.prod)
 		suggest_on() === "wait" ? "" : suggest_on(true)
+		suggest_picked(null)
 	}
 
 	var key = (e) => {
