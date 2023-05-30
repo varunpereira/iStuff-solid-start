@@ -48,7 +48,6 @@ export default () => {
 		var res = await req("/search/suggest", {search: form_data().search, theme, page})
 		suggest(res.prod)
 		suggest_on() === "wait" ? "" : suggest_on(true)
-		suggest_picked(null)
 	}
 
 	var key = (e) => {
@@ -66,6 +65,8 @@ export default () => {
 			form_data({...form_data(), search: suggest()[suggest_picked()].title})
 		}
 	}
+
+	react(()=>write(suggest_picked()))
 
 	var put_mic = () => {
 		if (window.hasOwnProperty("webkitSpeechRecognition")) {
@@ -92,7 +93,9 @@ export default () => {
 	return d(
 		{style: () => "c_white w_full h-[2rem] r_full z_fit mr-[1rem]"},
 		i({
-			click: async () => await get_suggest(),
+			click: async () => {
+				await get_suggest() 
+			},
 			type: () => "text",
 			value: () => form_data().search,
 			input: async (e) => {

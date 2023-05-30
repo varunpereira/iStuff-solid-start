@@ -49,7 +49,7 @@ export default () => {
 			hover_in: (e) => e.target.play(),
 			hover_out: (e) => e.target.pause(),
 			click: () => mute(false),
-			style: () => "fit_3",
+			style: () => "fit_3 w_full",
 		}),
 		t(
 			{
@@ -61,7 +61,7 @@ export default () => {
 		p({
 			def: () => "trending",
 			value: () => car()[car_index()],
-			style: () => "fit_3",
+			style: () => "fit_3 w_full",
 		}),
 	)
 }

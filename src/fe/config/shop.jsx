@@ -9,6 +9,7 @@ import {
 } from "solid-js"
 import {Router, Routes, Route, useNavigate, useSearchParams, useParams} from "@solidjs/router"
 import {Title} from 'solid-start'
+import {title_def} from "~/fe/config/struct"
 
 export var state = (def) => {
 	var [get, set] = createSignal(def)
@@ -18,14 +19,10 @@ export var state = (def) => {
 export var globe = state()
 
 export var route = useNavigate
+
 export var nav_full = (link) => (window.location.href = link)
 
-export var route2 = (route) => {
-	var nav = useNavigate
-	return nav(route)
-}
-
-export var title = ({}, value = () => "") => <Title>{value()}</Title>
+export var title = ({}, value = () => "") => <Title>{value() + title_def()}</Title>
 
 export var react = createEffect
 
