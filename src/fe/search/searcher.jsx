@@ -21,7 +21,7 @@ export default () => {
 	var form_error = state()
 	var form_data = state({search: ""})
 	var suggest = state([])
-	var suggest_picked = state(0)
+	var suggest_picked = state(null)
 	var suggest_on = state(true)
 	var mic_on = state(false)
 	var themes = ["all", "tech"]
@@ -56,7 +56,9 @@ export default () => {
 		} else if (e.key === "Escape") {
 			form_data({...form_data(), search: ""})
 		} else if (e.key === "ArrowDown") {
-			suggest_picked((suggest_picked() + 1) % suggest().length)
+			suggest_picked() == null
+				? suggest_picked(0)
+				: suggest_picked((suggest_picked() + 1) % suggest().length)
 			form_data({...form_data(), search: suggest()[suggest_picked()].title})
 		} else if (e.key === "ArrowUp") {
 			suggest_picked((suggest_picked() - 1 + suggest().length) % suggest().length)
@@ -115,7 +117,7 @@ export default () => {
 						? d(
 								{
 									custom: (e) => click_outside(e, () => suggest_on(false)),
-									style: () => "z_put a_col c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]",
+									style: () => "z_put z-[2] a_col c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]",
 								},
 								() =>
 									suggest().map((v, k) =>
@@ -126,7 +128,7 @@ export default () => {
 													form_data({...form_data(), search: v.title})
 													form_submit(v.title)
 												},
-												style: () => "a_row " + (suggest_picked() === k && "bg-gray-400"),
+												style: () => "a_row hover:bg-gray-400 " + (suggest_picked() === k && "bg-gray-400"),
 											},
 											() => v.title,
 										),
