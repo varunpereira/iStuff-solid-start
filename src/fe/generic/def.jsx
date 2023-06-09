@@ -19,7 +19,7 @@ export default () => {
 	var nav = route()
 	return d(
 		{style: () => "px-[1rem]"},
-	title({},()=>"404 Error - iStuff"),
+	title({},()=>"404 Error"),
 		t({}, () => "404 Error - Page not found"),
 		b({click: () => nav("/"), style: () => "hover:tc_grey"}, () => "Go Home"),
 	)

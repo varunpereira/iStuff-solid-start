@@ -51,7 +51,7 @@ export default () => {
 		size() < prod().stock && size(size() + 1)
 	}
 	var dec = () => {
-		size() >= 1 && size(size() - 1)
+		size() >= 2 && size(size() - 1)
 	}
 
 	var size_input = (e) => {
@@ -69,7 +69,7 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1 c_white tc_black"},
-		title({}, () => prod()?.title + " - iStuff"),
+		title({}, () => prod()?.title + ""),
 		d(
 			{style: () => "a_row_auto v2:mb-[1rem] v3:mb-[2rem]"},
 			d(

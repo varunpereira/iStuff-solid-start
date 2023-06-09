@@ -12,9 +12,10 @@ import {
 	view,
 	route,
 	req,
-	globe, any
+	globe,
+	any,
 } from "~/fe/config/shop"
-import {shop_icon, menu_icon, cart_icon} from "~/fe/config/asset/icon"
+import {shop_icon, menu_icon, cart_icon, sign_in_icon} from "~/fe/config/asset/icon"
 import searcher from "~/fe/search/searcher"
 
 export default () => {
@@ -46,11 +47,11 @@ export default () => {
 	}
 
 	return d(
-		{style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal "},
+		{style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal z_fix bottom-[0rem] w_full c_black"},
 		b(
-			{click: () => nav("/"), style: () => "a_row ax_left tc_aqua tw_1 ts_3 mr-[1rem]"},
-			shop_icon({style: () => "w-[2rem] h-[1.5rem] mt-[.2rem] tc_aqua"}),
-			t({}, () => "iStuff"),
+			{click: () => nav("/"), style: () => "a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"},
+			shop_icon({style: () => "w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]"}),
+			t({style: () => ""}, () => "iStuff"),
 		),
 		searcher(),
 		b(
@@ -94,13 +95,16 @@ export default () => {
 												: "",
 								  )
 								: d(
-										{style:()=> 'v2:w_full v2:a_col v3:a_row'},
+										{style: () => "v2:w_full v2:a_col v3:a_row"},
 										b(
 											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
 											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
 											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.cart_size),
 										),
-										b({click: () => nav("/signin"), style: () => "v2:a_row v3:a_null"}, () => "Sign in"),
+										b(
+											{click: () => nav("/signin"), style: () => "v2:a_row v3:a_null"},
+											sign_in_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
+										),
 								  )
 					: "",
 		),

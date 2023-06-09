@@ -57,8 +57,8 @@ export default () => {
 			form_data({...form_data(), search: ""})
 		} else if (e.key === "ArrowDown") {
 			suggest_picked() == null
-				? suggest_picked(0)
-				: suggest_picked((suggest_picked() + 1) % suggest().length)
+				? suggest_picked((suggest_picked() + 1) % suggest().length) 
+				: suggest_picked(0)
 			form_data({...form_data(), search: suggest()[suggest_picked()].title})
 		} else if (e.key === "ArrowUp") {
 			suggest_picked((suggest_picked() - 1 + suggest().length) % suggest().length)
@@ -91,7 +91,7 @@ export default () => {
 	}
 
 	return d(
-		{style: () => "c_white w_full h-[2rem] r_full z_fit mr-[1rem]"},
+		{style: () => "c_black tc_white w_full h-[2rem] r_full z_fit mr-[1rem]"},
 		i({
 			click: async () => {
 				await get_suggest() 
@@ -104,16 +104,16 @@ export default () => {
 			},
 			key,
 			holder: () => "search millions of products...",
-			style: () => "tc_black r_full px-[.8rem] w_full h_full o_null",
+			style: () => "c_black r_full px-[.8rem] w_full h_full o_null",
 		}),
 		() =>
 			form_data().search.trim() !== "" &&
 			d(
-				{style: () => ""},
+				{},
 				b(
 					{click: () => form_data({...form_data(), search: ""})},
 					close_icon({
-						style: () => "z_put c_white right-[3.75rem] top-[.6rem] tc_black w-[.8rem] h-[.8rem]",
+						style: () => "z_put c_black z-[4] ic_black ibc_white right-[3.75rem] top-[.6rem] w-[.8rem] h-[.8rem]",
 					}),
 				),
 				() =>
@@ -121,7 +121,7 @@ export default () => {
 						? d(
 								{
 									custom: (e) => click_outside(e, () => suggest_on(false)),
-									style: () => "z_put z-[2] a_col c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]",
+									style: () => "z_put z-[2] a_col c_black bottom-[2.5rem] w_full r_1 p-[1rem]",
 								},
 								() =>
 									suggest().map((v, k) =>
@@ -132,7 +132,7 @@ export default () => {
 													form_data({...form_data(), search: v.title})
 													form_submit(v.title)
 												},
-												style: () => "a_row hover:bg-gray-400 " + (suggest_picked() === k && "bg-gray-400"),
+												style: () => "a_row hover:bg-gray-900 " + (suggest_picked() === k && "bg-gray-800"),
 											},
 											() => v.title,
 										),
@@ -140,7 +140,7 @@ export default () => {
 						  )
 						: suggest_on() === true && suggest().length === 0
 						? d(
-								{style: () => "z_put c_white tc_black top-[2.5rem] w_full r_1 p-[1rem]"},
+								{style: () => "z_put z-[2] bottom-[2.5rem] w_full r_1 p-[1rem]"},
 								() => "Loading...",
 						  )
 						: "",
@@ -148,13 +148,13 @@ export default () => {
 		b(
 			{click: put_mic},
 			mic_icon({
-				style: () => "z_put c_white right-[2.25rem] top-[.5rem] tc_black w-[1rem] h-[1rem]",
+				style: () => "z_put z-[4] ic_white right-[2.25rem] top-[.5rem] w-[1rem] h-[1rem]",
 			}),
 		),
 		b(
 			{click: () => form_submit(form_data().search)},
 			search_icon({
-				style: () => "z_put c_white right-[.5rem] top-[.3rem] tc_black w-[1.3rem] h-[1.3rem]",
+				style: () => "z_put z-[4] ic_white right-[.5rem] top-[.3rem] tc_white w-[1.3rem] h-[1.3rem]",
 			}),
 		),
 	)

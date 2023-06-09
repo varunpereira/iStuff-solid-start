@@ -41,7 +41,7 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1"},
-		title({}, () => "Search Results - iStuff"),
+		title({}, () => "Search Results"),
 		d({style:()=>"mb-[1rem]"}, () =>
 			prod().length === 0
 				? t({}, () => "No results for " + path_par.term)

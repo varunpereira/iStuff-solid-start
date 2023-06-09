@@ -36,7 +36,7 @@ export default () => {
 
 	return d(
 		{style:()=>''},
-	title({},()=>"Sign up - iStuff"),
+	title({},()=>"Sign up"),
 		d(
 			{style: () => "mx_auto mt-[3rem] w-[20rem] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign up"),

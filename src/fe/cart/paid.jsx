@@ -31,7 +31,7 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1 c_white tc_black"},
-	title({},()=>"Payment Success - iStuff"),
+	title({},()=>"Payment Success"),
 		d({}, () => "Payment Success!"),
 	)
 }

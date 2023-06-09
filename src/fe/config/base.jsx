@@ -24,6 +24,6 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1 c_white tc_black"},
-	title({},()=>"Home - iStuff"),
+	title({},()=>"Home"),
 	)
 }

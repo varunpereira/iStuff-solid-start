@@ -37,7 +37,7 @@ export default () => {
 
 	return d(
 		{},
-	title({},()=>"Sign in - iStuff"),
+	title({},()=>"Sign in"),
 		d(
 			{style: () => "mx_auto w-[20rem] mt-[3rem] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign in"),

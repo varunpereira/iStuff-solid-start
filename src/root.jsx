@@ -31,12 +31,12 @@ export default () => (
 		<Body class={struct?.style()}>
 			<Suspense>
 				<ErrorBoundary>
-					{struct?.header()}
 					<Routes>
 						{struct?.page()?.map((route) => (
 							<Route path={route[0]} component={route[1]} />
 						))}
 					</Routes>
+					{struct?.header()}
 					<FileRoutes/>
 					{struct?.footer()}
 				</ErrorBoundary>

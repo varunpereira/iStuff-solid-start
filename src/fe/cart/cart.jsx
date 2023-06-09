@@ -76,19 +76,19 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1 c_white tc_black p-[2rem]"},
-		title({}, () => "Cart - iStuff"),
-		t({style: () => "ts_4 tw_2"}, () => "Cart: " + cart()?.size + " products"),
+		title({}, () => "Cart"),
+		t({style: () => "ts_4 tw_2 mb-[2rem]"}, () => "Cart: " + cart()?.size + " products"),
 		() =>
 			cart()?.prod?.map((v, k) =>
 				d(
-					{style: () => "a_row_auto"},
+					{style: () => "a_row_auto mb-[2rem]"},
 					t({style: () => "w-[20rem]"}, () => v.title),
-					d({style: () => ""}, "-" + v.size + "+"),
-					t({style: () => "w-[10rem]"}, () => "$" + v.price),
+					d({style: () => "w-[7rem]"}, "-" + v.size + "+"),
+					t({style: () => "w-[7rem]"}, () => "$" + v.price),
 					b({click: () => cut(v)}, cut_icon({style: () => "w-[1.4rem] h-[1.4rem] hover:tc_grey"})),
 				),
 			),
-		t({style: () => "ts_4 tw_2"}, () => "Total: $" + cart()?.price),
+		t({style: () => "ts_4 tw_2 mb-[2rem]"}, () => "Total: $" + cart()?.price),
 		b({click: pay, style: () => "r_1 p-[.5rem] c_black tc_white"}, () => "Pay"),
 		t({style: () => "tc_red h-[2rem]"}, () => flaw()),
 	)
