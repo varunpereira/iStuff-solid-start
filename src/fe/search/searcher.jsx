@@ -121,7 +121,7 @@ export default () => {
 						? d(
 								{
 									custom: (e) => click_outside(e, () => suggest_on(false)),
-									style: () => "z_put z-[2] a_col c_black bottom-[2.5rem] w_full r_1 p-[1rem]",
+									style: () => "z_put z-[2] a_col c_black top-[2.5rem] w_full r_1 p-[1rem]",
 								},
 								() =>
 									suggest().map((v, k) =>

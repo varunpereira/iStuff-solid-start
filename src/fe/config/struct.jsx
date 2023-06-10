@@ -27,4 +27,4 @@ export var title_def = () => " - iStuff"
 
 var style = () => "c_black tc_white ts_2 tf_1"
 
-export default {title:title_def, logo, header, footer:()=>'', page, style}
+export default {title:title_def, logo, header, footer, page, style}

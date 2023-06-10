@@ -6,7 +6,10 @@ export var POST = async ({request}) => {
 	var {email, token} = cookie(request?.headers?.get("cookie"))
   db()
 	
-	var cart = await order_model.findOne({email, token, current: true})
+	var cart = await order_model.findOne({email, current: true})
+	if (cart == null) {
+		cart = await order_model.findOne({email, token, current: true})
+	}
 
 	return res({
 		cart,

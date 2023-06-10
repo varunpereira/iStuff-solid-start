@@ -47,7 +47,7 @@ export default () => {
 	}
 
 	return d(
-		{style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal z_fix bottom-[0rem] w_full c_black"},
+		{style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black"},
 		b(
 			{click: () => nav("/"), style: () => "a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"},
 			shop_icon({style: () => "w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]"}),
@@ -88,7 +88,7 @@ export default () => {
 														{
 															click: sign_out,
 															style: () =>
-																"a_row c_black v3:z_put v3:right-[0rem] v3:left_auto v3:px-[1rem] v3:w-[10rem] v3:top-[2.5rem] rb_1",
+																"a_row c_black v3:z_put v3:z-[4] v3:right-[0rem] v3:left_auto v3:px-[1rem] v3:w-[10rem] v3:top-[2.5rem] rb_1",
 														},
 														() => "Sign out",
 												  )

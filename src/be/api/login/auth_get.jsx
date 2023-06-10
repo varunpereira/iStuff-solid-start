@@ -8,7 +8,7 @@ export var POST = async ({request}) => {
 	var {email, token} = cookie(request?.headers?.get("cookie"))
 	db()
 	var user = await user_model.findOne({email, token})
-	var cart = await order_model.findOne({email, token, current: true})
+	var cart = await order_model.findOne({email, current: true})
 	if (user != null) {
 		return res({
 			user,
@@ -18,6 +18,7 @@ export var POST = async ({request}) => {
 	var user_exist = await user_model.findOne({email})
 	// check if user exists but signed out
 	if (user_exist != null && email != null) {
+		cart = await order_model.findOne({email, token, current: true})
 		return res({
 			user,
 			cart_size: cart.size,
