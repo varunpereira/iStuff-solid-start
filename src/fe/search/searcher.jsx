@@ -14,7 +14,7 @@ import {
 	req,
 	globe,
 } from "~/fe/config/shop"
-import {search_icon, close_icon, mic_icon} from "~/fe/config/asset/icon"
+import {cart_icon,search_icon, close_icon, mic_icon} from "~/fe/config/asset/icon"
 
 export default () => {
 	var nav = route()
@@ -154,7 +154,7 @@ export default () => {
 		b(
 			{click: () => form_submit(form_data().search)},
 			search_icon({
-				style: () => "z_put z-[4] ic_white right-[.5rem] top-[.3rem] tc_white w-[1.3rem] h-[1.3rem]",
+				style: () => "z_put z-[4] ic_white right-[.5rem] top-[.3rem] w-[1.3rem] h-[1.3rem]",
 			}),
 		),
 	)

@@ -128,6 +128,12 @@ $red: red;
 	.bw_1 {
 		border-width: 0.1rem;
 	}
+	.bw_2 {
+		border-width: 0.2rem;
+	}
+	.bw_3 {
+		border-width: 0.3rem;
+	}
 	// outline
 	.o_null {
 		outline: none;
@@ -144,6 +150,9 @@ $red: red;
 	}
 	.ic_white {
 		fill: $white;
+	}
+	.ic_grey {
+		fill: $grey_2;
 	}
 	.iw_1 {
 		stroke-width: 1;

@@ -74,8 +74,8 @@ export default () => {
 												(!acc_click() ? "v2:rb_1" : ""),
 										},
 										b(
-											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
-											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
+											{click: () => nav("/cart"), style: () => "a_row mr-[1rem] tc_black"},
+											cart_icon({style: () => "w-[1.6rem] h-[1.6rem] ibc_black ic_black"}),
 											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe().cart_size),
 										),
 										b(
