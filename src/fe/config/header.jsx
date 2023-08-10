@@ -61,7 +61,7 @@ export default () => {
 		d(
 			{
 				style: () =>
-					"z_fit v2:z_put v2:c_black v2:a_row v2:ax_left v2:px-[1rem] v2:left-[0rem] v2:top-[2.5rem] v2:w_full v3:z_normal v3:px-[0rem] v3:w_fit",
+					"z_fit v2:z_put v2:z-[4] v2:c_black v2:a_row v2:ax_left v2:px-[1rem] v2:left-[0rem] v2:top-[2.5rem] v2:w_full v3:z_normal v3:px-[0rem] v3:w_fit",
 			},
 			() =>
 				width() >= 640 || menu_click() === true
@@ -74,9 +74,9 @@ export default () => {
 												(!acc_click() ? "v2:rb_1" : ""),
 										},
 										b(
-											{click: () => nav("/cart"), style: () => "a_row mr-[1rem] tc_black"},
-											cart_icon({style: () => "w-[1.6rem] h-[1.6rem] ibc_black ic_black"}),
-											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe().cart_size),
+											{click: () => nav("/cart"), style: () => "a_row mr-[1rem] hover:tc_grey hover:ibc_grey"},
+											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
+											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.cart_size),
 										),
 										b(
 											{click: () => acc_click(!acc_click()), style: () => "a_row"},

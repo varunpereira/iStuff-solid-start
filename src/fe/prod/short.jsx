@@ -27,7 +27,7 @@ export default ({prod}) => {
 				{click: () => nav("/prod/" + prod._id), style: () => "hover:underline ta_left"},
 				() => prod.title,
 			),
-			t({}, "$" + prod.price),
+			t({style: () => "z_put right-[.5rem] bottom-[.5rem]"}, "$" + prod.price),
 			b({click: cart_put, style: () => "z_put left-[.5rem] bottom-[.5rem] c_black tc_white r_1 p-[.5rem]"}, () => "Add"),
 		),
 	)
