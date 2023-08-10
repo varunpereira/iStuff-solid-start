@@ -56,7 +56,7 @@ export default () => {
 		searcher(),
 		b(
 			{click: () => menu_click(!menu_click())},
-			menu_icon({style: () => "v2:see v3:hide w-[1.75rem] h-[1.75rem]"}),
+			menu_icon({style: () => "v2:see v3:hide w-[1.75rem] h-[1.75rem] hover:ibc_grey"}),
 		),
 		d(
 			{

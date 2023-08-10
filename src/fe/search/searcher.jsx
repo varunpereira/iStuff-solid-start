@@ -103,7 +103,7 @@ export default () => {
 				await get_suggest()
 			},
 			key,
-			holder: () => "search millions of products...",
+			holder: () => "search...",
 			style: () => "c_black r_full px-[.8rem] w_full h_full o_null",
 		}),
 		() =>

@@ -68,7 +68,7 @@ export default () => {
 			t({style: () => "ts_1 tc_red h-[2rem]"}, () => form_error()),
 		),
 		d(
-			{style: () => "mx_auto w-[20rem] a_row ax_start mt-[1rem]"},
+			{style: () => "mx_auto w-[20rem] a_row mt-[1rem]"},
 			t({style: () => "mr-[.3rem]"}, () => "Already have an account?"),
 			b({click: () => nav("/signin"), style: () => "mb-[1rem] hover:underline"}, () => "Sign in"),
 		),

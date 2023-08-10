@@ -62,7 +62,7 @@ export default () => {
 			t({style: () => "tc_red h-[2rem] ts_1"}, () => form_error()),
 		),
 		d(
-			{style: () => "w-[20rem] mx_auto a_row ax_start mt-[1rem]"},
+			{style: () => "w-[20rem] mx_auto a_row mt-[1rem]"},
 			t({style: () => "mr-[.3rem]"}, () => "Don't have an account?"),
 			b({click: () => nav("/signup"), style: () => "mb-[1rem] hover:underline"}, () => "Sign up"),
 		),
