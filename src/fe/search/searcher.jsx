@@ -113,7 +113,7 @@ export default () => {
 				b(
 					{click: () => form_data({...form_data(), search: ""})},
 					close_icon({
-						style: () => "z_put c_black z-[4] ic_black ibc_white right-[3.75rem] top-[.6rem] w-[.8rem] h-[.8rem]",
+						style: () => "z_put c_black z-[4] ibc_white hover:ibc_grey right-[3.75rem] top-[.6rem] w-[.8rem] h-[.8rem]",
 					}),
 				),
 				() =>
@@ -148,13 +148,13 @@ export default () => {
 		b(
 			{click: put_mic},
 			mic_icon({
-				style: () => "z_put z-[4] ic_white right-[2.25rem] top-[.5rem] w-[1rem] h-[1rem]",
+				style: () => "z_put z-[4] ic_white hover:ic_grey right-[2.25rem] top-[.5rem] w-[1rem] h-[1rem]",
 			}),
 		),
 		b(
 			{click: () => form_submit(form_data().search)},
 			search_icon({
-				style: () => "z_put z-[4] ic_white right-[.5rem] top-[.3rem] w-[1.3rem] h-[1.3rem]",
+				style: () => "z_put z-[4] ic_white hover:ic_grey right-[.5rem] top-[.3rem] w-[1.3rem] h-[1.3rem]",
 			}),
 		),
 	)

@@ -152,7 +152,7 @@ $red: red;
 		fill: $white;
 	}
 	.ic_grey {
-		fill: $grey_2;
+		fill: $grey_1;
 	}
 	.iw_1 {
 		stroke-width: 1;
@@ -165,6 +165,9 @@ $red: red;
 	}
 	.ibc_white {
 		stroke: $white;
+	}
+	.ibc_grey {
+		stroke: $grey_1;
 	}
 	/* viewport - see config (v1 - v5) */
 	/* round */

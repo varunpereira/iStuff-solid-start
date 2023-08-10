@@ -97,13 +97,13 @@ export default () => {
 								: d(
 										{style: () => "v2:w_full v2:a_col v3:a_row"},
 										b(
-											{click: () => nav("/cart"), style: () => "a_row mr-[1rem]"},
+											{click: () => nav("/cart"), style: () => "a_row mr-[1rem] hover:tc_grey hover:ibc_grey"},
 											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
 											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.cart_size),
 										),
 										b(
 											{click: () => nav("/signin"), style: () => "v2:a_row v3:a_null"},
-											sign_in_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
+											sign_in_icon({style: () => "w-[1.6rem] h-[1.6rem] ibc_white hover:ibc_grey"}),
 										),
 								  )
 					: "",
