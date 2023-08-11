@@ -16,6 +16,7 @@ import {
 	title,
 	str,
 	num,
+	scroll,
 } from "~/fe/config/shop"
 import {auth} from "~/fe/config/auth"
 import review_short from "~/fe/prod/review/short"
@@ -81,7 +82,7 @@ export default () => {
 							p({
 								value: () => v.url,
 								style: () =>
-									"w-[3rem] h-[3rem] e_fit bw_1 bc_black r_1 " + (k === pic_pick() ? "bw_2":""),
+									"w-[3rem] h-[3rem] e_fit bw_1 bc_black r_1 " + (k === pic_pick() ? "bw_2" : ""),
 							}),
 						),
 					),
@@ -95,7 +96,10 @@ export default () => {
 			d(
 				{style: () => "w-[20rem] v2:mt-[1rem] v3:mt-[0rem]"},
 				t({style: () => "tw_1 ts_3"}, () => prod()?.title),
-				t({}, () => "View Reviews"),
+				b(
+					{click: () => scroll("reviews")},
+					t({}, () => "View Reviews"),
+				),
 				t({style: () => "tw_1 ts_3 mb-[1rem]"}, () => "$" + prod()?.price),
 				t({style: () => ""}, () => "Description:"),
 				t({style: () => ""}, () => prod()?.des),
@@ -118,9 +122,11 @@ export default () => {
 		),
 		d(
 			{style: () => ""},
-			t({style: () => "tw_1 ts_3"}, () => "Reviews"),
-			t({}, () => "Add Review"),
-			t({style: () => "mb-[1rem]"}, () => review().length + " reviews."),
+			t(
+				{name: () => "reviews", style: () => "tw_1 ts_3"},
+				() => "Reviews (" + review().length + ")",
+			),
+			t({style: () => "mb-[1rem]"}, () => "Add Review"),
 			d({style: () => "a_row_auto gap-[1rem]"}, () =>
 				review().map((v, k) => review_short({review: v})),
 			),

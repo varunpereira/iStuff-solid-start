@@ -8,7 +8,7 @@ import {
 	Suspense,
 } from "solid-js"
 import {Router, Routes, Route, useNavigate, useSearchParams, useParams} from "@solidjs/router"
-import {Title} from 'solid-start'
+import {Title} from "solid-start"
 import {title_def} from "~/fe/config/struct"
 
 export var state = (def) => {
@@ -52,6 +52,9 @@ export var path = {
 	par: () => useSearchParams()[0],
 }
 
+export var scroll = (id) =>
+		document.getElementById(id).scrollIntoView({behavior: "smooth"})
+
 // parse
 export var str = JSON.stringify
 export var num = Number
@@ -77,7 +80,11 @@ export var d = ({style = () => "", custom = () => ""}, ...rest) => (
 	</div>
 )
 
-export var t = ({style = () => ""}, ...rest) => <p class={style()}>{...rest}</p>
+export var t = ({style = () => "", name = () => ""}, ...rest) => (
+	<p class={style()} id={name()}>
+		{...rest}
+	</p>
+)
 
 export var b = ({style = () => "", click = () => ""}, ...rest) => (
 	<button onClick={click} class={style() + " o_null"} type="button">
