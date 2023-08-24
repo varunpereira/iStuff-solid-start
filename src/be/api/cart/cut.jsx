@@ -15,7 +15,7 @@ export var POST = async ({request}) => {
 		},
 	)
 	var set_cart = await order_model.updateOne(
-		{email, token, current: true},
+		{email, current: true},
 		{
 			$pull: {prod: {_id: prod._id}},
 			$inc: {
@@ -25,8 +25,7 @@ export var POST = async ({request}) => {
 		},
 	)
 	var cart = await order_model.findOne({
-		email,
-		token,
+		email, 
 		current: true,
 	})
 	if (set_cart.modifiedCount === 0) {

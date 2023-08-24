@@ -18,7 +18,6 @@ export var POST = async ({request}) => {
 	var cart = await order_model.updateOne(
 		{
 			email,
-			token,
 			current: true,
 			prod: {$elemMatch: {_id: prod._id}},
 		},
@@ -32,7 +31,7 @@ export var POST = async ({request}) => {
 	)
 	if (cart.modifiedCount === 0) {
 		cart = await order_model.updateOne(
-			{email, token, current: true},
+			{email,current: true},
 			{
 				$push: {
 					prod: {

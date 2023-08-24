@@ -4,7 +4,7 @@ export var auth = async (link) => {
 	try {
 		var res = await req("/login/auth_get")
 		write(res?.user)
-		return globe({email: res?.user?.email, cart_size: res?.cart_size})
+		return globe({email: !res?.user?.email?.startsWith("@") ? res?.user?.email : null, cart_size: res?.cart_size})
 	} catch (flaw) {
 		write(flaw)
 	}
