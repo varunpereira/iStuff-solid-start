@@ -46,14 +46,14 @@ export default () => {
 				value: () => form_data().email,
 				input: (e) => form_data({...form_data(), email: e.target.value}),
 				holder: () => "Email",
-				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 focus:bw_2 bc_black r_1",
+				style: () => "mb-[1rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
 			i({
 				type: () => "password",
 				value: () => form_data().password,
 				input: (e) => form_data({...form_data(), password: e.target.value}),
 				holder: () => "Password",
-				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 focus:bw_2 bc_black r_1",
+				style: () => "mb-[1rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
 			b(
 				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_black tc_aqua r_1 "},
