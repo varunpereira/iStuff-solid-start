@@ -53,7 +53,7 @@ export default () => {
 				value: () => form_data().password,
 				input: (e) => form_data({...form_data(), password: e.target.value}),
 				holder: () => "Password",
-				style: () => "mb-[2rem] h-[2rem] px-[.5rem] tc_black bw_1 focus:bw_2 bc_black r_1",
+				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
 			b(
 				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_black tc_aqua r_1 "},
@@ -64,7 +64,7 @@ export default () => {
 		d(
 			{style: () => "w-[20rem] mx_auto a_row mt-[1rem]"},
 			t({style: () => "mr-[.3rem]"}, () => "Don't have an account?"),
-			b({click: () => nav("/signup"), style: () => "mb-[1rem] hover:underline"}, () => "Sign up"),
+			b({click: () => nav("/signup"), style: () => "mb-[1rem] hover:tc_grey"}, () => "Sign up"),
 		),
 	)
 }

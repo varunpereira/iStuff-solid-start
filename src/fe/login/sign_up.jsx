@@ -59,7 +59,7 @@ export default () => {
 				value: () => form_data().confirm_password,
 				input: (e) => form_data({...form_data(), confirm_password: e.target.value}),
 				holder: () => "Confirm Password",
-				style: () => "mb-[2rem] h-[2rem] px-[.5rem] tc_black bw_1 focus:bw_2 bc_black r_1",
+				style: () => "mb-[1rem] h-[2rem] px-[.5rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
 			b(
 				{click: form_submit, style: () => "mb-[1.5rem] h-[2rem] c_black tc_aqua r_1 "},
@@ -70,7 +70,7 @@ export default () => {
 		d(
 			{style: () => "mx_auto w-[20rem] a_row mt-[1rem]"},
 			t({style: () => "mr-[.3rem]"}, () => "Already have an account?"),
-			b({click: () => nav("/signin"), style: () => "mb-[1rem] hover:underline"}, () => "Sign in"),
+			b({click: () => nav("/signin"), style: () => "mb-[1rem] hover:tc_grey"}, () => "Sign in"),
 		),
 	)
 }
