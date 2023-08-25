@@ -14,6 +14,7 @@ import {
 	req,
 	globe,
 	any,
+	nav_full,
 } from "~/fe/config/shop"
 import {shop_icon, menu_icon, cart_icon, sign_in_icon} from "~/fe/config/asset/icon"
 import searcher from "~/fe/search/searcher"
@@ -41,9 +42,11 @@ export default () => {
 	react(() => {})
 
 	var sign_out = async () => {
-		var res = await req("/login/auth_cut", {email: globe()?.email})
-		globe({email: null, cart_size: 0})
-		nav("/signin")
+		var res = await req("/login/auth_cut")
+		if (res?.flaw != null) {
+			return
+		}
+		nav_full("/signin")
 	}
 
 	return d(
@@ -74,7 +77,10 @@ export default () => {
 												(!acc_click() ? "v2:rb_1" : ""),
 										},
 										b(
-											{click: () => nav("/cart"), style: () => "a_row mr-[1rem] hover:tc_grey hover:ibc_grey"},
+											{
+												click: () => nav("/cart"),
+												style: () => "a_row mr-[1rem] hover:tc_grey hover:ibc_grey",
+											},
 											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
 											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.cart_size),
 										),
@@ -97,7 +103,10 @@ export default () => {
 								: d(
 										{style: () => "v2:w_full v2:a_col v3:a_row"},
 										b(
-											{click: () => nav("/cart"), style: () => "a_row mr-[1rem] hover:tc_grey hover:ibc_grey"},
+											{
+												click: () => nav("/cart"),
+												style: () => "a_row mr-[1rem] hover:tc_grey hover:ibc_grey",
+											},
 											cart_icon({style: () => "w-[1.6rem] h-[1.6rem]"}),
 											t({style: () => "ts_1 -mt-[.4rem]"}, () => globe()?.cart_size),
 										),

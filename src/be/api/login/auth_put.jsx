@@ -24,12 +24,13 @@ export var POST = async ({request}) => {
 		expiresIn: "1d",
 	})
 	// save token to db for the user
+	write(cookies?.email)
 	var set_user = await user_model.updateOne(
 		{email},
 		{
 			$set: {
 				token,
-				pub_email: cookies?.email
+				pub: cookies?.email
 			},
 		},
 	)

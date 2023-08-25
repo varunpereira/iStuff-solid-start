@@ -17,6 +17,9 @@ var schema = new mongoose.Schema(
 			type: Array,
 			default: [],
 		},
+		pub: {
+			type: String,
+		},
 	},
 	{
 		timestamps: true,
