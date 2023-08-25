@@ -1,7 +1,7 @@
 import logo from "~/fe/config/asset/logo.jpg"
 import header from "~/fe/config/header"
 import footer from "~/fe/config/footer"
-import def from "~/fe/generic/def"
+import def from "~/fe/config/def"
 import home from "~/fe/generic/home"
 import sign_in from "~/fe/login/sign_in"
 import sign_up from "~/fe/login/sign_up"
@@ -25,6 +25,6 @@ var page = () => [
 
 export var title_def = () => " - iStuff"
 
-var style = () => "c_black tc_white ts_2 tf_1"
+var style = () => "c_black tc_white ts_2 tf_1 min-w-[320px]"
 
-export default {title:title_def, logo, header, footer, page, style}
+export default {title_def, logo, header, footer, page, style}

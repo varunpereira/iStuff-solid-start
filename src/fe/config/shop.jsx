@@ -4,10 +4,8 @@ import {
 	onMount,
 	onCleanup,
 	createResource,
-	lazy,
-	Suspense,
 } from "solid-js"
-import {Router, Routes, Route, useNavigate, useSearchParams, useParams} from "@solidjs/router"
+import {useNavigate, useSearchParams, useParams} from "@solidjs/router"
 import {Title} from "solid-start"
 import {title_def} from "~/fe/config/struct"
 

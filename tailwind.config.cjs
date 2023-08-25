@@ -1,6 +1,7 @@
 module.exports = {
 	content: ["./src/**/*.{html,js,jsx,ts,css,scss}"],
 	theme: {
+		// min onwards
 		screens: {
 			v1: "0px",
 			v2: "320px",

@@ -16,7 +16,7 @@ import {
 } from "~/fe/config/shop"
 import prod_short from "~/fe/prod/short"
 import {auth} from "~/fe/config/auth"
-import pager from "~/fe/generic/piece/pager"
+import pager from "~/fe/config/piece/pager"
 
 export default () => {
 	var nav = route()

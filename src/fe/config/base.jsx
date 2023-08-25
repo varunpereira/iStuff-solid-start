@@ -1,16 +1,4 @@
-import {
-	state,
-	mount,
-	react,
-	write,
-	d,
-	t,
-	b,
-	i,
-	route,
-	req,
-	title,globe
-} from "~/fe/config/shop"
+import {state, mount, react, write, d, t, b, i, route, req, title, globe} from "~/fe/config/shop"
 import {auth} from "~/fe/config/auth"
 
 export default () => {
@@ -24,6 +12,6 @@ export default () => {
 
 	return d(
 		{style: () => "fit_1 c_white tc_black"},
-	title({},()=>"Home"),
+		title({}, () => "Home"),
 	)
 }

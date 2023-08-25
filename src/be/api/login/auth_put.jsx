@@ -1,10 +1,11 @@
-import {write, env, res} from "~/be/config/shop"
+import {write, env, res, cookie} from "~/be/config/shop"
 import crypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import user_model from "~/be/config/db/model/user"
 import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
+	var cookies = cookie(request?.headers?.get("cookie"))
 	var {email, password} = await request.json()
 	db()
 	var get_user = await user_model.findOne({email})
@@ -28,6 +29,7 @@ export var POST = async ({request}) => {
 		{
 			$set: {
 				token,
+				pub_email: cookies?.email
 			},
 		},
 	)
