@@ -11,20 +11,23 @@ import prod from "~/fe/prod/long"
 import cart from "~/fe/cart/cart"
 import paid from "~/fe/cart/paid"
 
-var page = () => [
-	["*", def],
-	["/", home],
-	["/signin", sign_in],
-	["/signup", sign_up],
-	["/chat", chat],
-	["/search", search],
-	["/prod/:_id", prod],
-	["/cart", cart],
-	["/cart/paid", paid],
-]
-
-export var title_def = () => " - iStuff"
-
-var style = () => "c_black tc_white ts_2 tf_1 min-w-[320px]"
-
-export default {title_def, logo, header, footer, page, style}
+export default () => {
+	return {
+		page: () => [
+			["*", def],
+			["/", home],
+			["/signin", sign_in],
+			["/signup", sign_up],
+			["/chat", chat],
+			["/search", search],
+			["/prod/:_id", prod],
+			["/cart", cart],
+			["/cart/paid", paid],
+		],
+		title: () => " - iStuff",
+		logo,
+		header,
+		footer,
+		style: () => "c_black tc_white ts_2 tf_1 min-w-[320px]",
+	}
+}

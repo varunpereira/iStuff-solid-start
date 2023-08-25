@@ -7,7 +7,7 @@ import {
 } from "solid-js"
 import {useNavigate, useSearchParams, useParams} from "@solidjs/router"
 import {Title} from "solid-start"
-import {title_def} from "~/fe/config/struct"
+import struct from "~/fe/config/struct"
 
 export var state = (def) => {
 	var [get, set] = createSignal(def)
@@ -20,7 +20,7 @@ export var route = useNavigate
 
 export var nav_full = (link) => (window.location.href = link)
 
-export var title = ({}, value = () => "") => <Title>{value() + title_def()}</Title>
+export var title = ({}, value = () => "") => <Title>{value() + struct()?.title()}</Title>
 
 export var react = createEffect
 
