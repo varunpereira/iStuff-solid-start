@@ -24,17 +24,15 @@ export var POST = async ({request}) => {
 		expiresIn: "1d",
 	})
 	// save token to db for the user
-	write(cookies?.email)
 	var set_user = await user_model.updateOne(
 		{email},
 		{
 			$set: {
 				token,
-				pub: cookies?.email
 			},
 		},
 	)
-	var value = {email, token}
+	var value = {email, token, pub: cookies?.email}
 	var age = 10 * 60 // 10 min
 	return res({}, {cookie: {value, age}})
 

@@ -6,7 +6,6 @@ import order_model from "~/be/config/db/model/order"
 import {db} from '~/be/config/db/join'
 
 export var POST = async ({request}) => {
-	var cookies = cookie(request?.headers?.get("cookie"))
 	var {email, password, confirm_password} = await request.json()
 	db()
 
@@ -42,7 +41,6 @@ export var POST = async ({request}) => {
 	var put_user = await new user_model({
 		email,
 		password: password_hash,
-		pub: cookies?.email
 	}).save()
 	var put_cart = await new order_model({
 		email,

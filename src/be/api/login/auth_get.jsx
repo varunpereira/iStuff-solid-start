@@ -9,8 +9,6 @@ export var POST = async ({request}) => {
 	var {email, token} = cookie(request?.headers?.get("cookie"))
 	db()
 	var user = await user_model.findOne({email, token})
-	write(email)
-	write(user?.email)
 	var cart = await order_model.findOne({email, current: true})
 	if (user != null) {
 		return res({

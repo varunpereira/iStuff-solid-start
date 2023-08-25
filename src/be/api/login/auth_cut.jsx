@@ -3,7 +3,7 @@ import user_model from "~/be/config/db/model/user"
 import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
-	var {email, token} = cookie(request?.headers?.get("cookie"))
+	var {email, token, pub} = cookie(request?.headers?.get("cookie"))
 	db()
 	var user = await user_model.findOne({email, token})
 	if (user == null) {
@@ -20,10 +20,9 @@ export var POST = async ({request}) => {
 			},
 		},
 	)
-	write(user?.pub)
 	// setup for public user
-	var value = {email: user?.pub}
-	var age = 0
+	var value = {email: pub}
+	var age = 30 * 24 * 60 * 60 // 30 days
 	return res({}, {cookie: {value, age}})
 	// return new Response(JSON.stringify({}), {
 	// 	headers: {
