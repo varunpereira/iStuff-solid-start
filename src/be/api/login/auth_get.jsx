@@ -18,8 +18,8 @@ export var POST = async ({request}) => {
 	}
 	// public user - sign up
 	var put_pub_user = await new user_model().save()
-	// can prefix @, since no priv email can
-	email = "" 
+	// prefix to know which email is public in fe
+	email = "@" 
 	email += jwt.sign({email: put_pub_user._id}, env.VITE_sesh, {
 		expiresIn: "1d",
 	})
