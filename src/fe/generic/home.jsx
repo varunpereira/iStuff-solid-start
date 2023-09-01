@@ -27,11 +27,15 @@ export default () => {
 	var car = state([car1, car2, car3, car4])
 	var car_index = state(0)
 	var car_interv = timer.put(() => {
-		car_index((i) => (i + 1) % car().length)
+		car_index((i) => {
+			if (i == car().length) i = 0
+			return (i + 1) % car().length
+		})
 	}, 3000)
 	var nav = route()
 	var mute = state(true)
 	var logo = state(false)
+	var event = state()
 
 	mount(async () => {
 		await auth("pub")
@@ -43,11 +47,13 @@ export default () => {
 
 	var hover_in = (e) => {
 		e.target.play()
+		event(e)
 		logo(true)
 	}
 
 	var hover_out = (e) => {
 		e.target.pause()
+		event(e)
 		logo(false)
 	}
 
@@ -62,10 +68,18 @@ export default () => {
 				mute: () => mute(),
 				hover_in,
 				hover_out,
-				click: () => mute(false),
-				style: () => "fit_3 w_full h-[40vw] e_full overflow-hidden",
+				click: () => mute(!mute()),
+				style: () => "fit_3 w_full h-[40vw] e_full",
 			}),
 			p({
+				hover_in: () => {
+					event().target.play()
+					logo(true)
+				},
+				hover_out: () => {
+					event().target.pause()
+					logo(false)
+				},
 				value: () => lotr_logo,
 				style: () => "z_put bottom-[.25rem] w-[50%] " + (logo() === true ? "see" : "hide"),
 			}),

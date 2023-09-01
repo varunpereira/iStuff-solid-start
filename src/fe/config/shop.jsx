@@ -1,10 +1,4 @@
-import {
-	createSignal,
-	createEffect,
-	onMount,
-	onCleanup,
-	createResource,
-} from "solid-js"
+import {createSignal, createEffect, onMount, onCleanup, createResource} from "solid-js"
 import {useNavigate, useSearchParams, useParams} from "@solidjs/router"
 import {Title} from "solid-start"
 import struct from "~/fe/config/struct"
@@ -50,8 +44,7 @@ export var path = {
 	par: () => useSearchParams()[0],
 }
 
-export var scroll = (id) =>
-		document.getElementById(id).scrollIntoView({behavior: "smooth"})
+export var scroll = (id) => document.getElementById(id).scrollIntoView({behavior: "smooth"})
 
 // parse
 export var str = JSON.stringify
@@ -110,8 +103,14 @@ export var i = ({
 	/>
 )
 
-export var p = ({style = () => "", value = () => "", def = () => ""}) => (
-	<img class={style()} src={value()} alt={def()} />
+export var p = ({
+	style = () => "",
+	value = () => "",
+	def = () => "",
+	hover_in = () => "",
+	hover_out = () => "",
+}) => (
+	<img class={style()} src={value()} alt={def()} onMouseOver={hover_in} onMouseLeave={hover_out} />
 )
 
 export var v = ({
