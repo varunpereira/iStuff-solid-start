@@ -109,8 +109,9 @@ export var p = ({
 	def = () => "",
 	hover_in = () => "",
 	hover_out = () => "",
+	click = () => "",
 }) => (
-	<img class={style()} src={value()} alt={def()} onMouseOver={hover_in} onMouseLeave={hover_out} />
+	<img class={style()} src={value()} alt={def()} onMouseOver={hover_in} onMouseLeave={hover_out} onClick={click} />
 )
 
 export var v = ({

@@ -65,7 +65,7 @@ export default () => {
 			v({
 				def: () => lotr,
 				value: () => lotr_vid,
-				mute: () => mute(),
+				mute,
 				hover_in,
 				hover_out,
 				click: () => mute(!mute()),
@@ -80,6 +80,7 @@ export default () => {
 					event().target.pause()
 					logo(false)
 				},
+				click: () => mute(!mute()),
 				value: () => lotr_logo,
 				style: () => "z_put bottom-[.25rem] w-[50%] " + (logo() === true ? "see" : "hide"),
 			}),
