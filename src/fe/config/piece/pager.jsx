@@ -25,7 +25,7 @@ export default ({cur, size, link}) => {
 		b(
 			{
 				style: () => "px-[.2rem]",
-				click: () => (cur() >= 2 ? nav(link() + "&page=" + (num(cur()) - 1)) : ""),
+				click: () => (cur() >= 2 ? nav(link() + "/" + (num(cur()) - 1)) : ""),
 			},
 			left_icon({style: () => "w-[1.2rem] h-[1.2rem]"}),
 		),
@@ -35,7 +35,7 @@ export default ({cur, size, link}) => {
 				.map((v, k) =>
 					b(
 						{
-							click: () => nav(link() + "&page=" + (k + 1)),
+							click: () => nav(link() + "/" + (k + 1)),
 							style: () =>
 								"w-[2rem] h-[2rem] hover:c_grey ta_mid bw_1 bc_grey pt-[0rem] " +
 								(k + 1 === num(cur()) ? "c_grey" : ""),
@@ -46,7 +46,7 @@ export default ({cur, size, link}) => {
 		b(
 			{
 				style: () => " px-[.2rem]",
-				click: () => (cur() < size() ? nav(link() + "&page=" + (num(cur()) + 1)) : ""),
+				click: () => (cur() < size() ? nav(link() + "/" + (num(cur()) + 1)) : ""),
 			},
 			right_icon({style: () => "w-[1.2rem] h-[1.2rem]"}),
 		),

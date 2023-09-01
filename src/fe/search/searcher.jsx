@@ -14,7 +14,7 @@ import {
 	req,
 	globe,
 } from "~/fe/config/shop"
-import {cart_icon,search_icon, close_icon, mic_icon} from "~/fe/config/asset/icon"
+import {cart_icon, search_icon, close_icon, mic_icon} from "~/fe/config/asset/icon"
 
 export default () => {
 	var nav = route()
@@ -40,7 +40,7 @@ export default () => {
 
 	var form_submit = async (term) => {
 		suggest_on(false)
-		nav("/search?term=" + term + "&theme=all&page=1")
+		term.trim() !== "" ? nav("/search/all/" + term.trim() + "/1") : ""
 	}
 
 	var get_suggest = async () => {
@@ -57,7 +57,7 @@ export default () => {
 			form_data({...form_data(), search: ""})
 		} else if (e.key === "ArrowDown") {
 			suggest_picked() == null
-				? suggest_picked((suggest_picked() + 1) % suggest().length) 
+				? suggest_picked((suggest_picked() + 1) % suggest().length)
 				: suggest_picked(0)
 			form_data({...form_data(), search: suggest()[suggest_picked()].title})
 		} else if (e.key === "ArrowUp") {
@@ -66,7 +66,7 @@ export default () => {
 		}
 	}
 
-	react(()=>write(suggest_picked()))
+	react(() => write(suggest_picked()))
 
 	var put_mic = () => {
 		if (window.hasOwnProperty("webkitSpeechRecognition")) {
@@ -81,7 +81,7 @@ export default () => {
 				form_data({...form_data(), search: e.results[0][0].transcript})
 				recognition.stop()
 				mic_on(false)
-				nav("/search?term=" + form_data().search + "&theme=all&page=1")
+				nav("/search/all/" + form_data().search + "/1")
 			}
 			recognition.onerror = (e) => {
 				recognition.stop()
@@ -94,7 +94,7 @@ export default () => {
 		{style: () => "c_black tc_white w_full h-[2rem] r_full z_fit mr-[1rem]"},
 		i({
 			click: async () => {
-				await get_suggest() 
+				await get_suggest()
 			},
 			type: () => "text",
 			value: () => form_data().search,
@@ -113,7 +113,8 @@ export default () => {
 				b(
 					{click: () => form_data({...form_data(), search: ""})},
 					close_icon({
-						style: () => "z_put c_black z-[4] ibc_white hover:ibc_grey right-[3.75rem] top-[.6rem] w-[.8rem] h-[.8rem]",
+						style: () =>
+							"z_put c_black z-[4] ibc_white hover:ibc_grey right-[3.75rem] top-[.6rem] w-[.8rem] h-[.8rem]",
 					}),
 				),
 				() =>
@@ -132,7 +133,8 @@ export default () => {
 													form_data({...form_data(), search: v.title})
 													form_submit(v.title)
 												},
-												style: () => "a_row hover:bg-gray-900 " + (suggest_picked() === k && "bg-gray-800"),
+												style: () =>
+													"a_row hover:bg-gray-900 " + (suggest_picked() === k && "bg-gray-800"),
 											},
 											() => v.title,
 										),
@@ -148,13 +150,15 @@ export default () => {
 		b(
 			{click: put_mic},
 			mic_icon({
-				style: () => "z_put z-[4] ic_white hover:ic_grey right-[2.25rem] top-[.5rem] w-[1rem] h-[1rem]",
+				style: () =>
+					"z_put z-[4] ic_white hover:ic_grey right-[2.25rem] top-[.5rem] w-[1rem] h-[1rem]",
 			}),
 		),
 		b(
 			{click: () => form_submit(form_data().search)},
 			search_icon({
-				style: () => "z_put z-[4] ic_white hover:ic_grey right-[.5rem] top-[.3rem] w-[1.3rem] h-[1.3rem]",
+				style: () =>
+					"z_put z-[4] ic_white hover:ic_grey right-[.5rem] top-[.3rem] w-[1.3rem] h-[1.3rem]",
 			}),
 		),
 	)

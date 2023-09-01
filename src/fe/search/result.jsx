@@ -20,7 +20,7 @@ import pager from "~/fe/config/piece/pager"
 
 export default () => {
 	var nav = route()
-	var path_par = path.par()
+	var path_var = path.var()
 	var prod = state([])
 	var pages = state()
 
@@ -30,9 +30,9 @@ export default () => {
 
 	react(async () => {
 		var res = await req("/search/result", {
-			search: path_par.term,
-			theme: path_par.theme,
-			page: path_par.page,
+			search: path_var?.term,
+			theme:path_var?.theme,
+			page: path_var?.page,
 		})
 		prod(res.prod)
 		write(res)
@@ -42,15 +42,15 @@ export default () => {
 	return d(
 		{style: () => "fit_1"},
 		title({}, () => "Search Results"),
-		d({style:()=>"mb-[1rem]"}, () =>
+		d({style: () => "mb-[1rem]"}, () =>
 			prod().length === 0
-				? t({}, () => "No results for " + path_par.term)
+				? t({}, () => "No results for " + path_var?.term)
 				: () =>
 						d(
 							{style: () => "a_row_auto gap-[1rem]"},
 							prod().map((v, k) => prod_short({prod: v})),
 						),
 		),
-		pager({cur: ()=>path_par.page, size: () => pages(), link:()=>'/search?term=&theme=all'}),
+		pager({cur: () => path_var?.page, size: () => pages(), link: () => "/search/all/" + path_var?.term}),
 	)
 }
