@@ -44,7 +44,7 @@ export default () => {
 		title({}, () => "Search Results"),
 		d({style: () => "mb-[1rem]"}, () =>
 			prod().length === 0
-				? t({}, () => "No results for " + path_var?.term)
+				? t({}, () => "No results for " + decodeURIComponent(path_var?.term))
 				: () =>
 						d(
 							{style: () => "a_row_auto gap-[1rem]"},

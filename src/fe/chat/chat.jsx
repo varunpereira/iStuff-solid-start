@@ -10,7 +10,7 @@ export default () => {
 		var pusher = new Pusher(env.VITE_key, {
 			cluster: env.VITE_cluster,
 		})
-		pusher.subscribe("chat").bind("chat-event", (data) => {
+		pusher.subscribe("chat").bind("event_1", (data) => {
 			write("okie")
 			chats((prevState) => [...prevState, {sender: data.sender, message: data.message}])
 		})
@@ -19,7 +19,7 @@ export default () => {
 
 	var handleSubmit = async (e) => {
 		e.preventDefault()
-		var res = await req("/pusher", {message: msg(), sender})
+		var res = await req("/chat/pusher", {message: msg(), sender})
 		write(res)
 		msg("")
 	}

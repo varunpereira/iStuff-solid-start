@@ -1,13 +1,14 @@
 import Pusher from "pusher"
 import {write, env, res,} from "~/be/config/shop"
-import {db} from '~/be/config/db/join'
+import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
-	var {message, sender} = await request.json()
-	var response = await pusher.trigger("chat", "chat-event", {
+	var {message, sender, email, token} = await request.json()
+	var res_1 = await pusher.trigger("chat", "event_1", {
 		message,
 		sender,
 	})
+	write(response)
 	return res({message: "completed"})
 }
 
