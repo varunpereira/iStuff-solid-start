@@ -5,7 +5,7 @@ import {db} from '~/be/config/db/join'
 export var POST = async ({request}) => {
 	var {search, theme, page} = await request.json()
 	page = num(page)
-	search = decodeURIComponent(search)
+	search = decodeURIComponent(search).trim()
 	var prod = []
 	db()
 	if (theme === "all") {

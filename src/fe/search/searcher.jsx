@@ -40,7 +40,7 @@ export default () => {
 
 	var form_submit = async (term) => {
 		suggest_on(false)
-		term.trim() !== "" ? nav("/search/all/" + term.trim() + "/1") : ""
+		term.trim() !== "" ? nav("/search/all/" + term + "/1") : ""
 	}
 
 	var get_suggest = async () => {

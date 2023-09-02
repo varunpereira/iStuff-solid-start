@@ -19,7 +19,7 @@ export default () => {
 			["/signin", sign_in],
 			["/signup", sign_up],
 			["/chat", chat],
-			["/search/:theme/:term/:page", search],
+			["/search/:theme/:term?/:page", search],
 			["/prod/:_id", prod],
 			["/cart", cart],
 			["/cart/paid", paid],
