@@ -5,6 +5,7 @@ import {auth} from "~/fe/config/auth"
 export default () => {
 	var chats = state([])
 	var msg = state("")
+	var status = state("")
 	var sender = "def"
 
 	mount(async () => {
@@ -16,7 +17,8 @@ export default () => {
 			cluster: env.VITE_cluster,
 		})
 		pusher.subscribe("chat").bind("event_1", (data) => {
-			write("okie")
+			msg().trim() !== "" ? status("typing") : status("")
+			write("ok")
 			chats((prevState) => [...prevState, {sender: data.sender, message: data.message}])
 		})
 		return () => pusher.unsubscribe("chat")
@@ -27,6 +29,7 @@ export default () => {
 		var res = await req("/chat/pusher", {message: msg(), sender})
 		write(res)
 		msg("")
+		status("")
 	}
 
 	return (
@@ -34,7 +37,7 @@ export default () => {
 			{title({}, () => "Chat - iStuff")}
 			<p>Hello, {sender}</p>
 			<div class="bg-red-800">
-				chats:
+				chats: {status()}
 				{chats().map((chat, id) => (
 					<>
 						<p>{chat.message}</p>
@@ -50,6 +53,7 @@ export default () => {
 					onInput={(e) => {
 						e.preventDefault()
 						msg(e.target.value)
+						msg().trim() !== "" ? status("typing") : status("")
 					}}
 					placeholder="start typing...."
 					class="tc_black"

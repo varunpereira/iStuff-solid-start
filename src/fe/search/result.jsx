@@ -31,7 +31,7 @@ export default () => {
 	react(async () => {
 		var res = await req("/search/result", {
 			search: path_var?.term,
-			theme:path_var?.theme,
+			theme: path_var?.theme,
 			page: path_var?.page,
 		})
 		prod(res.prod)
@@ -42,15 +42,21 @@ export default () => {
 	return d(
 		{style: () => "fit_1"},
 		title({}, () => "Search Results"),
-		d({style: () => "mb-[1rem]"}, () =>
+		d({style: () => ""}, () =>
 			prod().length === 0
 				? t({}, () => "No results for " + decodeURIComponent(path_var?.term))
-				: () =>
+				: 
+				d({},
 						d(
-							{style: () => "a_row_auto gap-[1rem]"},
+							{style: () => "a_row_auto gap-[1rem] mb-[1rem]"},
 							prod().map((v, k) => prod_short({prod: v})),
 						),
+						pager({
+							cur: () => path_var?.page,
+							size: () => pages(),
+							link: () => "/search/all/" + path_var?.term,
+						}),
+				  ),
 		),
-		pager({cur: () => path_var?.page, size: () => pages(), link: () => "/search/all/" + path_var?.term}),
 	)
 }
