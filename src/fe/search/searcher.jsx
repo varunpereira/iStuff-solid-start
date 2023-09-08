@@ -21,7 +21,7 @@ export default () => {
 	var form_error = state()
 	var form_data = state({search: ""})
 	var suggest = state([])
-	var suggest_picked = state(null)
+	var suggest_pick = state(null)
 	var suggest_on = state(true)
 	var mic_on = state(false)
 	var themes = ["all", "tech"]
@@ -40,7 +40,7 @@ export default () => {
 
 	var form_submit = async (term) => {
 		suggest_on(false)
-		term.trim() !== "" ? nav("/search/all/" + term + "/1") : ""
+		term.trim() !== "" ? nav("/search/all/" + encodeURIComponent(term) + "/1") : ""
 	}
 
 	var get_suggest = async () => {
@@ -55,18 +55,22 @@ export default () => {
 			form_submit(form_data().search)
 		} else if (e.key === "Escape") {
 			form_data({...form_data(), search: ""})
-		} else if (e.key === "ArrowDown") {
-			suggest_picked() == null
-				? suggest_picked((suggest_picked() + 1) % suggest().length)
-				: suggest_picked(0)
-			form_data({...form_data(), search: suggest()[suggest_picked()].title})
-		} else if (e.key === "ArrowUp") {
-			suggest_picked((suggest_picked() - 1 + suggest().length) % suggest().length)
-			form_data({...form_data(), search: suggest()[suggest_picked()].title})
+		} else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+			var put_pick
+			if (e.key === "ArrowDown") {
+				put_pick = suggest_pick() === null ? 0 : (suggest_pick() + 1) % suggest().length
+			} else if (e.key === "ArrowUp") {
+				put_pick =
+					suggest_pick() === null
+						? suggest().length - 1
+						: (suggest_pick() - 1 + suggest().length) % suggest().length
+			}
+			form_data({...form_data(), search: suggest()[put_pick].title})
+			suggest_pick(put_pick)
 		}
 	}
 
-	react(() => write(suggest_picked()))
+	react(() => write(suggest_pick()))
 
 	var put_mic = () => {
 		if (window.hasOwnProperty("webkitSpeechRecognition")) {
@@ -134,7 +138,7 @@ export default () => {
 													form_submit(v.title)
 												},
 												style: () =>
-													"a_row hover:bg-gray-900 " + (suggest_picked() === k && "bg-gray-800"),
+													"a_row hover:bg-gray-900 " + (suggest_pick() === k && "bg-gray-800"),
 											},
 											() => v.title,
 										),
