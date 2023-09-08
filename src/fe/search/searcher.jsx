@@ -85,7 +85,7 @@ export default () => {
 				form_data({...form_data(), search: e.results[0][0].transcript})
 				recognition.stop()
 				mic_on(false)
-				nav("/search/all/" + form_data().search + "/1")
+				nav("/search/all/" + encodeURIComponent(form_data().search) + "/1")
 			}
 			recognition.onerror = (e) => {
 				recognition.stop()

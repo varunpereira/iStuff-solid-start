@@ -24,8 +24,7 @@ export default () => {
 		return () => pusher.unsubscribe("chat")
 	})
 
-	var handleSubmit = async (e) => {
-		e.preventDefault()
+	var handleSubmit = async () => {
 		var res = await req("/chat/pusher", {message: msg(), sender})
 		write(res)
 		msg("")
