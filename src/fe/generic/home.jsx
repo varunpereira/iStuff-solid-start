@@ -1,5 +1,4 @@
 import {
-	title,
 	state,
 	react,
 	mount,
@@ -10,11 +9,10 @@ import {
 	t,
 	b,
 	v,
-	p,
+	p,page,
 	timer,
 	globe,
 } from "~/fe/config/shop"
-import {auth} from "~/fe/config/auth"
 import car1 from "~/fe/generic/asset/1.jpg"
 import car2 from "~/fe/generic/asset/2.jpg"
 import car3 from "~/fe/generic/asset/3.jpg"
@@ -37,10 +35,6 @@ export default () => {
 	var logo = state(false)
 	var event = state()
 
-	mount(async () => {
-		await auth("pub")
-	})
-
 	clean(() => {
 		timer.cut(car_interv)
 	})
@@ -57,9 +51,10 @@ export default () => {
 		logo(false)
 	}
 
-	return d(
-		{},
-		title({}, () => "Home"),
+	return page(
+		{
+			title: ()=>"Home"
+		},
 		d(
 			{style: () => "z_fit"},
 			v({

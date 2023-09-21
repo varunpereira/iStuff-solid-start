@@ -10,12 +10,11 @@ import {
 	v,
 	route,
 	globe,
-	title,
+	page,
 	req,
 	path,
 } from "~/fe/config/shop"
 import prod_short from "~/fe/prod/short"
-import {auth} from "~/fe/config/auth"
 import pager from "~/fe/config/piece/pager"
 
 export default () => {
@@ -23,10 +22,6 @@ export default () => {
 	var path_var = path.var()
 	var prod = state([])
 	var pages = state()
-
-	mount(async () => {
-		await auth("pub")
-	})
 
 	react(async () => {
 		var res = await req("/search/result", {
@@ -39,14 +34,13 @@ export default () => {
 		pages(res.pages)
 	})
 
-	return d(
-		{style: () => "fit_1"},
-		title({}, () => "Search Results"),
+	return page(
+		{title: () => "Result", style: () => "fit_1"},
 		d({style: () => ""}, () =>
 			prod().length === 0
 				? t({}, () => "No results for " + decodeURIComponent(path_var?.term))
-				: 
-				d({},
+				: d(
+						{},
 						d(
 							{style: () => "a_row_auto gap-[1rem] mb-[1rem]"},
 							prod().map((v, k) => prod_short({prod: v})),

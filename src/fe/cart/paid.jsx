@@ -9,17 +9,17 @@ import {
 	i,
 	route,
 	req,
-	title,
+	page,
 	path, globe
 } from "~/fe/config/shop"
-import {auth} from "~/fe/config/auth"
+
 
 export default () => {
 	var nav = route()
 	var path_par = path.par()
 
 	mount(async () => {
-		await auth("pub")
+
 		var res = await req("/cart/paid", {stripe_sesh: path_par.stripe_sesh})
 		if (res.paid === true) {
 			return nav("/404")
@@ -29,9 +29,8 @@ export default () => {
 
 	react(() => {})
 
-	return d(
-		{style: () => "fit_1 c_white tc_black"},
-	title({},()=>"Payment Success"),
+	return page(
+		{title: ()=>"Payment Success", style: () => "fit_1 c_white tc_black"},
 		d({}, () => "Payment Success!"),
 	)
 }

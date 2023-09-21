@@ -14,8 +14,6 @@ export var route = useNavigate
 
 export var nav_full = (link) => (window.location.href = link)
 
-export var title = ({}, value = () => "") => <Title>{value() + struct()?.title()}</Title>
-
 export var react = createEffect
 
 export var effect = createResource
@@ -63,6 +61,34 @@ export var list = Array
 export var dict = Object
 
 // piece
+export var title_set = ({}, value = () => "") => <Title>{value() + struct()?.title()}</Title>
+
+export var auth = async (link) => {
+	try {
+		var res = await req("/login/auth_get")
+		// write(res?.user?.email)
+		var path_get = path.get()
+		link !== "pub" && path_get !== "/signin" && res?.user?.email?.startsWith("@")
+			? nav_full("/signin")
+			: ""
+		return globe({
+			email: !res?.user?.email?.startsWith("@") ? res?.user?.email : null,
+			cart_size: res?.cart_size,
+		})
+	} catch (flaw) {
+		write(flaw)
+	}
+}
+
+export var page = ({title = () => "", style = () => "", custom = () => ""}, ...rest) => {
+	mount(async () => await auth())
+	title_set({}, title)
+	return (
+		<div use:custom class={style()}>
+			{...rest}
+		</div>
+	)
+}
 
 // var style = props?.style?.replace(/=/g, '-')
 export var d = ({style = () => "", custom = () => ""}, ...rest) => (
@@ -111,7 +137,14 @@ export var p = ({
 	hover_out = () => "",
 	click = () => "",
 }) => (
-	<img class={style()} src={value()} alt={def()} onMouseOver={hover_in} onMouseLeave={hover_out} onClick={click} />
+	<img
+		class={style()}
+		src={value()}
+		alt={def()}
+		onMouseOver={hover_in}
+		onMouseLeave={hover_out}
+		onClick={click}
+	/>
 )
 
 export var v = ({

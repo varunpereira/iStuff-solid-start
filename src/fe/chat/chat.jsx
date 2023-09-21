@@ -4,6 +4,7 @@ import {
 	write,
 	mount,
 	env,
+	page,
 	d,
 	t,
 	b,
@@ -15,7 +16,6 @@ import {
 	dict,
 } from "~/fe/config/shop"
 import Pusher from "pusher-js"
-import {auth, email} from "~/fe/config/auth"
 
 export default () => {
 	var chats = state([])
@@ -24,10 +24,9 @@ export default () => {
 	var recEmail = state("")
 
 	mount(async () => {
-		await auth()
 		var res = await req("/chat/get")
 		chats(res.chat.msg)
-		var rec = res.chat.email1 !== globe()?.email ? res.chat.email1 : res.chat.email2
+		var rec = res.chat?.email1 !== globe()?.email ? res.chat?.email1 : res.chat?.email2
 		recEmail(rec)
 	})
 
@@ -49,9 +48,8 @@ export default () => {
 		status("")
 	}
 
-	return d(
-		{},
-		title({}, () => "Chat"),
+	return page(
+		{title: () => "Chat"},
 		d(
 			{
 				style: () =>
@@ -63,10 +61,10 @@ export default () => {
 					d(
 						{
 							style: () =>
-								"a_row tc_white " + (dict.keys(v)[0] === globe().email ? "ax_right " : ""),
+								"a_row tc_white " + (dict.keys(v)[0] === globe()?.email ? "ax_right " : ""),
 						},
 						() =>
-							dict.keys(v)[0] === globe().email
+							dict.keys(v)[0] === globe()?.email
 								? d(
 										{
 											style: () => "bg-blue-500 rounded-t-lg rounded-l-lg mb-2 py-1 px-2",

@@ -1,5 +1,4 @@
 import {
-	title,
 	state,
 	react,
 	mount,
@@ -11,18 +10,14 @@ import {
 	b,
 	route,
 	globe,
-	effect,req
+	effect,
+	req,
 } from "~/fe/config/shop"
-import {auth} from "~/fe/config/auth"
 
 export default () => {
 	var nav = route()
 	var form_error = state()
-	var form_data = state({email: "", password: "", confirm_password:''})
-
-	mount(async () => {
-		await auth("pub")
-	})
+	var form_data = state({email: "", password: "", confirm_password: ""})
 
 	var form_submit = async () => {
 		var res = await req("/login/login_put", form_data())
@@ -34,9 +29,8 @@ export default () => {
 
 	// react(() => write(form_data().email))
 
-	return d(
-		{style:()=>''},
-	title({},()=>"Sign up"),
+	return page(
+		{title: () => "Home", style: () => ""},
 		d(
 			{style: () => "mx_auto mt-[3rem] w-[20rem] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign up"),

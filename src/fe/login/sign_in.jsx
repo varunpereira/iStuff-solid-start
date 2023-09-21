@@ -8,13 +8,12 @@ import {
 	d,
 	t,
 	i,
-	b,
+	b,page,
 	route,
 	globe,
 	req,
 	env,
 } from "~/fe/config/shop"
-import {auth} from "~/fe/config/auth"
 
 export default () => {
 	var nav = route()
@@ -35,9 +34,8 @@ export default () => {
 
 	// react(() => write(form_data().email))
 
-	return d(
-		{},
-	title({},()=>"Sign in"),
+	return page(
+		{title: ()=>"Sign in"},
 		d(
 			{style: () => "mx_auto w-[20rem] mt-[3rem] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign in"),

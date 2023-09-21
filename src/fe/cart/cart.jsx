@@ -10,12 +10,12 @@ import {
 	route,
 	globe,
 	req,
-	title,
+	page,
 	str,
 	nav_full,
 } from "~/fe/config/shop"
 import {cut_icon} from "~/fe/config/asset/icon"
-import {auth} from "~/fe/config/auth"
+
 
 export default () => {
 	var nav = route()
@@ -23,7 +23,6 @@ export default () => {
 	var flaw = state()
 
 	mount(async () => {
-		await auth("pub")
 		var res = await req("/cart/get")
 		return cart(res.cart)
 	})
@@ -74,9 +73,8 @@ export default () => {
 		nav_full(res?.sesh?.url)
 	}
 
-	return d(
-		{style: () => "fit_1 c_white tc_black p-[2rem]"},
-		title({}, () => "Cart"),
+	return page(
+		{title: ()=>"Cart",style: () => "fit_1 c_white tc_black p-[2rem]"},
 		t({style: () => "ts_4 tw_2 mb-[2rem]"}, () => "Cart: " + cart()?.size + " products"),
 		() =>
 			cart()?.prod?.map((v, k) =>
