@@ -30,9 +30,12 @@ export default () => {
 	}
 
 	return page(
-		{title: () => "Sign in",status:()=>"pub" },
+		{title: () => "Sign in", status: () => "pub"},
 		d(
-			{style: () => "mx_auto w-[20rem] mt-[3rem] p-[3rem] c_white tc_black r_1 a_col "},
+			{
+				key: (e) => (e.key === "Enter" ? form_submit() : ""),
+				style: () => "mx_auto w-[20rem] mt-[3rem] p-[3rem] c_white tc_black r_1 a_col ",
+			},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign in"),
 			i({
 				type: () => "text",

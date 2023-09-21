@@ -33,26 +33,29 @@ export default () => {
 	return page(
 		{title: () => "Home", status: () => "pub", style: () => ""},
 		d(
-			{style: () => "mx_auto mt-[3rem] w-[20rem] p-[3rem] c_white tc_black r_1 a_col "},
+			{
+				key: (e) => (e.key === "Enter" ? form_submit() : ""),
+				style: () => "mx_auto mt-[3rem] w-[20rem] p-[3rem] c_white tc_black r_1 a_col ",
+			},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign up"),
 			i({
 				type: () => "text",
-				value: () => form_data().email,
-				input: (e) => form_data({...form_data(), email: e.target.value}),
+				value: () => form_data()["email"],
+				input: (e) => (form_data()["email"] = e.target.value),
 				holder: () => "Email",
 				style: () => "mb-[1rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
 			i({
 				type: () => "password",
-				value: () => form_data().password,
-				input: (e) => form_data({...form_data(), password: e.target.value}),
+				value: () => form_data()["password"],
+				input: (e) => (form_data()["password"] = e.target.value),
 				holder: () => "Password",
 				style: () => "mb-[1rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
 			i({
 				type: () => "password",
-				value: () => form_data().confirm_password,
-				input: (e) => form_data({...form_data(), confirm_password: e.target.value}),
+				value: () => form_data()["confirm_password"],
+				input: (e) => (form_data()["confirm_password"] = e.target.value),
 				holder: () => "Confirm Password",
 				style: () => "mb-[1rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),

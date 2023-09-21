@@ -1,16 +1,18 @@
-import Pusher from "pusher"
-import {write, env, res} from "~/be/config/shop"
+import {write, env, res, cookie} from "~/be/config/shop"
 import {db} from "~/be/config/db/join"
+import Pusher from "pusher"
 import chat_model from "~/be/config/db/model/chat"
 
 export var POST = async ({request}) => {
-	var {message, email, token} = await request.json()
+	var {email, token} = cookie(request?.headers?.get("cookie"))
+	var {message} = await request.json()
 	db()
+	write({[email]: message})
 	var chat_set = await chat_model.updateOne(
 		{},
 		{
 			$push: {
-				msg: {email: message},
+				msg: {[email]: message},
 			},
 		},
 	)
