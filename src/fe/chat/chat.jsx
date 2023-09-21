@@ -20,13 +20,13 @@ export default () => {
 	var chats = state([])
 	var msg = state("")
 	var status = state("")
-	var recEmail = state("")
+	var rec_email = state("")
 
 	var mount = async () => {
 		var res = await req("/chat/get")
 		chats(res.chat.msg)
 		var rec = res.chat?.email1 !== globe()?.email ? res.chat?.email1 : res.chat?.email2
-		recEmail(rec)
+		rec_email(rec)
 	}
 
 	react(() => {
@@ -54,7 +54,7 @@ export default () => {
 				style: () =>
 					"mx_auto w-[30rem] h-[30] mt-[3rem] px-[.3rem] py-[.3rem] c_white tc_black r_1 a_col overflow-auto",
 			},
-			t({style: () => "ts_3 tw_1 border-b-[.1rem] bc_grey a_row ax_mid"}, () => recEmail()),
+			t({style: () => "ts_3 tw_1 border-b-[.1rem] bc_grey a_row ax_mid"}, () => rec_email()),
 			() =>
 				chats().map((v) =>
 					d(
@@ -72,7 +72,7 @@ export default () => {
 								  )
 								: d(
 										{style: () => "bg-green-500 rounded-t-lg rounded-r-lg mb-2 py-1 px-2"},
-										() => v[recEmail()],
+										() => v[rec_email()],
 								  ),
 					),
 				),
