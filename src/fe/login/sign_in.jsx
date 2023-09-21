@@ -20,10 +20,6 @@ export default () => {
 	var form_error = state()
 	var form_data = state({email: "", password: ""})
 
-	mount(async () => {
-		await auth("pub")
-	})
-
 	var form_submit = async () => {
 		var res = await req("/login/auth_put", form_data()) 
 		if (res?.error != null) {
