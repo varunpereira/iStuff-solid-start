@@ -7,7 +7,6 @@ export var POST = async ({request}) => {
 	var {email, token} = cookie(request?.headers?.get("cookie"))
 	var {message} = await request.json()
 	db()
-	write({[email]: message})
 	var chat_set = await chat_model.updateOne(
 		{},
 		{
@@ -17,8 +16,7 @@ export var POST = async ({request}) => {
 		},
 	)
 	var chat = await chat_model.findOne()
-	var res_1 = await pusher.trigger("chat", "event_1", {chat})
-
+	var res_1 = await pusher.trigger("chat", "event_1", {chat, status: "typing"})
 	return res({message: "completed"})
 }
 

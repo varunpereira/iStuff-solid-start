@@ -52,10 +52,10 @@ export default () => {
 		d(
 			{
 				style: () =>
-					"mx_auto w-[30rem] h-[30] mt-[3rem] px-[.3rem] py-[.3rem] c_white tc_black r_1 a_col overflow-auto",
+					"mx_auto w-[25rem] h-[25rem] mt-[3rem] px-[.3rem] py-[.3rem] c_white tc_black r_1 a_col",
 			},
 			t({style: () => "ts_3 tw_1 border-b-[.1rem] bc_grey a_row ax_mid"}, () => rec_email()),
-			() =>
+			d({style: () => "overflow-auto"}, () =>
 				chats().map((v) =>
 					d(
 						{
@@ -76,6 +76,13 @@ export default () => {
 								  ),
 					),
 				),
+			),
+			d(
+				{
+					style: () => "bg-gray-200 rounded-t-lg rounded-l-lg mb-2 py-1 px-2",
+				},
+				() => status(),
+			),
 			i({
 				type: () => "text",
 				value: () => msg(),
