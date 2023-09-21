@@ -20,8 +20,6 @@ export var effect = createResource
 
 export var write = console.log
 
-export var mount = onMount
-
 export var clean = onCleanup
 
 export var timer = {
@@ -80,8 +78,20 @@ export var auth = async (link) => {
 	}
 }
 
-export var page = ({title = () => "", style = () => "", custom = () => ""}, ...rest) => {
-	mount(async () => await auth())
+export var page = (
+	{
+		title = () => "",
+		mount = async () => "",
+		status = () => "priv",
+		style = () => "",
+		custom = () => "",
+	},
+	...rest
+) => {
+	onMount(async () => {
+		await auth(status())
+		await mount()
+	})
 	title_set({}, title)
 	return (
 		<div use:custom class={style()}>
@@ -91,11 +101,14 @@ export var page = ({title = () => "", style = () => "", custom = () => ""}, ...r
 }
 
 // var style = props?.style?.replace(/=/g, '-')
-export var d = ({style = () => "", custom = () => ""}, ...rest) => (
-	<div use:custom class={style()}>
-		{...rest}
-	</div>
-)
+export var d = ({mount = async () => "", style = () => "", custom = () => ""}, ...rest) => {
+	onMount(async () => await mount())
+	return (
+		<div use:custom class={style()}>
+			{...rest}
+		</div>
+	)
+}
 
 export var t = ({style = () => "", name = () => ""}, ...rest) => (
 	<p class={style()} id={name()}>

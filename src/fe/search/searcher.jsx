@@ -1,6 +1,5 @@
 import {
 	state,
-	mount,
 	react,
 	write,
 	d,
@@ -27,10 +26,6 @@ export default () => {
 	var themes = ["all", "tech"]
 	var theme = themes[0]
 	var page = "1"
-
-	mount(async () => {
-		// await get_suggest()
-	})
 
 	var click_outside = (el, accessor = () => "") => {
 		var on_click = (e) => !el.contains(e.target) && accessor()

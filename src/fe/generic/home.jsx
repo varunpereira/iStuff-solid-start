@@ -53,7 +53,8 @@ export default () => {
 
 	return page(
 		{
-			title: ()=>"Home"
+			title: ()=>"Home",
+			status:()=>"pub"
 		},
 		d(
 			{style: () => "z_fit"},

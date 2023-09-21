@@ -2,7 +2,6 @@ import {
 	state,
 	react,
 	write,
-	mount,
 	env,
 	page,
 	d,
@@ -23,12 +22,12 @@ export default () => {
 	var status = state("")
 	var recEmail = state("")
 
-	mount(async () => {
+	var mount = async () => {
 		var res = await req("/chat/get")
 		chats(res.chat.msg)
 		var rec = res.chat?.email1 !== globe()?.email ? res.chat?.email1 : res.chat?.email2
 		recEmail(rec)
-	})
+	}
 
 	react(() => {
 		var pusher = new Pusher(env.VITE_key, {
@@ -49,7 +48,7 @@ export default () => {
 	}
 
 	return page(
-		{title: () => "Chat"},
+		{title: () => "Chat", mount},
 		d(
 			{
 				style: () =>

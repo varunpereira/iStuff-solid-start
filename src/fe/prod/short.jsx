@@ -16,7 +16,7 @@ export default ({prod}) => {
 	}
 
 	return d(
-		{style: () => "c_white tc_black r_1 w-[10rem] h-[20rem] ts_1 z_fit"},
+		{status:()=>"pub", style: () => "c_white tc_black r_1 w-[10rem] h-[20rem] ts_1 z_fit"},
 		b(
 			{click: () => nav("/prod/" + prod._id), style: () => "w_full "},
 			p({value: () => prod.pic[0].url, style: () => "w-[10rem] h-[10rem] rt_1 w_full e_full"}),

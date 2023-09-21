@@ -1,4 +1,4 @@
-import {state, mount, react, write, d, t, b, i, v, env, route} from "~/fe/config/shop"
+import {state, react, write, d, t, b, i, v, env, route} from "~/fe/config/shop"
 import {shop_icon} from "~/fe/config/asset/icon"
 
 export default () => {

@@ -30,7 +30,7 @@ export default () => {
 	// react(() => write(form_data().email))
 
 	return page(
-		{title: () => "Home", style: () => ""},
+		{title: () => "Home", status:()=>"pub",style: () => ""},
 		d(
 			{style: () => "mx_auto mt-[3rem] w-[20rem] p-[3rem] c_white tc_black r_1 a_col "},
 			t({style: () => "ts_3 tw_1 mb-[1rem]"}, () => "Sign up"),

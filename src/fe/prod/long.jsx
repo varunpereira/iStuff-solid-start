@@ -1,6 +1,5 @@
 import {
 	state,
-	mount,
 	react,
 	write,
 	d,
@@ -30,13 +29,13 @@ export default () => {
 	var flaw = state("")
 	var size = state(1)
 
-	mount(async () => {
+	var mount = async () => {
 		var res = await req("/prod/get", {
 			_id: path_var._id,
 		})
 		prod(res.prod)
 		review(res.review)
-	})
+	}
 
 	var cart_put = async () => {
 		var res = await req("/cart/put", {
@@ -67,7 +66,7 @@ export default () => {
 	}
 
 	return page(
-		{title: () => prod().title, style: () => "fit_1 c_white tc_black"},
+		{title: () => prod()?.title, status:()=>"pub", mount, style: () => "fit_1 c_white tc_black"},
 		d(
 			{style: () => "a_row_auto v2:mb-[1rem] v3:mb-[2rem]"},
 			d(

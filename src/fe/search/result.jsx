@@ -35,7 +35,7 @@ export default () => {
 	})
 
 	return page(
-		{title: () => "Result", style: () => "fit_1"},
+		{title: () => "Result", status:()=>"pub",style: () => "fit_1"},
 		d({style: () => ""}, () =>
 			prod().length === 0
 				? t({}, () => "No results for " + decodeURIComponent(path_var?.term))

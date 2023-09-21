@@ -1,6 +1,5 @@
 import {
 	state,
-	mount,
 	react,
 	write,
 	d,
@@ -16,16 +15,15 @@ import {
 } from "~/fe/config/shop"
 import {cut_icon} from "~/fe/config/asset/icon"
 
-
 export default () => {
 	var nav = route()
 	var cart = state({})
 	var flaw = state()
 
-	mount(async () => {
+	var mount = async () => {
 		var res = await req("/cart/get")
 		return cart(res.cart)
-	})
+	}
 
 	var cut = async (prod) => {
 		var res = await req("/cart/cut", {
@@ -74,7 +72,12 @@ export default () => {
 	}
 
 	return page(
-		{title: ()=>"Cart",style: () => "fit_1 c_white tc_black p-[2rem]"},
+		{
+			title: () => "Cart",
+			status: () => "pub",
+			mount,
+			style: () => "fit_1 c_white tc_black p-[2rem]",
+		},
 		t({style: () => "ts_4 tw_2 mb-[2rem]"}, () => "Cart: " + cart()?.size + " products"),
 		() =>
 			cart()?.prod?.map((v, k) =>

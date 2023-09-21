@@ -25,11 +25,11 @@ export default () => {
 	var acc_click = state(false)
 	var menu_click = state(false)
 
-	mount(async () => {
+	var mount = async () => {
 		// write(globe())
 		width(view.width())
 		view.put_listen("resize", handler)
-	})
+	}
 
 	var handler = () => {
 		width(view.width())
@@ -50,7 +50,7 @@ export default () => {
 	}
 
 	return d(
-		{style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black"},
+		{mount, style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black"},
 		b(
 			{click: () => nav("/"), style: () => "a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"},
 			shop_icon({style: () => "w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]"}),
