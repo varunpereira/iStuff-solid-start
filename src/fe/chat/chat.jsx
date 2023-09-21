@@ -80,11 +80,10 @@ export default () => {
 				type: () => "text",
 				value: () => msg(),
 				input: (e) => {
-					e.preventDefault()
-					if (e.key === "Enter") return form_submit()
 					msg(e.target.value)
 					msg().trim() !== "" ? status("typing") : status("")
 				},
+				key: (e) => (e.key === "Enter" ? form_submit() : ""),
 				holder: () => "message...",
 				style: () => "mb-[.3rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
