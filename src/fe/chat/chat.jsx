@@ -1,15 +1,34 @@
-import {state, react, write, mount, env, d, title, req} from "~/fe/config/shop"
+import {
+	state,
+	react,
+	write,
+	mount,
+	env,
+	d,
+	t,
+	b,
+	title,
+	req,
+	str,
+	globe,
+	i,
+	dict,
+} from "~/fe/config/shop"
 import Pusher from "pusher-js"
-import {auth} from "~/fe/config/auth"
+import {auth, email} from "~/fe/config/auth"
 
 export default () => {
 	var chats = state([])
 	var msg = state("")
 	var status = state("")
-	var sender = "def"
+	var recEmail = state("")
 
 	mount(async () => {
-		await auth("pub")
+		await auth()
+		var res = await req("/chat/get")
+		chats(res.chat.msg)
+		var rec = res.chat.email1 !== globe()?.email ? res.chat.email1 : res.chat.email2
+		recEmail(rec)
 	})
 
 	react(() => {
@@ -18,47 +37,60 @@ export default () => {
 		})
 		pusher.subscribe("chat").bind("event_1", (data) => {
 			msg().trim() !== "" ? status("typing") : status("")
-			write("ok")
-			chats((prevState) => [...prevState, {sender: data.sender, message: data.message}])
+			chats(() => data.chat.msg)
 		})
 		return () => pusher.unsubscribe("chat")
 	})
 
-	var handleSubmit = async () => {
-		var res = await req("/chat/pusher", {message: msg(), sender})
+	var form_submit = async () => {
+		var res = await req("/chat/set", {message: msg()})
 		write(res)
 		msg("")
 		status("")
 	}
 
-	return (
-		<>
-			{title({}, () => "Chat - iStuff")}
-			<p>Hello, {sender}</p>
-			<div class="bg-red-800">
-				chats: {status()}
-				{chats().map((chat, id) => (
-					<>
-						<p>{chat.message}</p>
-						<small>{chat.sender}</small>
-					</>
-				))}
-			</div>
-
-			<form onSubmit={handleSubmit}>
-				<input
-					type="text"
-					value={msg()}
-					onInput={(e) => {
-						e.preventDefault()
-						msg(e.target.value)
-						msg().trim() !== "" ? status("typing") : status("")
-					}}
-					placeholder="start typing...."
-					class="tc_black"
-				/>
-				<button type="submit">Send</button>
-			</form>
-		</>
+	return d(
+		{},
+		title({}, () => "Chat"),
+		d(
+			{
+				style: () =>
+					"mx_auto w-[40rem] mt-[3rem] px-[.3rem] py-[.3rem] c_white tc_black r_1 a_col overflow-auto",
+			},
+			t({style: () => "ts_3 tw_1 border-b-[.1rem] bc_grey a_row ax_mid"}, () => recEmail()),
+			() =>
+				chats().map((v) =>
+					d(
+						{
+							style: () =>
+								"a_row tc_white " + (dict.keys(v)[0] === globe().email ? "ax_right " : ""),
+						},
+						() =>
+							dict.keys(v)[0] === globe().email
+								? d(
+										{
+											style: () => "bg-blue-500 rounded-t-lg rounded-l-lg mb-2 py-1 px-2",
+										},
+										() => v[globe().email],
+								  )
+								: d(
+										{style: () => "bg-green-500 rounded-t-lg rounded-r-lg mb-2 py-1 px-2"},
+										() => v[recEmail()],
+								  ),
+					),
+				),
+			i({
+				type: () => "text",
+				value: () => msg(),
+				input: (e) => {
+					e.preventDefault()
+					if (e.key === "Enter") return form_submit()
+					msg(e.target.value)
+					msg().trim() !== "" ? status("typing") : status("")
+				},
+				holder: () => "message...",
+				style: () => "mb-[.3rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
+			}),
+		),
 	)
 }

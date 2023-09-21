@@ -90,13 +90,24 @@ export default () => {
 										),
 										() =>
 											acc_click() === true
-												? b(
-														{
-															click: sign_out,
-															style: () =>
-																"a_row c_black v3:z_put v3:z-[4] v3:right-[0rem] v3:left_auto v3:px-[1rem] v3:w-[10rem] v3:top-[2.5rem] rb_1",
-														},
-														() => "Sign out",
+												? d(
+														{},
+														b(
+															{
+																click: () => nav("/chat") + acc_click(false),
+																style: () =>
+																	"a_row c_black v3:z_put v3:z-[4] v3:right-[0rem] v3:left_auto v3:px-[1rem] v3:w-[10rem] v3:top-[2.5rem]",
+															},
+															() => "Chat",
+														),
+														b(
+															{
+																click: sign_out,
+																style: () =>
+																	"a_row c_black v3:z_put v3:z-[4] v3:right-[0rem] v3:left_auto v3:px-[1rem] v3:w-[10rem] v3:top-[4rem] rb_1",
+															},
+															() => "Sign out",
+														),
 												  )
 												: "",
 								  )

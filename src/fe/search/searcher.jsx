@@ -70,8 +70,6 @@ export default () => {
 		}
 	}
 
-	react(() => write(suggest_pick()))
-
 	var put_mic = () => {
 		if (window.hasOwnProperty("webkitSpeechRecognition")) {
 			var recognition = new webkitSpeechRecognition()
