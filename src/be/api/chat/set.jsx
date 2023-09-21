@@ -10,7 +10,7 @@ export var POST = async ({request}) => {
 		{},
 		{
 			$push: {
-				msg: {"1@x.x": message},
+				msg: {email: message},
 			},
 		},
 	)
