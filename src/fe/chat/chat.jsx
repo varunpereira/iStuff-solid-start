@@ -13,6 +13,7 @@ import {
 	globe,
 	i,
 	dict,
+	scroll,
 } from "~/fe/config/shop"
 import Pusher from "pusher-js"
 
@@ -27,6 +28,7 @@ export default () => {
 		chats(res.chat.msg)
 		var rec = res.chat?.email1 !== globe()?.email ? res.chat?.email1 : res.chat?.email2
 		rec_email(rec)
+		scroll("last")
 	}
 
 	react(() => {
@@ -36,6 +38,7 @@ export default () => {
 		pusher.subscribe("chat").bind("event_1", (data) => {
 			msg().trim() !== "" ? status("typing") : status("")
 			chats(() => data.chat.msg)
+			scroll("last")
 		})
 		return () => pusher.unsubscribe("chat")
 	})
@@ -56,33 +59,43 @@ export default () => {
 			},
 			t({style: () => "ts_3 tw_1 border-b-[.1rem] bc_grey a_row ax_mid"}, () => rec_email()),
 			d({style: () => "overflow-auto"}, () =>
-				chats().map((v) =>
+				chats().map((v, k) =>
 					d(
 						{
+							name: () => (k === chats().length - 1 && status() !== "typing" ? "last" : ""),
 							style: () =>
-								"a_row tc_white " + (dict.keys(v)[0] === globe()?.email ? "ax_right " : ""),
+								"a_row tc_white " +
+								(dict.keys(v)[0] === globe()?.email ? "ax_right " : "") +
+								(k === 0 ? "mt-2" : ""),
 						},
 						() =>
 							dict.keys(v)[0] === globe()?.email
 								? d(
 										{
-											style: () => "bg-blue-500 rounded-t-lg rounded-l-lg mb-2 py-1 px-2",
+											style: () => "bg-blue-500 rounded-t-xl rounded-l-xl mb-2 py-1 px-2 ",
 										},
 										() => v[globe().email],
 								  )
 								: d(
-										{style: () => "bg-green-500 rounded-t-lg rounded-r-lg mb-2 py-1 px-2"},
+										{
+											style: () => "bg-green-500 rounded-t-xl rounded-r-xl mb-2 py-1 px-2",
+										},
 										() => v[rec_email()],
 								  ),
 					),
 				),
 			),
-			d(
-				{
-					style: () => "bg-gray-200 rounded-t-lg rounded-l-lg mb-2 py-1 px-2",
-				},
-				() => status(),
-			),
+			() =>
+				status() === "typing"
+					? d(
+							{
+								name: () => "last",
+								style: () => "bg-gray-200 rounded-t-xl rounded-l-xl mb-2 py-1 px-2 ",
+							},
+							'typing',
+					  )
+					: "",
+
 			i({
 				type: () => "text",
 				value: () => msg(),
@@ -92,7 +105,8 @@ export default () => {
 				},
 				key: (e) => (e.key === "Enter" ? form_submit() : ""),
 				holder: () => "message...",
-				style: () => "mb-[.3rem] h-[2rem] px-[.25rem] tc_black bw_1 focus:bw_2 bc_black r_1",
+				style: () =>
+					"mb-[.3rem] h-[2rem] px-[.25rem] py-[.2rem] tc_black bw_1 focus:bw_2 bc_black r_1",
 			}),
 		),
 	)

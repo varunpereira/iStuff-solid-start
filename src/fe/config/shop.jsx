@@ -101,10 +101,13 @@ export var page = (
 }
 
 // var style = props?.style?.replace(/=/g, '-')
-export var d = ({mount = async () => "", style = () => "", key = () => "",custom = () => ""}, ...rest) => {
+export var d = (
+	{mount = async () => "", style = () => "", key = () => "", name = () => "", custom = () => ""},
+	...rest
+) => {
 	onMount(async () => await mount())
 	return (
-		<div onKeyDown={key} use:custom class={style()}>
+		<div onKeyDown={key} id={name()} use:custom class={style()}>
 			{...rest}
 		</div>
 	)
