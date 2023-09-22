@@ -55,11 +55,11 @@ export default () => {
 		d(
 			{
 				style: () =>
-					"mx_auto w-[25rem] h-[25rem] mt-[3rem] px-[.3rem] py-[.3rem] c_white tc_black r_1 a_col",
+					"mx_auto w-[25rem] h-[25rem] mt-[3rem] py-[.3rem] c_white tc_black r_1 a_col",
 			},
 			t({style: () => "ts_3 tw_1 border-b-[.1rem] bc_grey a_row ax_mid"}, () => rec_email()),
 			d(
-				{style: () => "overflow-auto"},
+				{style: () => "overflow-auto px-[.3rem]"},
 				() =>
 					chats().map((v, k) =>
 						d(
@@ -87,16 +87,21 @@ export default () => {
 						),
 					),
 				d({style: () => "a_row ax_right"}, () =>
-					status() === "typing"
-						? d(
-								{
-									name: () => "last",
-									style: () =>
-										"bg-gray-200 rounded-t-xl rounded-l-xl mb-2 py-1 px-2 w-fit",
-								},
-								".....",
-						  )
-						: "",
+					status() === "typing" ? (
+						<div class="flex justify-start ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-l-full bg-gray-300 text-gray-600 px-2 mb-2">
+							<div class="animate-pulse flex justify-start py-1 scale-90 ">● ● ●</div>
+						</div>
+					) : (
+						// d(
+						// 		{
+						// 			name: () => "last",
+						// 			style: () =>
+						// 				"bw_1 border-gray-400 bg-gray-300 rounded-t-xl rounded-l-xl mb-2 py-1 px-2 w-fit",
+						// 		},
+						// 		".....",
+						//   )
+						""
+					),
 				),
 			),
 			i({
@@ -109,7 +114,7 @@ export default () => {
 				key: (e) => (e.key === "Enter" ? form_submit() : ""),
 				holder: () => "message...",
 				style: () =>
-					"mb-[.3rem] h-[2rem] px-[.25rem] py-[.2rem] tc_black bw_1 border-gray-500 focus:bc_black r_1",
+					"mx-[.3rem] mb-[.3rem] h-[2rem] px-[.25rem] py-[.2rem] tc_black bw_1 border-gray-500 focus:bc_black r_1",
 			}),
 		),
 	)
