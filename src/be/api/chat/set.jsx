@@ -46,7 +46,7 @@ export var POST = async ({request}) => {
 	}
 	var chat = await chat_model.findOne()
 	var res_1 = await pusher.trigger("chat", "event_1", {chat})
-	return res({message: "completed"})
+	return res({ok: "completed"})
 }
 
 export var pusher = new Pusher({

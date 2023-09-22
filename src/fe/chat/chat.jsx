@@ -20,27 +20,51 @@ import Pusher from "pusher-js"
 export default () => {
 	var chats = state([])
 	var msg = state("")
-	var status = state("")
 	var rec_email = state("")
+	var status = state("")
+	var rec_status = state("")
 
 	var mount = async () => {
-		var res = await req("/chat/get")
+		var res = await req("/chat/set_status", {status: ""})
 		chats(res.chat.msg)
 		write(res)
-		var rec = res.chat?.email1?.email !== globe()?.email ? res.chat?.email1?.email : res.chat?.email2?.email
+		var rec =
+			res.chat?.email1?.email !== globe()?.email ? res.chat?.email1?.email : res.chat?.email2?.email
 		rec_email(rec)
 		scroll("last")
 	}
 
-	// send req to change staus from typing to blank
-	react(() => {
+	react(async () => {
 		var pusher = new Pusher(env.VITE_key, {
 			cluster: env.VITE_cluster,
 		})
+		if (msg() === "") {
+			var res = await req("/chat/set_status", {status: ""})
+			chats(res.chat.msg)
+			var rec =
+				res.chat?.email1?.email !== globe()?.email
+					? res.chat?.email1?.status
+					: res.chat?.email2?.status
+			rec_status(rec)
+			var stat =
+				res.chat?.email1?.email === globe()?.email
+					? res.chat?.email1?.status
+					: res.chat?.email2?.status
+			status(stat)
+		}
 		pusher.subscribe("chat").bind("event_1", (data) => {
-			msg().trim() !== "" ? status("typing") : status("")
 			write(data.chat)
 			chats(() => data.chat.msg)
+			var rec =
+				res.chat?.email1?.email !== globe()?.email
+					? res.chat?.email1?.status
+					: res.chat?.email2?.status
+			rec_status(rec)
+			var stat =
+				res.chat?.email1?.email === globe()?.email
+					? res.chat?.email1?.status
+					: res.chat?.email2?.status
+			status(stat)
 			scroll("last")
 		})
 		return () => pusher.unsubscribe("chat")
@@ -50,7 +74,6 @@ export default () => {
 		var res = await req("/chat/set", {message: msg()})
 		write(res)
 		msg("")
-		status("")
 	}
 
 	return page(
@@ -66,7 +89,7 @@ export default () => {
 					chats().map((v, k) =>
 						d(
 							{
-								name: () => (k === chats().length - 1 && status() !== "typing" ? "last" : ""),
+								name: () => (k === chats().length - 1 ? "last" : ""),
 								style: () =>
 									"a_row tc_white " +
 									(dict.keys(v)[0] === globe()?.email ? "ax_right " : "") +
@@ -88,25 +111,47 @@ export default () => {
 									  ),
 						),
 					),
-				d({style: () => "a_row ax_right"}, () =>
-					status() === "typing"
-						? d(
-								{
-									name: () => "last",
-									style: () =>
-										"flex justify-start ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-l-full bg-gray-300 text-gray-600 px-2 mb-2",
-								},
-								t({style: () => "animate-pulse"}, () => "● ● ●"),
-						  )
-						: "",
+				d(
+					{style: () => "a_row"},
+					d(
+						{
+							name: () => "last",
+							style: () =>
+								"flex justify-start ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-r-full bg-gray-300 text-gray-600 px-2 mb-2",
+						},
+						// () => "status " + status() + "rec status " + rec_status(),
+						t({style: () => "animate-pulse"}, () => (rec_status() === "typing" ? "● ● ●" : "")),
+					),
+					d(
+						{
+							name: () => "last",
+							style: () =>
+								"flex justify-end ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-l-full bg-gray-300 text-gray-600 px-2 mb-2",
+						},
+						// () => "status " + status() + "rec status " + rec_status(),
+						t({style: () => "animate-pulse"}, () => (status() === "typing" ? "● ● ●" : "")),
+					),
 				),
 			),
 			i({
 				type: () => "text",
 				value: () => msg(),
-				input: (e) => {
+				input: async (e) => {
 					msg(e.target.value)
-					msg().trim() !== "" ? status("typing") : status("")
+					if (msg() !== "") {
+						var res = await req("/chat/set_status", {status: "typing"})
+						chats(res.chat.msg)
+						var rec =
+							res.chat?.email1?.email !== globe()?.email
+								? res.chat?.email1?.status
+								: res.chat?.email2?.status
+						rec_status(rec)
+						var stat =
+							res.chat?.email1?.email === globe()?.email
+								? res.chat?.email1?.status
+								: res.chat?.email2?.status
+						status(stat)
+					}
 				},
 				key: (e) => (e.key === "Enter" ? form_submit() : ""),
 				holder: () => "message...",
