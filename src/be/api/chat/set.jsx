@@ -18,9 +18,34 @@ export var POST = async ({request}) => {
 				},
 			},
 		)
+		var chat_set2 = await chat_model.updateOne(
+			{"email1.email": email},
+			{
+				"email1.status": "typing",
+			},
+		)
+		var chat_set3 = await chat_model.updateOne(
+			{"email2.email": email},
+			{
+				"email2.status": "typing",
+			},
+		)
+	} else {
+		var chat_set4 = await chat_model.updateOne(
+			{"email1.email": email},
+			{
+				"email1.status": "",
+			},
+		)
+		var chat_set5 = await chat_model.updateOne(
+			{"email2.email": email},
+			{
+				"email2.status": "",
+			},
+		)
 	}
 	var chat = await chat_model.findOne()
-	var res_1 = await pusher.trigger("chat", "event_1", {chat, test: {[email]: status}})
+	var res_1 = await pusher.trigger("chat", "event_1", {chat})
 	return res({message: "completed"})
 }
 

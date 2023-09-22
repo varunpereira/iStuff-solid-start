@@ -26,18 +26,20 @@ export default () => {
 	var mount = async () => {
 		var res = await req("/chat/get")
 		chats(res.chat.msg)
-		var rec = res.chat?.email1 !== globe()?.email ? res.chat?.email1 : res.chat?.email2
+		write(res)
+		var rec = res.chat?.email1?.email !== globe()?.email ? res.chat?.email1?.email : res.chat?.email2?.email
 		rec_email(rec)
 		scroll("last")
 	}
 
+	// send req to change staus from typing to blank
 	react(() => {
 		var pusher = new Pusher(env.VITE_key, {
 			cluster: env.VITE_cluster,
 		})
 		pusher.subscribe("chat").bind("event_1", (data) => {
 			msg().trim() !== "" ? status("typing") : status("")
-			write(data)
+			write(data.chat)
 			chats(() => data.chat.msg)
 			scroll("last")
 		})

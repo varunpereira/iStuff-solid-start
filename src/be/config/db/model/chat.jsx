@@ -3,11 +3,11 @@ import mongoose from 'mongoose'
 var schema = new mongoose.Schema(
 	{
 		email1: {
-			type: String,
+			type: Object,
 			required: true,
 		},
 		email2: {
-			type: String,
+			type: Object,
 			required: true,
 		},
 		msg: {
