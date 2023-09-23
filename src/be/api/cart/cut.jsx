@@ -4,7 +4,7 @@ import prod_model from "~/be/config/db/model/prod"
 import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
-	var {email, token} = cookie(request?.headers?.get("cookie"))
+	var {email, token} = cookie(request.headers)
 	var {prod} = await request.json()
 	db()
 

@@ -4,7 +4,7 @@ import Pusher from "pusher"
 import chat_model from "~/be/config/db/model/chat"
 
 export var POST = async ({request}) => {
-	var {email, token} = cookie(request?.headers?.get("cookie"))
+	var {email, token} = cookie(request.headers)
 	var {message} = await request.json()
 	var status = ""
 	db()
@@ -45,7 +45,9 @@ export var POST = async ({request}) => {
 		)
 	}
 	var chat = await chat_model.findOne()
-	var res_1 = await pusher.trigger("chat", "event_1", {chat})
+	var rec = chat.email1.email !== email ? chat.email1 : chat.email2
+	var status = chat.email1.email === email ? chat.email1.status : chat.email2.status
+	var res_1 = await pusher.trigger("chat", "event_1", {chat, rec, status})
 	return res({ok: "completed"})
 }
 

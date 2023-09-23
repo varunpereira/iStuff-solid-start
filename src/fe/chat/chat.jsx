@@ -20,17 +20,14 @@ import Pusher from "pusher-js"
 export default () => {
 	var chats = state([])
 	var msg = state("")
-	var rec_email = state("")
 	var status = state("")
+	var rec_email = state("")
 	var rec_status = state("")
 
 	var mount = async () => {
 		var res = await req("/chat/set_status", {status: ""})
 		chats(res.chat.msg)
-		write(res)
-		var rec =
-			res.chat?.email1?.email !== globe()?.email ? res.chat?.email1?.email : res.chat?.email2?.email
-		rec_email(rec)
+		rec_email(res.rec.email)
 		scroll("last")
 	}
 
@@ -41,30 +38,24 @@ export default () => {
 		if (msg() === "") {
 			var res = await req("/chat/set_status", {status: ""})
 			chats(res.chat.msg)
-			var rec =
-				res.chat?.email1?.email !== globe()?.email
-					? res.chat?.email1?.status
-					: res.chat?.email2?.status
-			rec_status(rec)
-			var stat =
-				res.chat?.email1?.email === globe()?.email
-					? res.chat?.email1?.status
-					: res.chat?.email2?.status
-			status(stat)
+			rec_status(res.rec.status)
+			status(res.status)
 		}
 		pusher.subscribe("chat").bind("event_1", (data) => {
 			write(data.chat)
 			chats(() => data.chat.msg)
-			var rec =
-				res.chat?.email1?.email !== globe()?.email
-					? res.chat?.email1?.status
-					: res.chat?.email2?.status
-			rec_status(rec)
-			var stat =
-				res.chat?.email1?.email === globe()?.email
-					? res.chat?.email1?.status
-					: res.chat?.email2?.status
-			status(stat)
+			rec_status(data.rec.status)
+			status(data.status)
+			scroll("last")
+		})
+		pusher.subscribe("chat").bind("event_2", (data) => {
+			write(data.chat)
+			chats(() => data.chat.msg)
+			var rec = data.chat.email1.email !== email ? data.chat.email1 : data.chat.email2
+			var status =
+				data.chat.email1.email === email ? data.chat.email1.status : data.chat.email2.status
+			rec_status(rec.status)
+			status(status)
 			scroll("last")
 		})
 		return () => pusher.unsubscribe("chat")
@@ -117,18 +108,19 @@ export default () => {
 						{
 							name: () => "last",
 							style: () =>
-								"flex justify-start ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-r-full bg-gray-300 text-gray-600 px-2 mb-2",
+								"ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-r-full bg-gray-300 text-gray-600 px-2 mb-2",
 						},
-						// () => "status " + status() + "rec status " + rec_status(),
 						t({style: () => "animate-pulse"}, () => (rec_status() === "typing" ? "● ● ●" : "")),
 					),
+				),
+				d(
+					{style: () => "a_row ax_right"},
 					d(
 						{
 							name: () => "last",
 							style: () =>
-								"flex justify-end ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-l-full bg-gray-300 text-gray-600 px-2 mb-2",
+								"ml-2 max-w-[400px] w-fit break-words rounded-t-full rounded-l-full bg-gray-300 text-gray-600 px-2 mb-2",
 						},
-						// () => "status " + status() + "rec status " + rec_status(),
 						t({style: () => "animate-pulse"}, () => (status() === "typing" ? "● ● ●" : "")),
 					),
 				),
@@ -138,20 +130,10 @@ export default () => {
 				value: () => msg(),
 				input: async (e) => {
 					msg(e.target.value)
-					if (msg() !== "") {
-						var res = await req("/chat/set_status", {status: "typing"})
-						chats(res.chat.msg)
-						var rec =
-							res.chat?.email1?.email !== globe()?.email
-								? res.chat?.email1?.status
-								: res.chat?.email2?.status
-						rec_status(rec)
-						var stat =
-							res.chat?.email1?.email === globe()?.email
-								? res.chat?.email1?.status
-								: res.chat?.email2?.status
-						status(stat)
-					}
+					var res = await req("/chat/set_status", {status: "typing"})
+					chats(res.chat.msg)
+					rec_status(res.rec.status)
+					status(res.status)
 				},
 				key: (e) => (e.key === "Enter" ? form_submit() : ""),
 				holder: () => "message...",

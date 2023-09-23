@@ -5,7 +5,7 @@ import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
 	var {prod, prod_size} = await request.json()
-	var {email, token} = cookie(request?.headers?.get("cookie"))
+	var {email, token} = cookie(request.headers)
 	db()
 	// after validation
 	var set_prod = await prod_model.updateOne(

@@ -13,7 +13,8 @@ export var timer = {
 // parse
 export var str = JSON.stringify
 export var num = Number
-export var cookie = (req_cookie) => {
+export var cookie = (headers) => {
+	var req_cookie = headers?.get("cookie")
 	if (req_cookie == null) return {}
 	var cookies = () => parseCookie(req_cookie)
 	if (cookies()?.cookie != null) return any(cookies()?.cookie)

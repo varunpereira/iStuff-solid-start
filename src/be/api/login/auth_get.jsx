@@ -5,8 +5,8 @@ import {db} from "~/be/config/db/join"
 import jwt from "jsonwebtoken"
 
 export var POST = async ({request}) => {
-	// write(cookie(request?.headers?.get("cookie")))
-	var {email, token} = cookie(request?.headers?.get("cookie"))
+	// write(cookie(request.headers))
+	var {email, token} = cookie(request.headers)
 	db()
 	var user = await user_model.findOne({email, token})
 	var cart = await order_model.findOne({email, current: true})

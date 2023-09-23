@@ -3,7 +3,7 @@ import user_model from "~/be/config/db/model/user"
 import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
-	var {email, token, pub} = cookie(request?.headers?.get("cookie"))
+	var {email, token, pub} = cookie(request.headers)
 	db()
 	var user = await user_model.findOne({email, token})
 	if (user == null) {

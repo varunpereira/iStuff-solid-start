@@ -1,9 +1,10 @@
 import {write, env, res, cookie} from "~/be/config/shop"
 import {db} from "~/be/config/db/join"
 import chat_model from "~/be/config/db/model/chat"
+import Pusher from "pusher"
 
 export var POST = async ({request}) => {
-	var {email} = cookie(request?.headers?.get("cookie"))
+	var {email} = cookie(request.headers)
 	var {status} = await request.json()
 	db()
 	if (status === "typing") {
@@ -34,5 +35,19 @@ export var POST = async ({request}) => {
 		)
 	}
 	var chat = await chat_model.findOne()
-	return res({chat})
+	var rec = chat.email1.email !== email ? chat.email1 : chat.email2
+	var status = chat.email1.email === email ? chat.email1.status : chat.email2.status
+	// write(email)
+	// write(rec.status)
+	// write(status)
+	var res_2 = await pusher.trigger("chat", "event_2", {chat, })
+	return res({chat, rec, status})
 }
+
+export var pusher = new Pusher({
+	appId: env.VITE_app_id,
+	key: env.VITE_key,
+	secret: env.VITE_secret,
+	cluster: env.VITE_cluster,
+	useTLS: true,
+})
