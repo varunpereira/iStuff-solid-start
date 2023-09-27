@@ -30,7 +30,6 @@ export default () => {
 			page: path_var?.page,
 		})
 		prod(res.prod)
-		write(res)
 		pages(res.pages)
 	})
 

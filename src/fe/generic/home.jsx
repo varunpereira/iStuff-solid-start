@@ -9,9 +9,10 @@ import {
 	t,
 	b,
 	v,
-	p,page,
+	p,
+	page,
 	timer,
-	globe,
+	req,
 } from "~/fe/config/shop"
 import car1 from "~/fe/generic/asset/1.jpg"
 import car2 from "~/fe/generic/asset/2.jpg"
@@ -20,6 +21,7 @@ import car4 from "~/fe/generic/asset/4.jpg"
 import lotr_vid from "~/fe/generic/asset/lotr_1.mp4"
 import lotr from "~/fe/generic/asset/lotr_1.png"
 import lotr_logo from "~/fe/generic/asset/lotr_1_logo.png"
+import prod_short from "~/fe/prod/short"
 
 export default () => {
 	var car = state([car1, car2, car3, car4])
@@ -34,6 +36,13 @@ export default () => {
 	var mute = state(true)
 	var logo = state(false)
 	var event = state()
+	var prod = state([])
+	var pages = state()
+
+	var mount = async () => {
+		var res = await req("/search/suggest")
+		prod(res.prod)
+	}
 
 	clean(() => {
 		timer.cut(car_interv)
@@ -53,8 +62,9 @@ export default () => {
 
 	return page(
 		{
-			title: ()=>"Home",
-			status:()=>"pub"
+			title: () => "Home",
+			status: () => "pub",
+			mount,
 		},
 		d(
 			{style: () => "z_fit"},
@@ -83,9 +93,12 @@ export default () => {
 		),
 		t(
 			{
-				style: () => "fit_1 px-[1rem] py-[1rem] a_row ay_mid my-[3rem] tc_aqua ts_3 tw_2",
+				style: () => "fit_1 px-[1rem] py-[1rem] a_row ay_mid mt-[3rem] mb-[2rem] tc_aqua ts_3 tw_2",
 			},
 			() => "Trending",
+		),
+		d({style: () => "fit_1 a_row_auto gap-[1rem] mb-[3rem]"}, () =>
+			prod().map((v, k) => prod_short({prod: v})),
 		),
 		p({
 			def: () => "trending",
