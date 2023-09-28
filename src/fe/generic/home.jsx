@@ -40,7 +40,7 @@ export default () => {
 	var pages = state()
 
 	var mount = async () => {
-		var res = await req("/search/suggest")
+		var res = await req("/search/trend")
 		prod(res.prod)
 	}
 
