@@ -37,6 +37,14 @@ export var req = async (link = "", value = {}) => {
 
 export var env = import.meta.env
 
+/*
+"Domain=" +
+				(process.env.NODE_ENV === "production"
+					? import.meta.env.VITE_domain
+					: import.meta.env.VITE_domain_dev) +
+				";"
+*/
+
 export var res = (body = {}, head) =>
 	new Response(JSON.stringify(body), {
 		headers: {
@@ -45,10 +53,6 @@ export var res = (body = {}, head) =>
 				JSON.stringify(head?.cookie?.value) +
 				"; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=" +
 				head?.cookie?.age +
-				"; Domain=" +
-				(process.env.NODE_ENV === "production"
-					? import.meta.env.VITE_domain
-					: import.meta.env.VITE_domain_dev) +
 				";",
 			"Content-Type": "application/json",
 			"Access-Control-Allow-Origin":
