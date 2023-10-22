@@ -72,6 +72,7 @@ export default () => {
 				def: () => lotr,
 				value: () => lotr_vid,
 				mute,
+				rep: () => true,
 				hover_in,
 				hover_out,
 				click: () => mute(!mute()),

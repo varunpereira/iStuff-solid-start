@@ -170,6 +170,7 @@ export var v = ({
 	type = () => "",
 	controls = () => false,
 	mute = () => true,
+	rep = () => false,
 	hover_in = () => "",
 	hover_out = () => "",
 	click = () => "",
@@ -179,6 +180,7 @@ export var v = ({
 		poster={def()}
 		controls={controls()}
 		muted={mute()}
+		loop={rep()}
 		playsinline
 		onMouseOver={hover_in}
 		onMouseLeave={hover_out}
