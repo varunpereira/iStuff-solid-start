@@ -1,6 +1,5 @@
 import {
 	state,
-	mount,
 	react,
 	write,
 	d,
