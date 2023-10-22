@@ -55,8 +55,8 @@ export var any = JSON.parse // eg bool
 // more innate globe
 export var math = Math
 export var date = Date
-export var list = Array
-export var dict = Object
+export var dir = Array
+export var dic = Object
 
 // piece
 export var title_set = ({}, value = () => "") => <Title>{value() + struct()?.title()}</Title>
@@ -186,7 +186,7 @@ export var v = ({
 		onMouseLeave={hover_out}
 		onClick={click}>
 		<source src={value()} type={type()} />
-		Browser doesn't not support video tag.
+		Browser doesn't support video tag.
 	</video>
 )
 

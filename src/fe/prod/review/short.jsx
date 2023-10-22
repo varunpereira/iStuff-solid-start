@@ -1,4 +1,4 @@
-import {state, mount, react, write, d, t, b, i, p, route, req, globe, list} from "~/fe/config/shop"
+import {state, mount, react, write, d, t, b, i, p, route, req, globe, dir} from "~/fe/config/shop"
 import {star_icon} from "~/fe/config/asset/icon"
 
 export default ({review}) => {
@@ -11,11 +11,11 @@ export default ({review}) => {
 		d(
 			{style: () => "a_row"},
 			() =>
-				list(review?.rating)
+				dir(review?.rating)
 					.fill()
 					.map((v, k) => star_icon({style: () => "w-[1rem] h-[1rem] ic_black"})),
 			() =>
-				list(5 - review?.rating)
+				dir(5 - review?.rating)
 					.fill()
 					.map((v, k) => star_icon({style: () => "w-[1rem] h-[1rem] ic_null ibc_black"})),
 		),

@@ -12,7 +12,7 @@ import {
 	str,
 	globe,
 	i,
-	dict,
+	dic,
 	scroll,
 } from "~/fe/config/shop"
 import Pusher from "pusher-js"
@@ -83,11 +83,11 @@ export default () => {
 								name: () => (k === chats().length - 1 ? "last" : ""),
 								style: () =>
 									"a_row tc_white " +
-									(dict.keys(v)[0] === globe()?.email ? "ax_right " : "") +
+									(dic.keys(v)[0] === globe()?.email ? "ax_right " : "") +
 									(k === 0 ? "mt-2" : ""),
 							},
 							() =>
-								dict.keys(v)[0] === globe()?.email
+								dic.keys(v)[0] === globe()?.email
 									? d(
 											{
 												style: () => "bg-blue-500 rounded-t-xl rounded-l-xl mb-2 py-1 px-2 ",

@@ -11,7 +11,7 @@ import {
 	route,
 	req,
 	globe,
-	list,
+	dir,
 	num,
 } from "~/fe/config/shop"
 import {right_icon, left_icon} from "~/fe/config/asset/icon"
@@ -30,7 +30,7 @@ export default ({cur, size, link}) => {
 			left_icon({style: () => "w-[1.2rem] h-[1.2rem]"}),
 		),
 		() =>
-			list(size())
+			dir(size())
 				.fill()
 				.map((v, k) =>
 					b(

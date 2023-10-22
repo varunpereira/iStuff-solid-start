@@ -24,8 +24,8 @@ export var any = JSON.parse // eg bool
 // more innate globe
 export var math = Math
 export var date = Date
-export var list = Array
-export var dict = Object
+export var dir = Array
+export var dic = Object
 
 export var req = async (link = "", value = {}) => {
 	var response = await fetch(link, {
