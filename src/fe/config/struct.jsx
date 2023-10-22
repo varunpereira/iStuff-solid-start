@@ -24,7 +24,7 @@ export default () => {
 			["/cart", cart],
 			["/cart/paid", paid],
 		],
-		title: () => " - iStuff",
+		title: () => "iStuff",
 		logo,
 		header,
 		footer,

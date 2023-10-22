@@ -13,6 +13,7 @@ import {
 	page,
 	req,
 	path,
+	path_decode
 } from "~/fe/config/shop"
 import prod_short from "~/fe/prod/short"
 import pager from "~/fe/config/piece/pager"
@@ -37,7 +38,7 @@ export default () => {
 		{title: () => "Result", status:()=>"pub",style: () => "fit_1"},
 		d({style: () => ""}, () =>
 			prod().length === 0
-				? t({}, () => "No results for " + decodeURIComponent(path_var?.term))
+				? t({}, () => "No results for " + path_decode(path_var?.term))
 				: d(
 						{},
 						d(

@@ -12,6 +12,7 @@ import {
 	route,
 	req,
 	globe,
+	path_encode
 } from "~/fe/config/shop"
 import {cart_icon, search_icon, close_icon, mic_icon} from "~/fe/config/asset/icon"
 
@@ -35,7 +36,7 @@ export default () => {
 
 	var form_submit = async (term) => {
 		suggest_on(false)
-		term.trim() !== "" ? nav("/search/all/" + encodeURIComponent(term) + "/1") : ""
+		term.trim() !== "" ? nav("/search/all/" + path_encode(term) + "/1") : ""
 	}
 
 	var get_suggest = async () => {
@@ -78,7 +79,7 @@ export default () => {
 				form_data({...form_data(), search: e.results[0][0].transcript})
 				recognition.stop()
 				mic_on(false)
-				nav("/search/all/" + encodeURIComponent(form_data().search) + "/1")
+				nav("/search/all/" + path_encode(form_data().search) + "/1")
 			}
 			recognition.onerror = (e) => {
 				recognition.stop()

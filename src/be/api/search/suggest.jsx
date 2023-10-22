@@ -1,10 +1,10 @@
-import {write, env, res, num, math} from "~/be/config/shop"
+import {write, env, res, num, math, path_decode} from "~/be/config/shop"
 import prod_model from "~/be/config/db/model/prod"
 import {db} from "~/be/config/db/join"
 
 export var POST = async ({request}) => {
 	var {search, theme, page} = await request.json()
-	search = decodeURIComponent(search.trim())
+	search = path_decode(search.trim())
 	page = num(page)
 	var prod = []
 	db()

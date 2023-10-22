@@ -34,11 +34,14 @@ export var view = {
 	cut_listen: (id, fn) => () => window.removeEventListener(id, fn),
 }
 
+// path
 export var path = {
 	get: () => window.location.pathname,
 	var: useParams,
 	par: () => useSearchParams()[0],
 }
+export var path_encode = (link) => encodeURIComponent(link)
+export var path_decode = (link) => decodeURIComponent(link)
 
 export var scroll = (id) => document.getElementById(id).scrollIntoView({behavior: "smooth"})
 
@@ -59,7 +62,9 @@ export var dir = Array
 export var dic = Object
 
 // piece
-export var title_set = ({}, value = () => "") => <Title>{value() + struct()?.title()}</Title>
+export var title_set = ({}, value = () => "") => (
+	<Title>{value() ? value() + " - " + struct()?.title() : struct()?.title()}</Title>
+)
 
 export var auth = async (link) => {
 	try {

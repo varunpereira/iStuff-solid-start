@@ -21,6 +21,10 @@ export var cookie = (headers) => {
 }
 export var any = JSON.parse // eg bool
 
+// path
+export var path_encode = (link) => encodeURIComponent(link)
+export var path_decode = (link) => decodeURIComponent(link)
+
 // more innate globe
 export var math = Math
 export var date = Date
