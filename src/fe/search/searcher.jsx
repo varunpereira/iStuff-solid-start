@@ -43,7 +43,7 @@ export default () => {
 		suggest([]) // loading
 		var res = await req("/search/suggest", {search: form_data().search, theme, page})
 		suggest(res.prod)
-		suggest_on() === "wait" ? "" : suggest_on(true)
+		suggest_on(true)
 	}
 
 	var key = (e) => {
@@ -73,11 +73,11 @@ export default () => {
 			mic_on(true)
 			recognition.start()
 			recognition.onresult = (e) => {
-				suggest_on(false)
 				form_data({...form_data(), search: e.results[0][0].transcript})
 				recognition.stop()
 				mic_on(false)
 				nav("/search/all/" + path_encode(form_data().search) + "/1")
+				suggest_on(false)
 			}
 			recognition.onerror = (e) => {
 				recognition.stop()
@@ -90,7 +90,6 @@ export default () => {
 		{style: () => "c_black tc_white w_full h-[2rem] r_full z_fit mr-[1rem]"},
 		i({
 			click: async () => {
-				suggest_on("wait")
 				await get_suggest()
 			},
 			type: () => "text",
@@ -126,7 +125,6 @@ export default () => {
 										b(
 											{
 												click: () => {
-													suggest_on("wait")
 													form_data({...form_data(), search: v.title})
 													form_submit(v.title)
 												},
