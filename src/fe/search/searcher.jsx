@@ -12,7 +12,7 @@ import {
 	route,
 	req,
 	globe,
-	path_encode
+	path_encode,
 } from "~/fe/config/shop"
 import {cart_icon, search_icon, close_icon, mic_icon} from "~/fe/config/asset/icon"
 
@@ -22,7 +22,7 @@ export default () => {
 	var form_data = state({search: ""})
 	var suggest = state([])
 	var suggest_pick = state(null)
-	var suggest_on = state(true)
+	var suggest_on = state(false)
 	var mic_on = state(false)
 	var themes = ["all", "tech"]
 	var theme = themes[0]
@@ -47,11 +47,9 @@ export default () => {
 	}
 
 	var key = (e) => {
-		if (e.key === "Enter") {
-			form_submit(form_data().search)
-		} else if (e.key === "Escape") {
-			form_data({...form_data(), search: ""})
-		} else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+		if (e.key === "Enter") form_submit(form_data().search)
+		else if (e.key === "Escape") form_data({...form_data(), search: ""})
+		else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
 			var put_pick
 			if (e.key === "ArrowDown") {
 				put_pick = suggest_pick() === null ? 0 : (suggest_pick() + 1) % suggest().length
@@ -92,6 +90,7 @@ export default () => {
 		{style: () => "c_black tc_white w_full h-[2rem] r_full z_fit mr-[1rem]"},
 		i({
 			click: async () => {
+				suggest_on("wait")
 				await get_suggest()
 			},
 			type: () => "text",
