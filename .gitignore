@@ -5,6 +5,7 @@ dist/
 .vercel/
 .netlify/
 netlify/
+package-lock
 
 # dependencies
 node_modules/
@@ -21,4 +22,3 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-.vercel
