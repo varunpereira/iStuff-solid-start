@@ -79,7 +79,7 @@ export default () => {
 								value: () => v.url,
 								style: () =>
 									"v2:w-[2.5rem] v2:h-[2.5rem] v3:w-[3rem] v3:h-[3rem] e_fit r_1 bw_1 bc_black " +
-									(k === pic_pick() ? "ow_2" : ""),
+									(k === pic_pick() ? "ow_3" : ""),
 							}),
 						),
 					),

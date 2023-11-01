@@ -129,6 +129,9 @@ $red: red;
 		border-width: 0.05rem;
 	}
 	.bw_2 {
+		border-width: 0.15rem;
+	}
+	.bw_3 {
 		border-width: 0.25rem;
 	}
 	// outline
@@ -145,6 +148,10 @@ $red: red;
 	.ow_2 {
 		outline-style: solid;
 		outline-width: 0.15rem;
+	}
+	.ow_3 {
+		outline-style: solid;
+		outline-width: 0.25rem;
 	}
 	// icon
 	.ic_null {
