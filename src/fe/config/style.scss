@@ -129,11 +129,22 @@ $red: red;
 		border-width: 0.05rem;
 	}
 	.bw_2 {
-		border-width: 0.15rem;
+		border-width: 0.25rem;
 	}
 	// outline
 	.o_null {
 		outline: none;
+	}
+	.oc_black {
+		outline-color: $black;
+	}
+	.ow_1 {
+		outline-style: solid;
+		outline-width: 0.05rem;
+	}
+	.ow_2 {
+		outline-style: solid;
+		outline-width: 0.15rem;
 	}
 	// icon
 	.ic_null {

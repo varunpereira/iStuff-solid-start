@@ -70,7 +70,7 @@ export default () => {
 		d(
 			{style: () => "a_row_auto v2:mb-[1rem] v3:mb-[2rem]"},
 			d(
-				{style: () => "a_row"},
+				{style: () => "a_row "},
 				d({style: () => "mr-[.5rem] a_col ay_equal gap-[.5rem]"}, () =>
 					prod()?.pic.map((v, k) =>
 						b(
@@ -78,8 +78,8 @@ export default () => {
 							p({
 								value: () => v.url,
 								style: () =>
-									"v2:w-[2.5rem] v2:h-[2.5rem] v3:w-[3rem] v3:h-[3rem] e_fit bw_1 bc_black r_1 " +
-									(k === pic_pick() ? "bw_2" : ""),
+									"v2:w-[2.5rem] v2:h-[2.5rem] v3:w-[3rem] v3:h-[3rem] e_fit r_1 bw_1 bc_black " +
+									(k === pic_pick() ? "ow_2" : ""),
 							}),
 						),
 					),
@@ -87,11 +87,11 @@ export default () => {
 				p({
 					value: () => prod()?.pic[pic_pick()]?.url,
 					style: () =>
-						"v2:w-[17.5rem] v2:h-[17.5rem] v3:w-[25rem] v3:h-[25rem] v4:w-[30rem] v4:h-[30rem] e_fit mr-[1rem] bw_1 bc_black r_1",
+						"v2:w-[17.5rem] v2:h-[17.5rem] v3:w-[25rem] v3:h-[25rem] v4:w-[30rem] v4:h-[30rem] e_fit mr-[1rem] r_1 bw_1 bc_black ",
 				}),
 			),
 			d(
-				{style: () => "w-[20rem] v2:mt-[1rem] v4:mt-[0rem]"},
+				{style: () => "w-[20rem] v2:mt-[1rem] v3:mt-[1rem] v4:mt-[0rem]"},
 				t({style: () => "tw_1 ts_3"}, () => prod()?.title),
 				b(
 					{click: () => scroll("reviews")},
