@@ -69,8 +69,8 @@ export default () => {
 		d(
 			{style: () => "z_fit"},
 			v({
-				def: () => lotr,
 				value: () => lotr_vid,
+				source: () => lotr,
 				mute,
 				rep: () => true,
 				hover_in,
@@ -79,6 +79,7 @@ export default () => {
 				style: () => "fit_3 w_full h-[40vw] e_full",
 			}),
 			p({
+				value: () => lotr_logo,
 				hover_in: () => {
 					event().target.play()
 					logo(true)
@@ -88,7 +89,6 @@ export default () => {
 					logo(false)
 				},
 				click: () => mute(!mute()),
-				value: () => lotr_logo,
 				style: () => "z_put bottom-[.25rem] w-[50%] " + (logo() === true ? "see" : "hide"),
 			}),
 		),
@@ -102,8 +102,8 @@ export default () => {
 			prod().map((v, k) => prod_short({prod: v})),
 		),
 		p({
-			def: () => "trending",
 			value: () => car()[car_index()],
+			source: () => "trending",
 			style: () => "fit_3 w_full",
 		}),
 	)

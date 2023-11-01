@@ -153,7 +153,7 @@ export var i = ({
 export var p = ({
 	style = () => "",
 	value = () => "",
-	def = () => "",
+	source = () => "",
 	hover_in = () => "",
 	hover_out = () => "",
 	click = () => "",
@@ -161,7 +161,7 @@ export var p = ({
 	<img
 		class={style()}
 		src={value()}
-		alt={def()}
+		alt={source()}
 		onMouseOver={hover_in}
 		onMouseLeave={hover_out}
 		onClick={click}
@@ -171,7 +171,7 @@ export var p = ({
 export var v = ({
 	style = () => "",
 	value = () => "",
-	def = () => "",
+	source = () => "",
 	type = () => "",
 	controls = () => false,
 	mute = () => true,
@@ -182,7 +182,7 @@ export var v = ({
 }) => (
 	<video
 		class={style()}
-		poster={def()}
+		poster={source()}
 		controls={controls()}
 		muted={mute()}
 		loop={rep()}
