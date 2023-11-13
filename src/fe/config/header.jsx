@@ -3,19 +3,22 @@ import {
 	react,
 	write,
 	d,
+	D,
+	mount,
 	clean,
 	t,
+	T,
+	B,
 	b,
-	i,
-	v,
 	view,
 	route,
 	req,
 	globe,
 	any,
+	show,
 	nav_full,
 } from "~/fe/config/shop"
-import {shop_icon, menu_icon, cart_icon, sign_in_icon} from "~/fe/config/asset/icon"
+import {ShopIcon , menu_icon, cart_icon, sign_in_icon} from "~/fe/config/asset/icon"
 import searcher from "~/fe/search/searcher"
 
 export default () => {
@@ -24,11 +27,10 @@ export default () => {
 	var acc_click = state(false)
 	var menu_click = state(false)
 
-	var mount = async () => {
-		// write(globe())
+	mount(async () => {
 		width(view.width())
 		view.put_listen("resize", handler)
-	}
+	})
 
 	var handler = () => {
 		width(view.width())
@@ -48,11 +50,21 @@ export default () => {
 		nav_full("/signin")
 	}
 
+	// return (
+	// 	<div class="fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black ">
+	// 		<button class={"a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"}>
+	// 			<ShopIcon class={`w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]`}/>,
+	// 			<p>iStuff</p>
+	// 		</button>
+	// 	</div>
+	// )
+
 	return d(
-		{mount, style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black"},
+		{style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black"},
 		b(
 			{click: () => nav("/"), style: () => "a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"},
-			shop_icon({style: () => "w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]"}),
+			<ShopIcon class={`w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]`}/>,
+			// shop_icon({style: () => "w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]"}),
 			t({style: () => ""}, () => "iStuff"),
 		),
 		searcher(),

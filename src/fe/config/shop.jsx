@@ -20,6 +20,8 @@ export var effect = createResource
 
 export var write = console.log
 
+export var mount = onMount
+
 export var clean = onCleanup
 
 export var timer = {
@@ -130,6 +132,7 @@ export var b = ({style = () => "", click = () => ""}, ...rest) => (
 	</button>
 )
 
+
 export var i = ({
 	style = () => "",
 	type = () => "text",
@@ -204,3 +207,10 @@ export var req = async (link = "", value = {}) => {
 }
 
 export var env = import.meta.env
+
+export var show2 = (arr = []) => {
+	for (var i = 0; i < arr.length; i += 2) {
+		if (arr[i] === true) return arr[i + 1]
+	}
+	return () => "arr[arr.length -1]"
+}

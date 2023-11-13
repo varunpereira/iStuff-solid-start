@@ -100,7 +100,7 @@ export default () => {
 			},
 			key,
 			holder: () => "search...",
-			style: () => "c_black r_full px-[.8rem] w_full h_full o_null",
+			style: () => "c_black r_full px-[.8rem] v2:w-[70%] v3:w_full h_full o_null",
 		}),
 		() =>
 			form_data().search.trim() !== "" &&

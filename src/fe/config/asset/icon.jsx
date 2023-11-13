@@ -1,5 +1,5 @@
-export var shop_icon = ({style = () => ""}) => (
-	<svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={style()}>
+export var ShopIcon = (props) => (
+	<svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={props.class}>
 		<path d="M5 7H19V17C19 18.6569 17.6569 20 16 20H8C6.34315 20 5 18.6569 5 17V7Z" />
 		<path d="M9 10L9 11C9 12.6569 10.3431 14 12 14V14C13.6569 14 15 12.6569 15 11L15 10" />
 		<path d="M7 4H17L19 7H5L7 4Z" />

@@ -91,6 +91,6 @@ export default () => {
 			),
 		t({style: () => "ts_4 tw_2 mb-[2rem]"}, () => "Total: $" + cart()?.price),
 		b({click: pay, style: () => "r_1 p-[.5rem] c_black tc_white"}, () => "Pay"),
-		t({style: () => "tc_red h-[2rem]"}, () => flaw()),
+		t({style: () => "mt-[2rem] tc_red h-[2rem]"}, () => flaw()),
 	)
 }
