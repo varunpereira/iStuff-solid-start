@@ -18,7 +18,7 @@ import {
 	show,
 	nav_full,
 } from "~/fe/config/shop"
-import {ShopIcon , menu_icon, cart_icon, sign_in_icon} from "~/fe/config/asset/icon"
+import {ShopIcon, menu_icon, cart_icon, sign_in_icon} from "~/fe/config/asset/icon"
 import searcher from "~/fe/search/searcher"
 
 export default () => {
@@ -50,22 +50,19 @@ export default () => {
 		nav_full("/signin")
 	}
 
-	// return (
-	// 	<div class="fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black ">
-	// 		<button class={"a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"}>
-	// 			<ShopIcon class={`w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]`}/>,
-	// 			<p>iStuff</p>
-	// 		</button>
-	// 	</div>
-	// )
-
 	return d(
 		{style: () => "fit_2 z_fit py-[.5rem] a_row ax_equal top-[0rem] w_full c_black"},
-		b(
-			{click: () => nav("/"), style: () => "a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"},
-			<ShopIcon class={`w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]`}/>,
-			// shop_icon({style: () => "w-[2rem] h-[1.5rem] tc_aqua mt-[.15rem]"}),
-			t({style: () => ""}, () => "iStuff"),
+		d(
+			{style: () => "a_row ay_mid tc_aqua tw_1 ts_3 mr-[1rem]"},
+			b(
+				{
+					click: () => nav("/"),
+					style: () =>
+						"tc_black c_aqua_1 tw_1 rounded-md pr-[.6rem] pl-[.1rem] a_row h-[1.8rem] mt-[.1rem]",
+				},
+				<ShopIcon class={`w-[2rem] h-[1.5rem] mt-[.2rem] tc_black fill-transparent stroke-2`} />,
+				t({style: () => ""}, "iStuff"),
+			),
 		),
 		searcher(),
 		b(

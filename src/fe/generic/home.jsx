@@ -24,7 +24,7 @@ import lotr_logo from "~/fe/generic/asset/lotr_1_logo.png"
 import prod_short from "~/fe/prod/short"
 
 export default () => {
-	var car = state(Array(9).fill())
+	var car = state(Array(8).fill())
 	var car_index = state(0)
 	var car_interv = timer.put(() => {
 		car_index((i) => {
@@ -66,7 +66,7 @@ export default () => {
 			status: () => "pub",
 			mount,
 		},
-		<img src={"/" + car_index() + ".jpg"} class={"fit_3 w_full"} />,
+		<img src={"/" + (car_index() + 1) + ".jpg"} class={"fit_3 w_full"} />,
 		t(
 			{
 				style: () => "fit_1 px-[1rem] py-[1rem] a_row ay_mid mt-[3rem] mb-[2rem] tc_aqua ts_3 tw_2",
@@ -74,7 +74,7 @@ export default () => {
 			() => "Trending",
 		),
 		d({style: () => "fit_1 a_row_auto gap-[1rem] mb-[3rem]"}, () =>
-			prod().map((v, k) => prod_short({prod: v})),
+			!prod().length ? "Loading..." : () => prod().map((v, k) => prod_short({prod: v})),
 		),
 	)
 }
