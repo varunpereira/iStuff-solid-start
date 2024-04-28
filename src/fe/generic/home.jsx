@@ -14,13 +14,6 @@ import {
 	timer,
 	req,
 } from "~/fe/config/shop"
-import car1 from "~/fe/generic/asset/1.jpg"
-import car2 from "~/fe/generic/asset/2.jpg"
-import car3 from "~/fe/generic/asset/3.jpg"
-import car4 from "~/fe/generic/asset/4.jpg"
-import lotr_vid from "~/fe/generic/asset/lotr_1.mp4"
-import lotr from "~/fe/generic/asset/lotr_1.png"
-import lotr_logo from "~/fe/generic/asset/lotr_1_logo.png"
 import prod_short from "~/fe/prod/short"
 
 export default () => {
