@@ -24,7 +24,7 @@ import lotr_logo from "~/fe/generic/asset/lotr_1_logo.png"
 import prod_short from "~/fe/prod/short"
 
 export default () => {
-	var car = state([car1, car2, car3, car4])
+	var car = state(Array(9).fill())
 	var car_index = state(0)
 	var car_interv = timer.put(() => {
 		car_index((i) => {
@@ -66,32 +66,7 @@ export default () => {
 			status: () => "pub",
 			mount,
 		},
-		d(
-			{style: () => "z_fit"},
-			v({
-				value: () => lotr_vid,
-				source: () => lotr,
-				mute,
-				rep: () => true,
-				hover_in,
-				hover_out,
-				click: () => mute(!mute()),
-				style: () => "fit_3 w_full h-[40vw] e_full",
-			}),
-			p({
-				value: () => lotr_logo,
-				hover_in: () => {
-					event().target.play()
-					logo(true)
-				},
-				hover_out: () => {
-					event().target.pause()
-					logo(false)
-				},
-				click: () => mute(!mute()),
-				style: () => "z_put bottom-[.25rem] w-[50%] " + (logo() === true ? "see" : "hide"),
-			}),
-		),
+		<img src={"/" + car_index() + ".jpg"} class={"fit_3 w_full"} />,
 		t(
 			{
 				style: () => "fit_1 px-[1rem] py-[1rem] a_row ay_mid mt-[3rem] mb-[2rem] tc_aqua ts_3 tw_2",
@@ -101,10 +76,5 @@ export default () => {
 		d({style: () => "fit_1 a_row_auto gap-[1rem] mb-[3rem]"}, () =>
 			prod().map((v, k) => prod_short({prod: v})),
 		),
-		p({
-			value: () => car()[car_index()],
-			source: () => "trending",
-			style: () => "fit_3 w_full",
-		}),
 	)
 }
